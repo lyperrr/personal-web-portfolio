@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { Button, Text, Title, Badge, ShapeAnimate } from "@/components";
+import { Button, Text, Title, Badge, ShapeAnimate } from "@/components/ui";
 import { Mail, ArrowRight, Mouse, Github, MessageCircle } from "lucide-react";
 import AboutInfo from "@/components/layouts/AboutInfo";
 

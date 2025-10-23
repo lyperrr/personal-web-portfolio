@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Home, About, Skills, Portfolio, Contact } from "@/pages";
-import { Layout } from "@/components";
+import { Layout } from "@/components/layouts";
 import "@/index.css";
 
 function App() {

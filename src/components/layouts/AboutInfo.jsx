@@ -1,6 +1,6 @@
 import React from "react";
 import Profile from "@/assets/img/profile.png";
-import { Badge, Title, Text } from "@/components";
+import { Badge, Title, Text } from "@/components/ui";
 
 const AboutInfo = () => {
   const aboutDescription = [
