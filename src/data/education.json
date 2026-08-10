@@ -1,0 +1,62 @@
+{
+  "sectionNumber": "02",
+  "badge": "Riwayat Pendidikan",
+  "description": "Perjalanan pendidikan akademis dan jenjang studi yang telah dan sedang saya tempuh.",
+  "educationList": [
+    {
+      "id": 1,
+      "institution": "Sekolah Dasar Negeri 7 Kesiman",
+      "level": "Sekolah Dasar",
+      "degree": "Sekolah Dasar (SD)",
+      "year": "20XX - 20XX",
+      "isCurrent": false,
+      "description": "",
+      "note": "",
+      "image": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": 2,
+      "institution": "Sekolah Dasar Negeri 3 Benoa",
+      "level": "Sekolah Dasar",
+      "degree": "Sekolah Dasar (SD)",
+      "year": "20XX - 20XX",
+      "isCurrent": false,
+      "description": "",
+      "note": "Pindah Sekolah",
+      "image": "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": 3,
+      "institution": "Sekolah Menengah Pertama Negeri 5 Kuta Selatan",
+      "level": "Sekolah Menengah Pertama",
+      "degree": "SMP / Sederajat",
+      "year": "20XX - 20XX",
+      "isCurrent": false,
+      "description": "",
+      "note": "",
+      "image": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": 4,
+      "institution": "Sekolah Menengah Akhir Negeri 2 Kuta Selatan",
+      "level": "Sekolah Menengah Akhir",
+      "degree": "SMA / Sederajat",
+      "year": "20XX - 20XX",
+      "isCurrent": false,
+      "description": "",
+      "note": "",
+      "image": "https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": 5,
+      "institution": "Politeknik Negeri Bali",
+      "level": "Perguruan Tinggi",
+      "degree": "Jurusan Teknologi Informasi — Program Studi Manajemen Informatika",
+      "year": "20XX - Sekarang",
+      "isCurrent": true,
+      "description": "Fokus pada pengembangan perangkat lunak, manajemen basis data, rekayasa web, dan pemrograman aplikasi.",
+      "note": "Sedang Berjalan",
+      "image": "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=600&q=80"
+    }
+  ]
+}

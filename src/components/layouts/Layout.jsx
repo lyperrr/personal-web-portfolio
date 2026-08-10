@@ -3,15 +3,25 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 /**
- * Simple layout that renders Navbar once and wraps page content.
- * Pass `hideNavbar={true}` to hide the navbar on specific pages.
+ * Layout component wrapping single-page navigation and footer.
  */
-const Layout = ({ children, hideNavbar = false, hiddenFooter = false }) => {
+const Layout = ({
+  children,
+  activeSection,
+  scrollToSection,
+  hideNavbar = false,
+  hiddenFooter = false,
+}) => {
   return (
     <>
-      {!hideNavbar && <Navbar />}
+      {!hideNavbar && (
+        <Navbar
+          activeSection={activeSection}
+          scrollToSection={scrollToSection}
+        />
+      )}
       <main>{children}</main>
-      {!hiddenFooter && <Footer />}
+      {!hiddenFooter && <Footer scrollToSection={scrollToSection} />}
     </>
   );
 };

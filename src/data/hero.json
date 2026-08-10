@@ -1,0 +1,33 @@
+{
+  "greeting": "Hello I'm",
+  "name": "Willy Permana",
+  "role": "Web Developer & Designer",
+  "bio": "Passionate about creating beautiful, functional, and user-centered digital experiences. Bringing ideas to life through code, modern design, and robust architecture.",
+  "buttons": {
+    "primary": {
+      "label": "Get In Touch",
+      "targetSection": "contact"
+    },
+    "secondary": {
+      "label": "View Projects",
+      "targetSection": "portfolio"
+    }
+  },
+  "socialMedia": [
+    {
+      "id": "whatsapp",
+      "name": "WhatsApp",
+      "url": "https://wa.me/"
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "url": "https://github.com"
+    },
+    {
+      "id": "instagram",
+      "name": "Instagram",
+      "url": "https://instagram.com"
+    }
+  ]
+}

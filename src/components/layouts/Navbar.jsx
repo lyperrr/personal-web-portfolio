@@ -1,107 +1,184 @@
-import { Link, NavLink } from "react-router-dom";
-import Logo from "@/assets/svg/logo/W.svg";
-import { Button } from "@/components/ui";
-import { Menu, X, Download, Sun, MoonStar } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import Logo from "/logo.svg";
+import { Button, LiquidTabs } from "@/components/ui";
+import { Menu, X, Download, Sun, MoonStar } from "lucide-react";
 import { toggleTheme } from "@/main";
 
-function Navbar() {
-  const [isDark, setIsDark] = useState(
-    document.documentElement.classList.contains("dark")
-  );
+function Navbar({ activeSection = "home", scrollToSection }) {
+  const [isDark, setIsDark] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Skills", path: "/skills" },
-    { name: "Portfolio", path: "/portfolio" },
-    { name: "Contact", path: "/contact" },
+    { name: "Home", id: "home" },
+    { name: "About", id: "about" },
+    { name: "Education", id: "education" },
+    { name: "Skills", id: "skills" },
+    { name: "Portfolio", id: "portfolio" },
+    { name: "Contact", id: "contact" },
   ];
 
-  // Toggle the theme
+  // Toggle theme
   const handleToggleTheme = () => {
     toggleTheme();
     setIsDark(document.documentElement.classList.contains("dark"));
   };
 
-  // Check if the user has a preferred theme
   useEffect(() => {
     setIsDark(document.documentElement.classList.contains("dark"));
   }, []);
 
-  return (
-    <header className="border-b bg-secondary/50 backdrop-blur-sm shadow-md fixed w-full z-50">
-      <nav className="container">
-        <div className="flex items-center justify-between py-4 overflow-auto">
-          {/* Logo */}
-          <div className="lg:w-1/5">
-            <Link
-              to="/about"
-              aria-label="Home"
-              className="flex items-center pointer-events-auto z-50"
-            >
-              <img
-                className="h-10 sm:h-14 cursor-pointer dark:invert"
-                src={Logo}
-                alt="Willy Permana"
-              />
-            </Link>
-          </div>
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
 
-          {/* Navigation */}
-          <div className="lg:w-3/5 hidden lg:flex items-center justify-center">
-            <ul className="lg:flex items-center gap-6">
-              {navLinks.map((link) => (
-                <li key={link.name}>
-                  <NavLink
-                    to={link.path}
-                    className={({ isActive }) =>
-                      `relative font-medium transition-colors after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-primary after:transition-all after:duration-300 ${
-                        isActive
-                          ? "text-primary after:w-full"
-                          : "text-foreground/40 hover:text-primary after:w-0 hover:after:w-full"
-                      }`
-                    }
+  const handleNavClick = (e, sectionId) => {
+    if (scrollToSection) {
+      scrollToSection(e, sectionId);
+    }
+    setIsMobileMenuOpen(false);
+  };
+
+  const mobileMenuOverlay = (
+    <div
+      className={`lg:hidden fixed inset-0 top-0 left-0 right-0 bottom-0 z-[9999] w-full min-w-full h-full min-h-screen backdrop-blur-2xl bg-background/85 flex flex-col justify-between p-6 sm:p-10 transition-all duration-300 ease-in-out ${
+        isMobileMenuOpen
+          ? "translate-y-0 opacity-100 pointer-events-auto"
+          : "translate-y-full opacity-0 pointer-events-none"
+      }`}
+    >
+      {/* Top Right Close Button */}
+      <div className="flex items-center justify-end pt-2">
+        <Button
+          variant="outline"
+          size="icon"
+          className="cursor-pointer rounded-full size-12 shadow-sm transition-transform"
+          onClick={() => setIsMobileMenuOpen(false)}
+          aria-label="Close Mobile Menu"
+        >
+          <X className="size-7" />
+        </Button>
+      </div>
+
+      {/* Pure Navigation Links Centered using Button asChild */}
+      <div className="flex-1 flex flex-col justify-center items-center my-auto py-6">
+        <ul className="flex flex-col items-center gap-4 w-full max-w-xs">
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.id;
+            return (
+              <li key={link.id} className="w-full text-center">
+                <Button
+                  asChild
+                  variant={isActive ? "default" : "ghost"}
+                  size="xl"
+                  className={`w-full text-xl font-bold justify-center transition-all duration-300 ${
+                    isActive ? "shadow-xl scale-105" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  <a
+                    href={`#${link.id}`}
+                    onClick={(e) => handleNavClick(e, link.id)}
                   >
                     {link.name}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </div>
+                  </a>
+                </Button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
 
-          {/* Theme Toggle & Download CV */}
-          <div className="flex lg:w-1/5 items-center lg:justify-end gap-2">
-            {/* Theme Toggle */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="cursor-pointer group"
-              onClick={handleToggleTheme}
-            >
-              {isDark ? (
-                <Sun className="size-5 group-hover:rotate-45 transition-all duration-200 ease-in" />
-              ) : (
-                <MoonStar className="size-5 group-hover:-rotate-45 transition-all duration-200 ease-in" />
-              )}
-            </Button>
-            {/* Button menu (mobile) */}
-            <div className="flex items-center justify-center lg:hidden">
-              <Button
-                className="px-0 hover:bg-transparent size-fit"
-                variant="ghost"
+      {/* Bottom Download CV Action Button */}
+      <div className="w-full max-w-xs mx-auto pb-4">
+        <Button size="xl" className="w-full cursor-pointer gap-2 rounded-full text-base shadow-lg">
+          Download CV
+          <Download className="size-5" />
+        </Button>
+      </div>
+    </div>
+  );
+
+  return (
+    <>
+      {/* Solid Full-Width Apple Glass Header Bar */}
+      <header className="border-b border-border/40 backdrop-blur-xl fixed top-0 left-0 w-full z-40 transition-colors">
+        <nav className="container">
+          <div className="flex items-center justify-between py-3">
+            {/* Logo */}
+            <div className="lg:w-1/6">
+              <a
+                href="#home"
+                onClick={(e) => handleNavClick(e, "home")}
+                aria-label="Home"
+                className="flex items-center w-fit cursor-pointer"
               >
-                <Menu className="size-7" />
+                <img
+                  className="h-9 sm:h-10 dark:invert transition-all"
+                  src={Logo}
+                  alt="Willy Permana Logo"
+                />
+              </a>
+            </div>
+
+            {/* Desktop Navigation with Liquid Sliding Indicator */}
+            <div className="hidden lg:flex lg:w-4/6 items-center justify-center">
+              <LiquidTabs
+                tabs={navLinks}
+                activeTab={activeSection}
+                onChangeTab={(id) => handleNavClick(null, id)}
+                className="bg-secondary/50 backdrop-blur-md p-1 border border-border/40"
+              />
+            </div>
+
+            {/* Actions: Theme Toggle, Mobile Toggle & Download CV */}
+            <div className="flex lg:w-1/6 items-center justify-end gap-2">
+              {/* Theme Toggle */}
+              <Button
+                variant="outline"
+                size="icon"
+                className="cursor-pointer group rounded-full"
+                onClick={handleToggleTheme}
+                aria-label="Toggle Theme"
+              >
+                {isDark ? (
+                  <Sun className="size-5 transition-transform duration-200" />
+                ) : (
+                  <MoonStar className="size-5 transition-transform duration-200" />
+                )}
+              </Button>
+
+              {/* Mobile Menu Toggle Button */}
+              <Button
+                variant="outline"
+                size="icon"
+                className="lg:hidden cursor-pointer rounded-full"
+                onClick={() => setIsMobileMenuOpen(true)}
+                aria-label="Open Mobile Menu"
+              >
+                <Menu className="size-6" />
+              </Button>
+
+              {/* Download CV (Desktop) */}
+              <Button size="md" className="cursor-pointer hidden lg:flex gap-2 rounded-full shadow-md transition-transform">
+                Download CV
+                <Download className="size-4" />
               </Button>
             </div>
-            <Button size="lg" className="cursor-pointer hidden lg:flex">
-              Download CV
-              <Download className="size-4.5" />
-            </Button>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
+      </header>
+
+      {/* Render Fullscreen Mobile Navigation directly to document.body via Portal */}
+      {typeof document !== "undefined" && createPortal(mobileMenuOverlay, document.body)}
+    </>
   );
 }
 

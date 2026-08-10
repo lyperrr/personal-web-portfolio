@@ -87,4 +87,4 @@ function Title({
   );
 }
 
-export { Text, Title, textVariants };
+export { Text, Title };

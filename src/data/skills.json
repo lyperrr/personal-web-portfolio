@@ -1,0 +1,149 @@
+{
+  "sectionNumber": "02",
+  "badge": "Skills & Tech Stack",
+  "subtitle": "Technologies & Tools",
+  "description": "Technologies, frameworks, and tools I leverage to build scalable, high-performance digital products.",
+  "categories": ["All", "Frontend", "Backend", "Tools & Workflow", "UI/UX"],
+  "skills": [
+    {
+      "id": "react",
+      "name": "React.js",
+      "category": "Frontend",
+      "level": "Advanced",
+      "percentage": 92,
+      "logo": "",
+      "iconName": "Atom",
+      "description": "SPA Architecture, Hooks, Context API & Performance Optimization"
+    },
+    {
+      "id": "javascript",
+      "name": "JavaScript (ES6+)",
+      "category": "Frontend",
+      "level": "Advanced",
+      "percentage": 95,
+      "logo": "",
+      "iconName": "Code",
+      "description": "Modern Syntax, Async/Await, ES Modules & DOM Manipulation"
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "category": "Frontend",
+      "level": "Intermediate",
+      "percentage": 82,
+      "logo": "",
+      "iconName": "FileCode",
+      "description": "Type Safety, Interfaces, Generics & Strong Typing"
+    },
+    {
+      "id": "tailwind",
+      "name": "Tailwind CSS v4",
+      "category": "Frontend",
+      "level": "Advanced",
+      "percentage": 94,
+      "logo": "",
+      "iconName": "Palette",
+      "description": "Utility-First Styling, Custom Themes & Responsive Layouts"
+    },
+    {
+      "id": "html-css",
+      "name": "HTML5 & CSS3",
+      "category": "Frontend",
+      "level": "Advanced",
+      "percentage": 98,
+      "logo": "",
+      "iconName": "Layout",
+      "description": "Semantic Markup, Flexbox, Grid & Web Accessibility (a11y)"
+    },
+    {
+      "id": "nextjs",
+      "name": "Next.js",
+      "category": "Frontend",
+      "level": "Intermediate",
+      "percentage": 80,
+      "logo": "",
+      "iconName": "Layers",
+      "description": "SSR, SSG, App Router & Fullstack React Applications"
+    },
+    {
+      "id": "nodejs",
+      "name": "Node.js",
+      "category": "Backend",
+      "level": "Advanced",
+      "percentage": 88,
+      "logo": "",
+      "iconName": "Server",
+      "description": "Event Loop, NPM Packages, Middleware & Server Logic"
+    },
+    {
+      "id": "express",
+      "name": "Express.js",
+      "category": "Backend",
+      "level": "Advanced",
+      "percentage": 86,
+      "logo": "",
+      "iconName": "Cpu",
+      "description": "RESTful API Architecture, Authentication & Routing"
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "category": "Backend",
+      "level": "Intermediate",
+      "percentage": 78,
+      "logo": "",
+      "iconName": "Database",
+      "description": "Relational Schemas, SQL Queries & Database Indexing"
+    },
+    {
+      "id": "mongodb",
+      "name": "MongoDB",
+      "category": "Backend",
+      "level": "Intermediate",
+      "percentage": 80,
+      "logo": "",
+      "iconName": "HardDrive",
+      "description": "NoSQL Document Collections, Aggregations & Mongoose"
+    },
+    {
+      "id": "git",
+      "name": "Git & GitHub",
+      "category": "Tools & Workflow",
+      "level": "Advanced",
+      "percentage": 90,
+      "logo": "",
+      "iconName": "GitBranch",
+      "description": "Version Control, Branching Strategies & PR Workflows"
+    },
+    {
+      "id": "vite",
+      "name": "Vite & Build Tools",
+      "category": "Tools & Workflow",
+      "level": "Advanced",
+      "percentage": 92,
+      "logo": "",
+      "iconName": "Zap",
+      "description": "Fast HMR, Bundling Optimization & Module Resolution"
+    },
+    {
+      "id": "figma",
+      "name": "Figma",
+      "category": "UI/UX",
+      "level": "Intermediate",
+      "percentage": 85,
+      "logo": "",
+      "iconName": "Figma",
+      "description": "UI Design, Wireframing, Component Systems & Prototyping"
+    },
+    {
+      "id": "docker",
+      "name": "Docker Basics",
+      "category": "Tools & Workflow",
+      "level": "Basic",
+      "percentage": 65,
+      "logo": "",
+      "iconName": "Box",
+      "description": "Containerization, Dockerfiles & Local Dev Environments"
+    }
+  ]
+}

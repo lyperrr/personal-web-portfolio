@@ -1,0 +1,53 @@
+{
+  "sectionNumber": "03",
+  "badge": "Featured Projects",
+  "subtitle": "My Creative Works",
+  "description": "A curated collection of recent web applications and design projects I've crafted.",
+  "categories": ["All", "Web App", "E-Commerce", "UI/UX"],
+  "projects": [
+    {
+      "id": 1,
+      "title": "DevMetrics Analytics Dashboard",
+      "category": "Web App",
+      "description": "A real-time developer analytics platform displaying build metrics, deployments, and team collaboration statistics with interactive visualizations.",
+      "image": "",
+      "tags": ["React 19", "Tailwind CSS", "Chart.js", "Node.js"],
+      "githubUrl": "https://github.com",
+      "liveUrl": "https://example.com",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Zenith E-Commerce Platform",
+      "category": "E-Commerce",
+      "description": "A modern storefront featuring instant search, dynamic cart management, order tracking, and seamless checkout integration.",
+      "image": "",
+      "tags": ["React", "Redux Toolkit", "Tailwind CSS", "Stripe API"],
+      "githubUrl": "https://github.com",
+      "liveUrl": "https://example.com",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "Aura Component Design System",
+      "category": "UI/UX",
+      "description": "A comprehensive UI component library focused on accessibility (a11y), smooth micro-animations, and fluid responsive design tokens.",
+      "image": "",
+      "tags": ["Figma", "Radix UI", "Tailwind CSS", "Storybook"],
+      "githubUrl": "https://github.com",
+      "liveUrl": "https://example.com",
+      "featured": false
+    },
+    {
+      "id": 4,
+      "title": "Nexus Task & Workspace Manager",
+      "category": "Web App",
+      "description": "A collaborative workspace tool with kanban boards, drag-and-drop task management, real-time updates, and team permissions.",
+      "image": "",
+      "tags": ["React", "TypeScript", "Express", "MongoDB"],
+      "githubUrl": "https://github.com",
+      "liveUrl": "https://example.com",
+      "featured": false
+    }
+  ]
+}

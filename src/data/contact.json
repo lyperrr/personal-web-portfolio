@@ -1,0 +1,29 @@
+{
+  "sectionNumber": "04",
+  "badge": "Get In Touch",
+  "subtitle": "Contact Me",
+  "description": "Have a project in mind, an opportunity to discuss, or just want to connect? Feel free to reach out anytime!",
+  "info": {
+    "email": "kadekwilly006@gmail.com",
+    "location": "Nusadua, Bali, Indonesia",
+    "availability": "Available for Freelance & Full-time Roles"
+  },
+  "form": {
+    "labels": {
+      "name": "Your Name *",
+      "namePlaceholder": "Willy Permana",
+      "email": "Your Email *",
+      "emailPlaceholder": "name@example.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "Project Inquiry",
+      "message": "Message *",
+      "messagePlaceholder": "Tell me about your project or idea...",
+      "submitButton": "Send Message",
+      "submittingButton": "Sending..."
+    },
+    "successMessage": {
+      "title": "Message Sent Successfully!",
+      "text": "Thank you for reaching out. I'll get back to you as soon as possible."
+    }
+  }
+}

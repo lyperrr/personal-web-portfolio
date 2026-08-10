@@ -1,10 +1,11 @@
-// Layout components export index
-// export * from "./components/layout/Navbar"
-// export * from "./Footer"
-
-// UI components export index
-export * from "./button"
-export * from "./text"
-export * from "./tooltip"
-export * from "./badge"
-export * from "./shape-animate"
+export * from "./button";
+export * from "./badge";
+export * from "./card";
+export * from "./input";
+export * from "./textarea";
+export * from "./text";
+export * from "./tooltip";
+export * from "./section-header";
+export * from "./shape-animate";
+export * from "./liquid-background";
+export * from "./liquid-tabs";
