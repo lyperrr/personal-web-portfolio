@@ -101,11 +101,6 @@ const SkillsSection = () => {
                 key={skill.id}
                 className="group relative rounded-3xl glass-card transition-all duration-300 hover:shadow-2xl hover:border-primary/50 overflow-hidden"
               >
-                {/* Top Glossy Specular Highlight */}
-                <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-white/60 dark:via-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                {/* Bottom Glossy Specular Highlight */}
-                <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-l from-transparent via-white/60 dark:via-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
                 <CardContent className="p-6 flex flex-col justify-between h-full">
                   <div>
                     {/* Skill Card Header: Logo slot & Level badge */}
