@@ -25,7 +25,7 @@ export function SectionHeader({
       {...props}
     >
       {number && (
-        <span className="text-6xl sm:text-7xl font-extrabold text-primary/10 tracking-widest leading-none font-mono mb-[-1.25rem]">
+        <span className="text-6xl sm:text-8xl font-extrabold text-primary/10 tracking-widest leading-none font-mono -mb-5">
           {number}
         </span>
       )}

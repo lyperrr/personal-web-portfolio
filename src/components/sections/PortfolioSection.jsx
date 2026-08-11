@@ -31,15 +31,17 @@ const PortfolioSection = () => {
         />
 
         {/* Projects Grid using Apple Liquid Glass Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 xl:gap-4">
           {filteredProjects.map((project) => (
             <Card
               key={project.id}
-              className="group rounded-3xl glass-card transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden"
+              className="group rounded-3xl transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden"
             >
               <CardContent className="p-6 sm:p-8 flex flex-col justify-between h-full relative">
                 {/* Top Glossy Specular Highlight */}
                 <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-white/60 dark:via-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {/* Bottom Glossy Specular Highlight */}
+                <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-l from-transparent via-white/60 dark:via-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <div>
                   <div className="flex items-center justify-between gap-4 mb-4">
