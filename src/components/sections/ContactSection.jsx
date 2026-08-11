@@ -58,50 +58,55 @@ const ContactSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 max-w-5xl mx-auto">
           {/* Left Column: Info Cards using Apple Liquid Glass */}
           <div className="lg:col-span-2 space-y-6">
-            <Card className="rounded-3xl glass-panel shadow-xl">
-              <CardContent className="p-6 sm:p-8 space-y-5">
+            <Card className="glass-panel shadow-xl">
+              <CardContent className="p-5 sm:p-8 space-y-5">
+                {/* Email Row */}
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
+                  <div className="p-3 bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shrink-0">
                     <Mail className="size-6 text-primary" />
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <Title level={4} className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1">
                       Email
                     </Title>
                     <a
                       href={`mailto:${info.email}`}
-                      className="text-base font-semibold hover:text-primary transition-colors"
+                      className="text-sm sm:text-base font-semibold hover:text-primary transition-colors break-all block"
                     >
                       {info.email}
                     </a>
                   </div>
                 </div>
 
+                {/* Location Row */}
                 <div className="flex items-start gap-4 pt-5 border-t border-white/15 dark:border-white/10">
-                  <div className="p-3 bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
+                  <div className="p-3 bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shrink-0">
                     <MapPin className="size-6 text-primary" />
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <Title level={4} className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1">
                       Location
                     </Title>
-                    <p className="text-base font-semibold text-foreground">
+                    <p className="text-sm sm:text-base font-semibold text-foreground break-words">
                       {info.location}
                     </p>
                   </div>
                 </div>
 
+                {/* Availability Row */}
                 <div className="flex items-start gap-4 pt-5 border-t border-white/15 dark:border-white/10">
-                  <div className="p-3 bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
+                  <div className="p-3 bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shrink-0">
                     <Clock className="size-6 text-primary" />
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <Title level={4} className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1">
                       Availability
                     </Title>
-                    <Badge variant="ghost" className="text-xs bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-semibold border border-emerald-500/30 rounded-full px-3 py-1">
-                      {info.availability}
-                    </Badge>
+                    <div className="pt-0.5">
+                      <Badge variant="ghost" className="bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 px-3 py-1.5 text-xs font-semibold leading-relaxed text-wrap max-w-full">
+                        {info.availability}
+                      </Badge>
+                    </div>
                   </div>
                 </div>
               </CardContent>
@@ -109,8 +114,8 @@ const ContactSection = () => {
           </div>
 
           {/* Right Column: Contact Form using Apple Liquid Glass */}
-          <Card className="lg:col-span-3 rounded-3xl glass-panel shadow-xl">
-            <CardContent className="p-6 sm:p-8">
+          <Card className="lg:col-span-3 glass-panel shadow-xl">
+            <CardContent className="p-5 sm:p-8">
               {submitted ? (
                 <div className="flex flex-col items-center justify-center text-center py-12 space-y-4">
                   <CheckCircle className="size-16 text-emerald-500 animate-bounce" />
@@ -187,7 +192,7 @@ const ContactSection = () => {
                     type="submit"
                     size="xl"
                     disabled={isSubmitting}
-                    className="w-full cursor-pointer gap-2 rounded-full shadow-lg hover:shadow-xltransition-all duration-300"
+                    className="w-full gap-2 shadow-lg"
                   >
                     <Send className="size-4.5" />
                     {isSubmitting ? form.labels.submittingButton : form.labels.submitButton}

@@ -99,7 +99,7 @@ const SkillsSection = () => {
             return (
               <Card
                 key={skill.id}
-                className="group relative rounded-3xl glass-card transition-all duration-300 hover:shadow-2xl hover:border-primary/50 overflow-hidden"
+                className="hover:border-primary/50"
               >
                 <CardContent className="p-6 flex flex-col justify-between h-full">
                   <div>
@@ -174,7 +174,7 @@ const SkillsSection = () => {
           })}
         </div>
 
-        {/* Liquid Glass Show More / Show Less Action Button (Clean English, No Count Calculation) */}
+        {/* Liquid Glass Show More / Show Less Action Button */}
         {hasMoreSkills && (
           <div className="flex justify-center pt-6 relative z-10">
             <Button

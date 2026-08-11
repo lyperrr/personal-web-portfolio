@@ -59,7 +59,7 @@ export function PortfolioDetailPage() {
           <Badge
             key={idx}
             variant="outline"
-            className="text-xs font-semibold px-3 py-1 rounded-full bg-white/40 dark:bg-white/10 border-white/30 dark:border-white/15 backdrop-blur-md shadow-2xs text-foreground hover:border-primary/40 transition-colors"
+            className="text-xs px-3 py-1 bg-white/40 dark:bg-white/10 border-white/30 dark:border-white/15 backdrop-blur-md shadow-2xs text-foreground hover:border-primary/40"
           >
             {item}
           </Badge>
@@ -84,7 +84,7 @@ export function PortfolioDetailPage() {
           </Text>
           <Button
             onClick={() => navigate("/#portfolio")}
-            className="w-full rounded-full gap-2 cursor-pointer shadow-md"
+            className="w-full gap-2 shadow-md"
           >
             <ArrowLeft className="size-4" />
             Back to Portfolio
@@ -134,7 +134,7 @@ export function PortfolioDetailPage() {
             variant="ghost"
             size="sm"
             onClick={() => navigate("/#portfolio")}
-            className="rounded-full gap-2 text-xs font-semibold cursor-pointer border border-white/30 dark:border-white/10 glass-panel shadow-xs"
+            className="gap-2 text-xs font-semibold border border-white/30 dark:border-white/10 glass-panel shadow-xs"
           >
             <ArrowLeft className="size-3.5" />
             Back to All Projects
@@ -142,18 +142,18 @@ export function PortfolioDetailPage() {
         </div>
 
         {/* Hero Banner Master Card (Apple Liquid Glass) */}
-        <Card className="rounded-[2.5rem] sm:rounded-[3.5rem] glass-panel p-6 sm:p-12 shadow-2xl relative overflow-hidden">
+        <Card className="rounded-[2.5rem] sm:rounded-[3.5rem] glass-panel p-6 sm:p-12 shadow-2xl">
           <div className="space-y-8 relative z-10">
             
             {/* Top Category Badge & Featured Tag */}
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-2.5">
-                <Badge variant="ghost" className="text-xs font-semibold px-4 py-1.5 rounded-full border border-primary/30 text-primary bg-primary/10">
+                <Badge variant="ghost" className="text-xs px-4 py-1.5 border border-primary/30 text-primary bg-primary/10">
                   <Layers className="size-3.5" />
                   {project.category}
                 </Badge>
                 {project.featured && (
-                  <Badge className="bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 text-xs font-semibold px-3 py-1 rounded-full gap-1">
+                  <Badge className="bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 text-xs px-3 py-1 gap-1">
                     <Sparkles className="size-3.5" />
                     Featured Case Study
                   </Badge>
@@ -182,7 +182,7 @@ export function PortfolioDetailPage() {
               <Button
                 asChild
                 size="lg"
-                className="rounded-full gap-2 cursor-pointer shadow-lg hover:shadow-primary/30 transition-all px-6"
+                className="gap-2 shadow-lg hover:shadow-primary/30 px-6"
               >
                 <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="size-4.5" />
@@ -194,7 +194,7 @@ export function PortfolioDetailPage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="rounded-full gap-2 cursor-pointer shadow-md border-white/40 dark:border-white/20 px-6"
+                className="gap-2 shadow-md border-white/40 dark:border-white/20 px-6"
               >
                 <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                   <Github className="size-4.5" />
@@ -212,7 +212,7 @@ export function PortfolioDetailPage() {
                 <Badge
                   key={idx}
                   variant="outline"
-                  className="px-3.5 py-1 text-xs bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-full text-foreground font-semibold border-white/20 dark:border-white/10"
+                  className="px-3.5 py-1 text-xs bg-white/30 dark:bg-white/10 backdrop-blur-md text-foreground border-white/20 dark:border-white/10"
                 >
                   {tag}
                 </Badge>
@@ -226,7 +226,7 @@ export function PortfolioDetailPage() {
         {project.metrics && project.metrics.length > 0 && (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {project.metrics.map((metric, idx) => (
-              <Card key={idx} className="rounded-3xl glass-card p-6 text-center shadow-lg relative overflow-hidden">
+              <Card key={idx} className="p-6 text-center shadow-lg">
                 <CardContent className="p-0 space-y-1">
                   <div className="text-2xl sm:text-4xl font-extrabold text-primary tracking-tight">
                     {metric.value}
@@ -247,7 +247,7 @@ export function PortfolioDetailPage() {
           <div className="lg:col-span-2 space-y-8">
             
             {/* Overview Card */}
-            <Card className="rounded-3xl glass-panel p-6 sm:p-8 shadow-xl space-y-4">
+            <Card className="glass-panel p-6 sm:p-8 shadow-xl space-y-4">
               <CardContent className="p-0 space-y-4">
                 <h3 className="text-xl font-bold flex items-center gap-2.5 text-foreground">
                   <Globe className="size-5 text-primary" /> Project Overview
@@ -261,7 +261,7 @@ export function PortfolioDetailPage() {
             {/* Problem & Solution Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Problem Statement Card */}
-              <Card className="rounded-3xl glass-card p-6 shadow-lg border-amber-500/20 bg-amber-500/5">
+              <Card className="p-6 shadow-lg border-amber-500/20 bg-amber-500/5">
                 <CardContent className="p-0 space-y-3">
                   <h4 className="text-base font-bold flex items-center gap-2 text-amber-600 dark:text-amber-400">
                     <ShieldCheck className="size-4.5" /> Problem Challenge
@@ -273,7 +273,7 @@ export function PortfolioDetailPage() {
               </Card>
 
               {/* Solution Card */}
-              <Card className="rounded-3xl glass-card p-6 shadow-lg border-emerald-500/20 bg-emerald-500/5">
+              <Card className="p-6 shadow-lg border-emerald-500/20 bg-emerald-500/5">
                 <CardContent className="p-0 space-y-3">
                   <h4 className="text-base font-bold flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
                     <Zap className="size-4.5" /> Implemented Solution
@@ -287,7 +287,7 @@ export function PortfolioDetailPage() {
 
             {/* Key Features Grid */}
             {project.keyFeatures && project.keyFeatures.length > 0 && (
-              <Card className="rounded-3xl glass-panel p-6 sm:p-8 shadow-xl space-y-6">
+              <Card className="glass-panel p-6 sm:p-8 shadow-xl space-y-6">
                 <CardContent className="p-0 space-y-6">
                   <h3 className="text-xl font-bold flex items-center gap-2.5 text-foreground">
                     <Sparkles className="size-5 text-primary" /> Key Features & Capabilities
@@ -315,7 +315,7 @@ export function PortfolioDetailPage() {
 
             {/* Challenges & Learnings */}
             {project.challengesAndLearnings && (
-              <Card className="rounded-3xl glass-card p-6 sm:p-8 shadow-xl space-y-3">
+              <Card className="p-6 sm:p-8 shadow-xl space-y-3">
                 <CardContent className="p-0 space-y-3">
                   <h3 className="text-lg font-bold flex items-center gap-2 text-foreground">
                     <Terminal className="size-4.5 text-primary" /> Technical Insights & Learnings
@@ -333,7 +333,7 @@ export function PortfolioDetailPage() {
           <div className="space-y-6 lg:sticky lg:top-28 lg:self-start z-20">
             
             {/* Architecture Details Card */}
-            <Card className="rounded-3xl glass-panel p-6 shadow-xl space-y-6">
+            <Card className="glass-panel p-6 shadow-xl space-y-6">
               <CardContent className="p-0 space-y-6">
                 <h3 className="text-lg font-bold flex items-center gap-2 text-foreground border-b border-white/15 dark:border-white/10 pb-4">
                   <Cpu className="size-5 text-primary" /> Tech Architecture
@@ -380,7 +380,7 @@ export function PortfolioDetailPage() {
                 ) : (
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((t, idx) => (
-                      <Badge key={idx} variant="outline" className="px-3 py-1 rounded-full text-xs font-semibold">
+                      <Badge key={idx} variant="outline" className="px-3 py-1 text-xs">
                         {t}
                       </Badge>
                     ))}
@@ -392,7 +392,7 @@ export function PortfolioDetailPage() {
                   <Button
                     asChild
                     size="md"
-                    className="w-full rounded-full gap-2 cursor-pointer shadow-md"
+                    className="w-full gap-2 shadow-md"
                   >
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="size-4" />
@@ -404,7 +404,7 @@ export function PortfolioDetailPage() {
                     asChild
                     variant="outline"
                     size="md"
-                    className="w-full rounded-full gap-2 cursor-pointer border-white/40 dark:border-white/20"
+                    className="w-full gap-2 border-white/40 dark:border-white/20"
                   >
                     <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                       <Github className="size-4" />
@@ -425,7 +425,7 @@ export function PortfolioDetailPage() {
           {/* Previous Project Button */}
           <Card
             onClick={() => navigate(`/portfolio/${prevProject.slug}`)}
-            className="rounded-3xl glass-card p-5 cursor-pointer hover:scale-[1.02] transition-transform flex items-center gap-4 group"
+            className="p-5 cursor-pointer hover:scale-[1.02] transition-transform flex items-center gap-4 group"
           >
             <CardContent className="p-0 flex items-center gap-4 w-full">
               <div className="size-10 rounded-full glass-panel flex items-center justify-center text-primary shrink-0 group-hover:-translate-x-1 transition-transform">
@@ -445,7 +445,7 @@ export function PortfolioDetailPage() {
           {/* Next Project Button */}
           <Card
             onClick={() => navigate(`/portfolio/${nextProject.slug}`)}
-            className="rounded-3xl glass-card p-5 cursor-pointer hover:scale-[1.02] transition-transform flex items-center justify-end text-right gap-4 group"
+            className="p-5 cursor-pointer hover:scale-[1.02] transition-transform flex items-center justify-end text-right gap-4 group"
           >
             <CardContent className="p-0 flex items-center justify-end gap-4 w-full text-right">
               <div className="truncate">

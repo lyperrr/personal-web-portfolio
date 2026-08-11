@@ -36,14 +36,14 @@ const HeroSection = () => {
         <div className="flex flex-col items-center justify-center min-h-[calc(100vh-12rem)] relative">
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
             {/* Apple Liquid Glass Badge */}
-            <Badge variant="ghost" className="text-sm sm:text-base -rotate-3 font-medium glass-panel px-5 py-2 rounded-full shadow-md backdrop-blur-xl backdrop-saturate-150">
+            <Badge variant="ghost" className="text-sm sm:text-base -rotate-3 font-medium px-5 py-2 shadow-md backdrop-blur-xl backdrop-saturate-150">
               {greeting}
             </Badge>
 
             {/* Glowing Name Title */}
             <Title
               level={1}
-              className="mb-6 uppercase text-4xl -rotate-3 sm:text-6xl md:text-7xl font-black px-4 tracking-tight text-liquid drop-shadow-[0_4px_20px_rgba(255,255,255,0.25)] dark:drop-shadow-[0_4px_30px_rgba(255,255,255,0.4)]"
+              className="mb-6 uppercase text-[2.7rem] -rotate-3 sm:text-6xl md:text-7xl xl:text-8xl font-black px-4 tracking-tight text-liquid drop-shadow-[0_4px_20px_rgba(255,255,255,0.25)] dark:drop-shadow-[0_4px_30px_rgba(255,255,255,0.4)]"
             >
               {name}
             </Title>
@@ -61,7 +61,7 @@ const HeroSection = () => {
               <Button
                 onClick={() => scrollToSection(buttons.primary.targetSection)}
                 size="xl"
-                className="cursor-pointer shadow-lg hover:shadow-primary/25 transition-all duration-300 rounded-full"
+                className="shadow-lg hover:shadow-primary/25"
               >
                 <Mail className="size-5" />
                 {buttons.primary.label}
@@ -71,14 +71,14 @@ const HeroSection = () => {
                 onClick={() => scrollToSection(buttons.secondary.targetSection)}
                 size="xl"
                 variant="ghost"
-                className="group cursor-pointer rounded-full shadow-md transition-all duration-300"
+                className="group shadow-md"
               >
                 {buttons.secondary.label}
                 <ArrowRight className="group-hover:translate-x-1 transition-transform duration-200 size-5" />
               </Button>
             </div>
 
-            {/* FLOATING APPLE LIQUID GLASS SOCIAL MEDIA ACTION BAR (Desktop Only - 100% Rounded Full with Shadcn Tooltip) */}
+            {/* FLOATING APPLE LIQUID GLASS SOCIAL MEDIA ACTION BAR (Desktop Only) */}
             <div className="hidden sm:block sm:fixed right-8 top-1/2 -translate-y-1/2 z-30">
               <div className="flex flex-col items-center gap-2 p-2 rounded-full glass-panel glass-specular-corner shadow-xl border border-white/40 dark:border-white/15 select-none backdrop-blur-2xl bg-white/40 dark:bg-white/5">
                 {socialMedia.map((item) => {
@@ -92,7 +92,7 @@ const HeroSection = () => {
                           asChild
                           variant="ghost"
                           size="icon-lg"
-                          className="rounded-full cursor-pointer hover:scale-110 active:scale-115"
+                          className="hover:scale-110 active:scale-115"
                         >
                           <a
                             href={item.url}

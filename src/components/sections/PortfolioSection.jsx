@@ -36,14 +36,14 @@ const PortfolioSection = () => {
           {filteredProjects.map((project) => (
             <Card
               key={project.id}
-              className="group rounded-3xl transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden"
+              className="shadow-lg"
             >
               <CardContent className="p-6 sm:p-8 flex flex-col justify-between h-full relative">
                 <div>
                   <div className="flex items-center justify-between gap-4 mb-4">
                     <div className="flex items-center gap-2">
                       <Layers className="size-5 text-primary" />
-                      <Badge variant="ghost" className="text-xs font-semibold rounded-full px-3 py-1">
+                      <Badge variant="ghost" className="px-3 py-1">
                         {project.category}
                       </Badge>
                     </div>
@@ -77,7 +77,7 @@ const PortfolioSection = () => {
                   <Button
                     asChild
                     size="md"
-                    className="flex-1 cursor-pointer gap-1.5 rounded-full shadow-md text-xs font-bold"
+                    className="flex-1 gap-1.5 shadow-md text-xs font-bold"
                   >
                     <Link to={`/portfolio/${project.slug}`}>
                       <span>Case Study</span>
@@ -89,7 +89,6 @@ const PortfolioSection = () => {
                     asChild
                     size="icon"
                     variant="outline"
-                    className="cursor-pointer rounded-full"
                   >
                     <a
                       href={project.liveUrl}
@@ -105,7 +104,6 @@ const PortfolioSection = () => {
                     asChild
                     size="icon"
                     variant="outline"
-                    className="cursor-pointer rounded-full"
                   >
                     <a
                       href={project.githubUrl}
