@@ -50,7 +50,7 @@ export function EducationTimeline({
     setHoveredItem(null);
   };
 
-  // Enlarged Cursor-Follow Floating Preview Card Overlay (w-80 h-52 sm:w-96 sm:h-60)
+  // Enlarged Cursor-Follow Floating Preview Card Overlay
   const floatingPreviewPortal = hoveredItem && (
     <div
       className="hidden md:block fixed pointer-events-none z-[99999] transition-transform duration-75 ease-out select-none"
@@ -59,7 +59,7 @@ export function EducationTimeline({
         top: `${mousePos.y + 24}px`,
       }}
     >
-      <div className="w-80 h-52 sm:w-96 sm:h-60 rounded-3xl glass-card glass-specular-corner p-2 shadow-2xl border border-white/50 dark:border-white/20 overflow-hidden bg-background/90 backdrop-blur-2xl animate-in fade-in zoom-in-95 duration-200">
+      <div className="w-80 h-52 sm:w-96 sm:h-60 rounded-3xl glass-card p-2 shadow-2xl border border-white/50 dark:border-white/20 overflow-hidden bg-background/90 backdrop-blur-2xl animate-in fade-in zoom-in-95 duration-200">
         <div className="relative w-full h-full overflow-hidden rounded-2xl">
           <img
             src={hoveredItem.image}
@@ -90,7 +90,7 @@ export function EducationTimeline({
             variant="outline"
             size="sm"
             onClick={() => setIsReverse(!isReverse)}
-            className="cursor-pointer gap-2 rounded-full text-xs font-semibold shadow-sm transition-transform"
+            className="gap-2 shadow-sm transition-transform"
           >
             <ArrowUpDown className="size-3.5" />
             {isReverse ? "Urutan: Terbaru Dulu" : "Urutan: Dari Awal (SD)"}
@@ -152,24 +152,24 @@ export function EducationTimeline({
                       onMouseEnter={(e) => handleMouseEnter(item, e)}
                       onMouseMove={handleMouseMove}
                       onMouseLeave={handleMouseLeave}
-                      className="rounded-3xl glass-card glass-specular-corner shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer"
+                      className="shadow-xl hover:border-primary/40 cursor-pointer"
                     >
                       <CardContent className="p-6 sm:p-8 space-y-4">
                         {/* Meta Badge Row */}
                         <div className={`flex flex-wrap items-center gap-2 border-b border-white/15 dark:border-white/10 pb-4 ${isEven ? "md:justify-end" : "justify-start"}`}>
-                          <Badge variant="ghost" className="text-xs font-semibold px-3.5 py-1 rounded-full">
+                          <Badge variant="ghost" className="px-3.5 py-1">
                             {item.level}
                           </Badge>
 
                           {item.isCurrent && (
-                            <Badge className="bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-3 py-1 rounded-full gap-1.5">
+                            <Badge className="bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 px-3 py-1 gap-1.5">
                               <CheckCircle2 className="size-3.5" />
                               Sedang Berjalan
                             </Badge>
                           )}
 
                           {item.note && !item.isCurrent && (
-                            <Badge variant="outline" className="text-xs font-medium px-3 py-1 rounded-full text-muted-foreground">
+                            <Badge variant="outline" className="px-3 py-1 text-muted-foreground">
                               {item.note}
                             </Badge>
                           )}

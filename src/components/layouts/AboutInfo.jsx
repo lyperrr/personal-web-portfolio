@@ -1,6 +1,7 @@
 import React from "react";
 import Profile from "@/assets/img/photo-profile.png";
-import { Badge, Title, Text } from "@/components/ui";
+import CvResume from "@/assets/img/CV_Willy_Permana.png";
+import { Title, Text, SectionHeader } from "@/components/ui";
 
 const AboutInfo = () => {
   const aboutDescription = [
@@ -19,11 +20,27 @@ const AboutInfo = () => {
     <section>
       <div className="container">
         <div className="flex flex-col lg:flex-row lg:justify-center items-center gap-12 sm:gap-16">
-          {/* Photo Profile Frame with Original Decorative Glass Boxes */}
-          <div className="flex-shrink-0 mx-auto lg:m-0">
-            {/* Bingkai Utama */}
-            <div className="relative border border-white/40 dark:border-white/20 inline-block rounded-3xl glass-panel glass-specular-corner p-2 shadow-2xl">
-              {/* Inner Image with valid rounded-2xl class */}
+          {/* Photo Profile Frame with Tilted Liquid Glass CV Emergence Hover Effect (LG Desktop Only) */}
+          <div className="flex-shrink-0 mx-auto lg:m-0 relative group cursor-pointer select-none">
+            {/* Emerging CV Image Preview (High-Impact Shift Upwards & Left - Desktop LG+ Only) */}
+            <div className="hidden lg:flex absolute top-0 left-0 w-full h-full z-0 items-center justify-center pointer-events-none transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] opacity-0 scale-90 translate-x-0 translate-y-0 rotate-0 lg:group-hover:opacity-100 lg:group-hover:scale-110 lg:group-hover:-translate-x-36 xl:group-hover:-translate-x-44 lg:group-hover:-translate-y-20 xl:group-hover:-translate-y-24 lg:group-hover:-rotate-15">
+              <div className="w-72 xl:w-80 rounded-2xl glass-panel glass-specular-corner p-2 shadow-[0_30px_70px_rgba(0,0,0,0.55)] border border-white/70 dark:border-white/35 backdrop-blur-2xl bg-white/85 dark:bg-white/15 overflow-hidden">
+                <img
+                  src={CvResume}
+                  alt="Willy Permana CV Resume Preview"
+                  className="w-full h-auto rounded-xl object-cover shadow-xl"
+                />
+                <div className="p-2 text-center">
+                  <span className="text-xs font-bold tracking-wider uppercase text-primary text-liquid">
+                    CV Resume Preview
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Main Profile Photo Glass Frame */}
+            <div className="relative z-10 border border-white/40 dark:border-white/20 inline-block rounded-3xl glass-panel glass-specular-corner p-2 shadow-2xl transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] lg:group-hover:rotate-2 lg:group-hover:scale-[1.02] lg:group-hover:shadow-[0_25px_60px_rgba(0,0,0,0.3)]">
+              {/* Inner Image */}
               <img
                 src={Profile}
                 alt="Foto Profil Willy Permana"
@@ -46,15 +63,20 @@ const AboutInfo = () => {
             </div>
           </div>
 
-          {/* About Me Description */}
+          {/* About Me Description with Left-Aligned SectionHeader */}
           <div className="lg:w-1/2 space-y-4">
-            <div className="w-fit">
-              <Badge variant="ghost" className="text-sm font-semibold rounded-full px-4 py-1 mb-3">
-                About Me
-              </Badge>
+            <div className="w-full">
+              <SectionHeader
+                align="left"
+                number="01"
+                title="About Me"
+                className="mb-2"
+              />
+
               <Title level={2} className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mb-4">
                 Creating Digital Experiences
               </Title>
+
               <div className="space-y-4 text-justify leading-relaxed">
                 {aboutDescription.map((item, index) => (
                   <Text key={index} variant="muted" className="text-sm sm:text-base leading-relaxed">

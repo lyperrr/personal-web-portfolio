@@ -139,7 +139,7 @@ function Footer({ scrollToSection }) {
                       asChild
                       variant="outline"
                       size="sm"
-                      className="rounded-full shadow-xs hover:scale-105 transition-all border-white/40 dark:border-white/20 gap-2"
+                      className="shadow-xs hover:scale-105 transition-all border-white/40 dark:border-white/20 gap-2"
                     >
                       <a
                         href={item.url}
