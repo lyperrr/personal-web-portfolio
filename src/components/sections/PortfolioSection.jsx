@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Title, Text, Badge, Button, Card, CardContent, SectionHeader, LiquidTabs } from "@/components/ui";
 import portfolioData from "@/data/portfolio.json";
-import { ExternalLink, Github, Layers } from "lucide-react";
+import { ExternalLink, Github, Layers, ArrowRight } from "lucide-react";
 
 const PortfolioSection = () => {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -48,9 +49,11 @@ const PortfolioSection = () => {
                     </div>
                   </div>
 
-                  <Title level={3} className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors line-clamp-2">
-                    {project.title}
-                  </Title>
+                  <Link to={`/portfolio/${project.slug}`} className="block group/title">
+                    <Title level={3} className="text-2xl font-bold mb-3 group-hover/title:text-primary transition-colors line-clamp-2 cursor-pointer">
+                      {project.title}
+                    </Title>
+                  </Link>
 
                   <Text variant="muted" className="text-sm leading-relaxed mb-6">
                     {project.description}
@@ -70,27 +73,49 @@ const PortfolioSection = () => {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex items-center gap-3 pt-5 border-t border-white/15 dark:border-white/10">
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1"
+                <div className="flex items-center gap-2.5 pt-5 border-t border-white/15 dark:border-white/10">
+                  <Button
+                    asChild
+                    size="md"
+                    className="flex-1 cursor-pointer gap-1.5 rounded-full shadow-md text-xs font-bold"
                   >
-                    <Button size="md" className="w-full cursor-pointer gap-2 rounded-full shadow-md">
+                    <Link to={`/portfolio/${project.slug}`}>
+                      <span>Case Study</span>
+                      <ArrowRight className="size-3.5" />
+                    </Link>
+                  </Button>
+
+                  <Button
+                    asChild
+                    size="icon"
+                    variant="outline"
+                    className="cursor-pointer rounded-full"
+                  >
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Live Demo"
+                    >
                       <ExternalLink className="size-4" />
-                      Live Demo
-                    </Button>
-                  </a>
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    </a>
+                  </Button>
+
+                  <Button
+                    asChild
+                    size="icon"
+                    variant="outline"
+                    className="cursor-pointer rounded-full"
                   >
-                    <Button size="icon" variant="outline" className="cursor-pointer rounded-full">
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="GitHub Repository"
+                    >
                       <Github className="size-4" />
-                    </Button>
-                  </a>
+                    </a>
+                  </Button>
                 </div>
               </CardContent>
             </Card>

@@ -1,20 +1,29 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export function useActiveSection(sectionIds, defaultSection = "home") {
   const [activeSection, setActiveSection] = useState(defaultSection);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
+    // 1. If currently on a detail page route like /portfolio/:slug, highlight 'portfolio'
+    if (location.pathname.startsWith("/portfolio/")) {
+      setActiveSection("portfolio");
+      return;
+    }
+
     const handleScroll = () => {
+      if (location.pathname !== "/") return;
+
       const scrollY = window.scrollY;
 
-      // 1. If at top of page (Hero section), force activeSection to "home"
+      // Force activeSection to "home" if scrolled to top
       if (scrollY < 150) {
         setActiveSection("home");
         return;
       }
 
-      // 2. Use getBoundingClientRect() to find which section is currently active on screen
-      // Target viewport line is 160px from top (just below fixed navbar)
       const targetLine = 160;
       let activeId = null;
 
@@ -23,7 +32,6 @@ export function useActiveSection(sectionIds, defaultSection = "home") {
         const element = document.getElementById(sectionId);
         if (element) {
           const rect = element.getBoundingClientRect();
-          // A section is active if its top is at or above targetLine AND its bottom is still below targetLine
           if (rect.top <= targetLine + 100 && rect.bottom > targetLine) {
             activeId = sectionId;
             break;
@@ -31,7 +39,6 @@ export function useActiveSection(sectionIds, defaultSection = "home") {
         }
       }
 
-      // Fallback: If no section strictly matches targetLine, pick the section with top closest above targetLine
       if (!activeId) {
         let bestDistance = -Infinity;
         for (let i = 0; i < sectionIds.length; i++) {
@@ -55,22 +62,48 @@ export function useActiveSection(sectionIds, defaultSection = "home") {
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll, { passive: true });
 
-    // Run check immediately + periodic interval to accommodate lazy-loaded section renders
     handleScroll();
-    const interval = setInterval(handleScroll, 300);
+    const interval = setInterval(handleScroll, 200);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
       clearInterval(interval);
     };
-  }, [sectionIds]);
+  }, [sectionIds, location.pathname]);
+
+  // Robust smooth scroll execution helper with multi-stage retry
+  const performScroll = useCallback((targetId) => {
+    const attempts = [0, 50, 150, 300];
+    attempts.forEach((delay) => {
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, delay);
+    });
+  }, []);
+
+  // Handle automatic smooth scroll when arriving at "/" with a hash (e.g. /#portfolio or /#about)
+  useEffect(() => {
+    if (location.pathname === "/" && location.hash) {
+      const targetId = location.hash.replace("#", "");
+      performScroll(targetId);
+    }
+  }, [location.pathname, location.hash, performScroll]);
 
   const scrollToSection = (e, sectionId) => {
     if (e) e.preventDefault();
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+
+    setActiveSection(sectionId);
+
+    if (location.pathname !== "/") {
+      // If currently on a detail page, navigate back to homepage with section hash
+      navigate(`/#${sectionId}`);
+    } else {
+      // If on homepage, perform direct smooth scroll & update URL hash
+      performScroll(sectionId);
       window.history.pushState(null, "", `#${sectionId}`);
     }
   };

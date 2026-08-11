@@ -7,10 +7,45 @@
   "projects": [
     {
       "id": 1,
+      "slug": "devmetrics-analytics-dashboard",
       "title": "DevMetrics Analytics Dashboard",
       "category": "Web App",
+      "tagline": "Real-time developer analytics platform displaying build metrics & performance.",
       "description": "A real-time developer analytics platform displaying build metrics, deployments, and team collaboration statistics with interactive visualizations.",
-      "image": "",
+      "fullDescription": "DevMetrics is an enterprise-grade analytics dashboard designed to empower developer teams with real-time insight into CI/CD pipelines, repository velocity, build success rates, and team productivity metrics. Built with modern web architecture, it transforms complex log outputs into actionable visual telemetry.",
+      "problemStatement": "Engineering managers and team leads struggled to get unified real-time visibility across fragmented CI/CD tools, leading to delayed deployments and unmonitored pipeline bottlenecks.",
+      "solutionOverview": "Created a centralized liquid-glass telemetry dashboard that aggregates WebSocket events from GitHub Actions and Jenkins, rendering interactive GPU-accelerated charts with sub-second latency.",
+      "keyFeatures": [
+        {
+          "title": "Real-Time Telemetry Streaming",
+          "description": "Live WebSocket data streams showing active deployment status, server CPU usage, and build queues."
+        },
+        {
+          "title": "Interactive Data Visualizations",
+          "description": "Custom high-contrast charts featuring drill-down filters for repository and team performance."
+        },
+        {
+          "title": "Automated Alerting Engine",
+          "description": "Instant notifications delivered to Slack and Webhooks upon build failure detection."
+        },
+        {
+          "title": "Role-Based Team Workspaces",
+          "description": "Granular permissions for engineering leads, developers, and DevOps administrators."
+        }
+      ],
+      "architecture": {
+        "frontend": "React 19, Tailwind CSS v4, Radix UI, Chart.js, Lucide Icons",
+        "backend": "Node.js, Express, WebSockets (Socket.io)",
+        "database": "Redis, PostgreSQL",
+        "deployment": "Docker, Vercel Edge Serverless"
+      },
+      "challengesAndLearnings": "Handling high-frequency WebSocket bursts without triggering React render lag required implementing throttled state updates and virtualized data table rendering.",
+      "metrics": [
+        { "label": "Pipeline Velocity", "value": "+45%" },
+        { "label": "Build Failure Detection", "value": "< 1s" },
+        { "label": "Active Dev Teams", "value": "120+" },
+        { "label": "Uptime Guarantee", "value": "99.99%" }
+      ],
       "tags": ["React 19", "Tailwind CSS", "Chart.js", "Node.js"],
       "githubUrl": "https://github.com",
       "liveUrl": "https://example.com",
@@ -18,10 +53,45 @@
     },
     {
       "id": 2,
+      "slug": "zenith-ecommerce-platform",
       "title": "Zenith E-Commerce Platform",
       "category": "E-Commerce",
+      "tagline": "Next-generation liquid storefront featuring instant search and frictionless checkout.",
       "description": "A modern storefront featuring instant search, dynamic cart management, order tracking, and seamless checkout integration.",
-      "image": "",
+      "fullDescription": "Zenith E-Commerce is a high-converting digital storefront built to redefine mobile-first online shopping. Featuring instant fuzzy search, glassmorphic interactive product previews, dynamic inventory management, and one-click payment processing via Stripe.",
+      "problemStatement": "Traditional e-commerce templates suffered from slow page transitions, clunky cart drawers, and high drop-off rates during multi-step checkout flows.",
+      "solutionOverview": "Engineered an ultra-fast headless storefront with optimistic UI updates for instant cart manipulation, client-side caching, and streamlined single-screen checkout.",
+      "keyFeatures": [
+        {
+          "title": "Instant Fuzzy Search",
+          "description": "Sub-20ms search indexing allowing users to find items instantly with zero page reload."
+        },
+        {
+          "title": "Optimistic Cart Management",
+          "description": "Zero-latency item addition with automatic synchronized persistence across browser tabs."
+        },
+        {
+          "title": "Stripe & Digital Wallet Pay",
+          "description": "Seamless integration with Stripe Checkout, Apple Pay, and Google Pay."
+        },
+        {
+          "title": "Dynamic Product Variant Matrix",
+          "description": "Interactive color swatches, dynamic pricing, and stock status updates in real time."
+        }
+      ],
+      "architecture": {
+        "frontend": "React 19, Redux Toolkit, Tailwind CSS v4, Framer Motion",
+        "backend": "Node.js, GraphQL, Stripe API",
+        "database": "MongoDB Atlas",
+        "deployment": "AWS CloudFront & Vercel"
+      },
+      "challengesAndLearnings": "Ensuring smooth cart drawer animations alongside instantaneous state synchronization across multiple tabs was solved using BroadcastChannel web APIs and Redux state sync.",
+      "metrics": [
+        { "label": "Conversion Rate Increase", "value": "+32%" },
+        { "label": "Average Page Speed", "value": "98/100" },
+        { "label": "Cart Drop-Off Reduction", "value": "-28%" },
+        { "label": "Search Latency", "value": "15ms" }
+      ],
       "tags": ["React", "Redux Toolkit", "Tailwind CSS", "Stripe API"],
       "githubUrl": "https://github.com",
       "liveUrl": "https://example.com",
@@ -29,10 +99,44 @@
     },
     {
       "id": 3,
+      "slug": "aura-component-design-system",
       "title": "Aura Component Design System",
       "category": "UI/UX",
+      "tagline": "Comprehensive Liquid Glass UI system with full accessibility and micro-interactions.",
       "description": "A comprehensive UI component library focused on accessibility (a11y), smooth micro-animations, and fluid responsive design tokens.",
-      "image": "",
+      "fullDescription": "Aura is a design system built around the Apple Liquid Glass design language. It supplies production-ready UI components—ranging from specular-corner cards to liquid tabs and glowing buttons—built with strict WAI-ARIA compliance and dark mode adaptability.",
+      "problemStatement": "Development teams spent excessive engineering hours rebuilding custom glassmorphism styles, resulting in inconsistent UI patterns and broken screen reader accessibility.",
+      "solutionOverview": "Designed a cohesive design token architecture with automated Tailwind utilities, ARIA-compliant primitive wrappers, and interactive Storybook documentation.",
+      "keyFeatures": [
+        {
+          "title": "Liquid Glass Design Tokens",
+          "description": "Tailwind utilities for backdrop blur, specular highlights, and ambient glass borders."
+        },
+        {
+          "title": "WAI-ARIA Accessibility",
+          "description": "Built on top of Radix UI primitives ensuring full keyboard accessibility and screen reader support."
+        },
+        {
+          "title": "Dark Mode & Color Themes",
+          "description": "Automatic system dark mode detection with seamless HSL token dynamic swapping."
+        },
+        {
+          "title": "Interactive Storybook Workbench",
+          "description": "Live component playground with automated visual regression testing."
+        }
+      ],
+      "architecture": {
+        "frontend": "React 19, Tailwind CSS v4, Radix UI Primitives",
+        "tooling": "Storybook 8, Vite, ESLint, Prettier",
+        "distribution": "npm package release, CSS Utility Module"
+      },
+      "challengesAndLearnings": "Balancing complex CSS backdrop filters with high-performance 60fps scrolling on mobile devices required optimizing hardware-accelerated composite layers.",
+      "metrics": [
+        { "label": "Component Count", "value": "45+" },
+        { "label": "A11y Compliance Score", "value": "100%" },
+        { "label": "Dev Velocity Impact", "value": "3x Faster" },
+        { "label": "Bundle Size", "value": "< 12KB" }
+      ],
       "tags": ["Figma", "Radix UI", "Tailwind CSS", "Storybook"],
       "githubUrl": "https://github.com",
       "liveUrl": "https://example.com",
@@ -40,10 +144,45 @@
     },
     {
       "id": 4,
+      "slug": "nexus-task-workspace-manager",
       "title": "Nexus Task & Workspace Manager",
       "category": "Web App",
+      "tagline": "Collaborative project workspace featuring Kanban boards and real-time synchronization.",
       "description": "A collaborative workspace tool with kanban boards, drag-and-drop task management, real-time updates, and team permissions.",
-      "image": "",
+      "fullDescription": "Nexus is an intuitive project management suite built for agile product teams. It combines fluid drag-and-drop Kanban boards, task assignment workflows, automated status tracking, and inline comment threads into an elegant Liquid Glass workspace.",
+      "problemStatement": "Clunky project management platforms slowed team handoffs and suffered from visual clutter that hindered daily task focus.",
+      "solutionOverview": "Built a streamlined Kanban interface with drag-and-drop touch support, real-time sync, and custom view filters.",
+      "keyFeatures": [
+        {
+          "title": "Fluid Kanban Drag & Drop",
+          "description": "Smooth touch-friendly drag-and-drop card movement across workflow columns."
+        },
+        {
+          "title": "Real-Time Collaboration",
+          "description": "Live cursor presence and instant card updates across all team members."
+        },
+        {
+          "title": "Custom Field & Tag System",
+          "description": "Flexible task categorization with priority badges, deadlines, and assignees."
+        },
+        {
+          "title": "Integrated Markdown Editor",
+          "description": "Rich task descriptions with embedded code blocks, checklists, and attachments."
+        }
+      ],
+      "architecture": {
+        "frontend": "React 19, TypeScript, Tailwind CSS v4, dnd-kit",
+        "backend": "Node.js, Express, Socket.io",
+        "database": "MongoDB Atlas, Mongoose",
+        "deployment": "Vercel & Render"
+      },
+      "challengesAndLearnings": "Maintaining smooth card reordering animations while persisting column position mutations to MongoDB without race conditions.",
+      "metrics": [
+        { "label": "Tasks Processed", "value": "50k+" },
+        { "label": "Sync Latency", "value": "< 30ms" },
+        { "label": "Team Satisfaction", "value": "4.9/5" },
+        { "label": "Active Workspaces", "value": "350+" }
+      ],
       "tags": ["React", "TypeScript", "Express", "MongoDB"],
       "githubUrl": "https://github.com",
       "liveUrl": "https://example.com",
