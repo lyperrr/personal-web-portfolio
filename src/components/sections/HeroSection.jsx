@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Text, Title, Badge } from "@/components/ui";
+import { Button, Text, Title, Badge, Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui";
 import heroData from "@/data/hero.json";
 import { Mail, ArrowRight, Mouse, Github, Instagram } from "lucide-react";
 
@@ -78,29 +78,36 @@ const HeroSection = () => {
               </Button>
             </div>
 
-            {/* FLOATING APPLE LIQUID GLASS SOCIAL MEDIA ACTION BAR (Desktop Only - 100% Rounded Full) */}
+            {/* FLOATING APPLE LIQUID GLASS SOCIAL MEDIA ACTION BAR (Desktop Only - 100% Rounded Full with Shadcn Tooltip) */}
             <div className="hidden sm:block sm:fixed right-8 top-1/2 -translate-y-1/2 z-30">
               <div className="flex flex-col items-center gap-2 p-2 rounded-full glass-panel glass-specular-corner shadow-xl border border-white/40 dark:border-white/15 select-none backdrop-blur-2xl bg-white/40 dark:bg-white/5">
                 {socialMedia.map((item) => {
                   const icon = SOCIAL_ICONS[item.id] || <Github className="size-6" />;
+                  const label = item.name || item.id.charAt(0).toUpperCase() + item.id.slice(1);
+
                   return (
-                    <Button
-                      key={item.id}
-                      asChild
-                      variant="ghost"
-                      size="icon-lg"
-                      className="rounded-full cursor-pointer hover:scale-110 active:scale-115"
-                    >
-                      <a
-                        href={item.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        title={item.name || item.id}
-                        aria-label={item.name || item.id}
-                      >
-                        {icon}
-                      </a>
-                    </Button>
+                    <Tooltip key={item.id}>
+                      <TooltipTrigger asChild>
+                        <Button
+                          asChild
+                          variant="ghost"
+                          size="icon-lg"
+                          className="rounded-full cursor-pointer hover:scale-110 active:scale-115"
+                        >
+                          <a
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={label}
+                          >
+                            {icon}
+                          </a>
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent side="left">
+                        {label}
+                      </TooltipContent>
+                    </Tooltip>
                   );
                 })}
               </div>

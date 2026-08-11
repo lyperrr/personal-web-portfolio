@@ -109,7 +109,7 @@ function Navbar({ activeSection = "home", scrollToSection }) {
   return (
     <>
       {/* Solid Full-Width Apple Glass Header Bar */}
-      <header className="border-b border-border/40 backdrop-blur-xl fixed top-0 left-0 w-full z-40 transition-colors">
+      <header className="fixed top-0 left-0 w-full z-40 transition-colors">
         <nav className="container">
           <div className="flex items-center justify-between py-3">
             {/* Logo */}
@@ -134,7 +134,7 @@ function Navbar({ activeSection = "home", scrollToSection }) {
                 tabs={navLinks}
                 activeTab={activeSection}
                 onChangeTab={(id) => handleNavClick(null, id)}
-                className="bg-secondary/50 backdrop-blur-md p-1 border border-border/40"
+                className="bg-secondary/10! backdrop-blur-md p-1 border border-border/40"
               />
             </div>
 

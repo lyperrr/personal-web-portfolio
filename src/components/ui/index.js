@@ -5,6 +5,7 @@ export * from "./input";
 export * from "./textarea";
 export * from "./text";
 export * from "./tooltip";
+export * from "./back-to-top";
 export * from "./section-header";
 export * from "./shape-animate";
 export * from "./liquid-background";

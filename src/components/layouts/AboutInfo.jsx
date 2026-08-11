@@ -49,7 +49,7 @@ const AboutInfo = () => {
           {/* About Me Description */}
           <div className="lg:w-1/2 space-y-4">
             <div className="w-fit">
-              <Badge variant="outline" className="text-sm font-semibold rounded-full px-4 py-1 mb-3">
+              <Badge variant="ghost" className="text-sm font-semibold rounded-full px-4 py-1 mb-3">
                 About Me
               </Badge>
               <Title level={2} className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mb-4">

@@ -1,16 +1,24 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-function Card({ className, ...props }) {
+function Card({ className, children, ...props }) {
   return (
     <div
       data-slot="card"
       className={cn(
-        "rounded-3xl glass-card glass-specular-corner text-card-foreground transition-all duration-300 hover:shadow-2xl hover:border-primary/40 hover:-translate-y-1 relative overflow-hidden",
+        "group rounded-3xl glass-card glass-specular-corner text-card-foreground transition-all duration-300 hover:shadow-2xl hover:border-primary/40 hover:-translate-y-1 relative overflow-hidden",
         className
       )}
       {...props}
-    />
+    >
+      {/* Top Glossy Specular Highlight */}
+      <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-white/60 dark:via-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20" />
+      
+      {/* Bottom Glossy Specular Highlight */}
+      <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-l from-transparent via-white/60 dark:via-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20" />
+
+      {children}
+    </div>
   );
 }
 

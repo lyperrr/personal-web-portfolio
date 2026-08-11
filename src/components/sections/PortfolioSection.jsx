@@ -38,11 +38,6 @@ const PortfolioSection = () => {
               className="group rounded-3xl transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden"
             >
               <CardContent className="p-6 sm:p-8 flex flex-col justify-between h-full relative">
-                {/* Top Glossy Specular Highlight */}
-                <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-white/60 dark:via-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                {/* Bottom Glossy Specular Highlight */}
-                <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-l from-transparent via-white/60 dark:via-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
                 <div>
                   <div className="flex items-center justify-between gap-4 mb-4">
                     <div className="flex items-center gap-2">
@@ -53,7 +48,7 @@ const PortfolioSection = () => {
                     </div>
                   </div>
 
-                  <Title level={3} className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
+                  <Title level={3} className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors line-clamp-2">
                     {project.title}
                   </Title>
 
@@ -82,7 +77,7 @@ const PortfolioSection = () => {
                     rel="noopener noreferrer"
                     className="flex-1"
                   >
-                    <Button size="sm" className="w-full cursor-pointer gap-2 rounded-full shadow-md">
+                    <Button size="md" className="w-full cursor-pointer gap-2 rounded-full shadow-md">
                       <ExternalLink className="size-4" />
                       Live Demo
                     </Button>
@@ -92,7 +87,7 @@ const PortfolioSection = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Button size="sm" variant="outline" className="cursor-pointer rounded-full">
+                    <Button size="icon" variant="outline" className="cursor-pointer rounded-full">
                       <Github className="size-4" />
                     </Button>
                   </a>

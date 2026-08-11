@@ -277,7 +277,8 @@
   }
   body {
     @apply bg-background text-foreground relative overflow-x-hidden antialiased;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", sans-serif;
+       font-family: Menlo, ui-monospace, SFMono-Regular, Monaco, "Roboto Mono",
+      "Segoe UI Mono", "Helvetica Neue", monospace;
   }
 }
 
