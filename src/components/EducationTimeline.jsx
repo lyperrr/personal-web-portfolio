@@ -2,6 +2,14 @@ import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import { Title, Text, Badge, Card, CardContent, SectionHeader, Button } from "@/components/ui";
 import educationData from "@/data/education.json";
+
+// Import real school photos from src/assets/img/school
+import sdn7KesimanImg from "@/assets/img/school/sdn_7_kesiman.jpg";
+import sdn3BenoaImg from "@/assets/img/school/sdn_3_benoa.jpg";
+import smpn5KutaSelatanImg from "@/assets/img/school/smpn_5_kutaselatan.jpg";
+import sman2KutaSelatanImg from "@/assets/img/school/sman_2_kutaselatan.jpg";
+import poltekbaliImg from "@/assets/img/school/poltekbali.jpg";
+
 import {
   GraduationCap,
   Calendar,
@@ -13,6 +21,15 @@ import {
   Sparkles,
 } from "lucide-react";
 
+// Local image lookup map
+const LOCAL_SCHOOL_IMAGES = {
+  "/src/assets/img/school/sdn_7_kesiman.jpg": sdn7KesimanImg,
+  "/src/assets/img/school/sdn_3_benoa.jpg": sdn3BenoaImg,
+  "/src/assets/img/school/smpn_5_kutaselatan.jpg": smpn5KutaSelatanImg,
+  "/src/assets/img/school/sman_2_kutaselatan.jpg": sman2KutaSelatanImg,
+  "/src/assets/img/school/poltekbali.jpg": poltekbaliImg,
+};
+
 // Icon mapping per level
 const LEVEL_ICONS = {
   "Sekolah Dasar": <School className="size-5 text-primary" />,
@@ -22,7 +39,7 @@ const LEVEL_ICONS = {
 };
 
 /**
- * Premium Apple Liquid Glass Education Timeline with Large Cursor-Following Image Preview.
+ * Premium Apple Liquid Glass Education Timeline with Alternating Left/Right Cards & Local School Hover Preview.
  */
 export function EducationTimeline({
   data = educationData,
@@ -34,6 +51,10 @@ export function EducationTimeline({
 
   const { sectionNumber, badge, description, educationList } = data;
   const items = isReverse ? [...educationList].reverse() : educationList;
+
+  const resolveImage = (imgPath) => {
+    return LOCAL_SCHOOL_IMAGES[imgPath] || imgPath;
+  };
 
   const handleMouseEnter = (item, e) => {
     if (item.image) {
@@ -59,10 +80,10 @@ export function EducationTimeline({
         top: `${mousePos.y + 24}px`,
       }}
     >
-      <div className="w-80 h-52 sm:w-96 sm:h-60 rounded-3xl glass-card p-2 shadow-2xl border border-white/50 dark:border-white/20 overflow-hidden bg-background/90 backdrop-blur-2xl animate-in fade-in zoom-in-95 duration-200">
+      <div className="w-80 h-52 sm:w-96 sm:h-60 rounded-3xl glass-card p-2 shadow-2xl border border-white/60 dark:border-white/25 overflow-hidden bg-background/90 backdrop-blur-2xl animate-in fade-in zoom-in-95 duration-200">
         <div className="relative w-full h-full overflow-hidden rounded-2xl">
           <img
-            src={hoveredItem.image}
+            src={resolveImage(hoveredItem.image)}
             alt={hoveredItem.institution}
             className="w-full h-full object-cover rounded-2xl transition-transform duration-500"
           />
@@ -146,7 +167,7 @@ export function EducationTimeline({
                     )}
                   </div>
 
-                  {/* Card Column Wrapper */}
+                  {/* Card Column Wrapper (Alternating Left & Right) */}
                   <div className={`w-full md:w-1/2 pl-16 md:pl-0 ${isEven ? "md:pr-12 md:text-right" : "md:order-2 md:pl-12"}`}>
                     <Card
                       onMouseEnter={(e) => handleMouseEnter(item, e)}
@@ -203,7 +224,7 @@ export function EducationTimeline({
                     </Card>
                   </div>
 
-                  {/* Empty Column for Desktop Alternating Balance */}
+                  {/* Desktop Alternating Column Balance Spacer */}
                   <div className={`hidden md:block w-1/2 ${isEven ? "order-2" : "order-1"}`} />
                 </li>
               );
@@ -212,7 +233,7 @@ export function EducationTimeline({
         </div>
       </div>
 
-      {/* Render Floating Image Preview Portal at Document Body level */}
+      {/* Render Floating Image Preview Portal */}
       {typeof document !== "undefined" && createPortal(floatingPreviewPortal, document.body)}
     </section>
   );

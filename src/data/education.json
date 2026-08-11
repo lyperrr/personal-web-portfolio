@@ -1,5 +1,5 @@
 {
-  "sectionNumber": "02",
+  "sectionNumber": "03",
   "badge": "Riwayat Pendidikan",
   "description": "Perjalanan pendidikan akademis dan jenjang studi yang telah dan sedang saya tempuh.",
   "educationList": [
@@ -12,7 +12,7 @@
       "isCurrent": false,
       "description": "",
       "note": "",
-      "image": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=600&q=80"
+      "image": "/src/assets/img/school/sdn_7_kesiman.jpg"
     },
     {
       "id": 2,
@@ -23,7 +23,7 @@
       "isCurrent": false,
       "description": "",
       "note": "Pindah Sekolah",
-      "image": "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80"
+      "image": "/src/assets/img/school/sdn_3_benoa.jpg"
     },
     {
       "id": 3,
@@ -34,7 +34,7 @@
       "isCurrent": false,
       "description": "",
       "note": "",
-      "image": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&q=80"
+      "image": "/src/assets/img/school/smpn_5_kutaselatan.jpg"
     },
     {
       "id": 4,
@@ -45,7 +45,7 @@
       "isCurrent": false,
       "description": "",
       "note": "",
-      "image": "https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=600&q=80"
+      "image": "/src/assets/img/school/sman_2_kutaselatan.jpg"
     },
     {
       "id": 5,
@@ -56,7 +56,7 @@
       "isCurrent": true,
       "description": "Fokus pada pengembangan perangkat lunak, manajemen basis data, rekayasa web, dan pemrograman aplikasi.",
       "note": "Sedang Berjalan",
-      "image": "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=600&q=80"
+      "image": "/src/assets/img/school/poltekbali.jpg"
     }
   ]
 }
