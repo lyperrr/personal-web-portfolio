@@ -5,7 +5,7 @@ import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2.5 whitespace-nowrap text-sm font-semibold transition-all duration-300 active:scale-95 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-ring/40 rounded-full glass-specular-corner relative overflow-hidden",
+  "inline-flex items-center justify-center gap-2.5 whitespace-nowrap text-sm font-semibold transition-all duration-300 active:scale-95 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-ring/40 rounded-full relative overflow-hidden",
   {
     variants: {
       variant: {
@@ -14,11 +14,11 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive text-white hover:bg-destructive/90 shadow-sm hover:shadow-lg hover:shadow-destructive/30 cursor-pointer",
         outline:
-          "border border-white/40 dark:border-white/15 bg-white/40 dark:bg-white/5 backdrop-blur-xl text-foreground hover:bg-white/70 dark:hover:bg-white/15 shadow-sm hover:shadow-lg hover:shadow-primary/10 dark:hover:shadow-white/10 hover:border-primary/40 cursor-pointer",
+          "border border-white/50 dark:border-white/20 bg-white/40 dark:bg-white/10 backdrop-blur-xl text-foreground hover:bg-white/70 dark:hover:bg-white/20 shadow-sm hover:shadow-lg hover:shadow-primary/10 dark:hover:shadow-white/10 hover:border-primary/40 cursor-pointer",
         secondary:
           "bg-white/30 dark:bg-white/10 text-foreground border border-white/30 dark:border-white/15 backdrop-blur-md hover:bg-white/50 dark:hover:bg-white/20 shadow-xs hover:shadow-md cursor-pointer",
         ghost:
-          "hover:bg-white/5 dark:hover:bg-white/5 hover:text-foreground backdrop-blur-xs cursor-pointer",
+          "hover:bg-white/10 dark:hover:bg-white/10 hover:text-foreground backdrop-blur-xs cursor-pointer",
         glass:
           "bg-white/80 dark:bg-white/15 text-foreground border border-white/60 dark:border-white/25 backdrop-blur-2xl shadow-md hover:shadow-xl hover:shadow-primary/10 dark:hover:shadow-white/10 cursor-pointer",
         link: "text-primary underline-offset-4 hover:underline cursor-pointer",

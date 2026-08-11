@@ -163,7 +163,7 @@ export function LiquidTabs({
               isVertical ? "p-3" : "px-5 py-2",
               isActive
                 ? "text-foreground font-bold text-liquid"
-                : "text-muted-foreground hover:text-foreground"
+                : "text-foreground/80 hover:text-foreground"
             )}
           >
             {icon || label}
