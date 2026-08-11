@@ -162,7 +162,7 @@ export function LiquidTabs({
               "relative z-10 flex items-center justify-center rounded-full font-semibold text-sm transition-all duration-300 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
               isVertical ? "p-3" : "px-5 py-2",
               isActive
-                ? "text-foreground font-bold"
+                ? "text-foreground font-bold text-liquid"
                 : "text-muted-foreground hover:text-foreground"
             )}
           >

@@ -32,7 +32,7 @@ export function SectionHeader({
       {title && (
         <Badge
           variant="ghost"
-          className="text-base sm:text-lg font-bold tracking-wide px-6 py-2 rounded-full glass-panel shadow-md backdrop-blur-xl backdrop-saturate-150 relative z-10 border border-white/35 dark:border-white/15"
+          className="text-base sm:text-lg font-bold tracking-wide px-6 py-2 rounded-full glass-panel shadow-md backdrop-blur-xl backdrop-saturate-150 relative z-10 border border-white/35 dark:border-white/15 text-liquid"
         >
           {title}
         </Badge>

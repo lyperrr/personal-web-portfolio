@@ -45,6 +45,6 @@ const shapeVariants = cva("origin-center bg-primary absolute", {
 
 export function ShapeAnimate({ bgColor, shape, size, animation, className }) {
   return (
-    <div className={cn(shapeVariants({ bgColor,shape, size, animation }), className)} />
+    <div className={cn(shapeVariants({ bgColor, shape, size, animation }), className)} />
   );
 }
