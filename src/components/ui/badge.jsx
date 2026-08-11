@@ -5,7 +5,7 @@ import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
-  "inline-flex items-center justify-center px-4 py-1.5 text-xs font-semibold w-fit whitespace-nowrap shrink-0 [&>svg]:size-3.5 gap-1.5 [&>svg]:pointer-events-none focus-visible:ring-2 focus-visible:ring-ring/40 transition-all duration-300 rounded-full glass-specular-corner-subtle relative overflow-hidden",
+  "inline-flex items-center justify-center px-4 py-1.5 text-xs font-semibold w-fit max-w-full text-wrap shrink-0 [&>svg]:size-3.5 gap-1.5 [&>svg]:pointer-events-none focus-visible:ring-2 focus-visible:ring-ring/40 transition-all duration-300 rounded-full glass-specular-corner-subtle relative overflow-hidden",
   {
     variants: {
       variant: {

@@ -4,28 +4,43 @@ import { cn } from "@/lib/utils";
 
 /**
  * Reusable SectionHeader component for page sections.
- * @param {string|number} number - Watermark background number (e.g. "01", "02").
+ * @param {string|number} [number] - Watermark background number (e.g. "01", "02").
  * @param {string} [title] - Main badge text/title (e.g. "Skills & Tech Stack").
  * @param {string} [description] - Optional description text displayed under the badge.
+ * @param {"center" | "left" | "right"} [align="center"] - Header alignment ("center", "left", or "right").
  * @param {string} [className] - Additional wrapper styling.
  */
 export function SectionHeader({
   number,
   title,
   description,
+  align = "center",
   className,
   ...props
 }) {
+  const isLeft = align === "left";
+  const isRight = align === "right";
+
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center text-center relative space-y-2 select-none",
+        "flex flex-col relative space-y-2 select-none",
+        isLeft
+          ? "items-start justify-start text-left"
+          : isRight
+          ? "items-end justify-end text-right"
+          : "items-center justify-center text-center",
         className
       )}
       {...props}
     >
       {number && (
-        <span className="text-6xl sm:text-8xl font-extrabold text-primary/10 tracking-widest leading-none font-mono -mb-5">
+        <span
+          className={cn(
+            "text-6xl sm:text-8xl font-extrabold text-primary/10 tracking-widest leading-none font-mono -mb-5",
+            isLeft ? "ml-0" : isRight ? "mr-0" : ""
+          )}
+        >
           {number}
         </span>
       )}
@@ -38,7 +53,13 @@ export function SectionHeader({
         </Badge>
       )}
       {description && (
-        <Text variant="muted" className="mt-3 max-w-xl mx-auto leading-relaxed text-sm sm:text-base">
+        <Text
+          variant="muted"
+          className={cn(
+            "mt-3 max-w-xl leading-relaxed text-sm sm:text-base",
+            isLeft ? "mx-0" : isRight ? "ml-auto" : "mx-auto"
+          )}
+        >
           {description}
         </Text>
       )}

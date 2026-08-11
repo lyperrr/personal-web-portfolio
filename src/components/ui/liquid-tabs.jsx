@@ -30,7 +30,7 @@ export function LiquidTabs({
   });
   const [hoveredTab, setHoveredTab] = useState(null);
 
-  // Update active pill position
+  // Update active pill position dynamically with exact element offsets
   useEffect(() => {
     const updateActivePill = () => {
       const container = containerRef.current;
@@ -94,11 +94,11 @@ export function LiquidTabs({
         "relative flex p-1.5 glass-panel glass-specular-corner mx-auto shadow-xl border border-white/40 dark:border-white/15 select-none backdrop-blur-2xl bg-white/40 dark:bg-white/5",
         isVertical
           ? "flex-col items-center gap-1.5 rounded-[2.25rem] w-fit"
-          : "flex-wrap items-center justify-center gap-1 rounded-full w-fit",
+          : "flex-wrap items-center justify-center gap-1 rounded-3xl sm:rounded-full max-w-full w-fit",
         className
       )}
     >
-      {/* Fluid Hover Liquid Glass Pill with Subtle Specular Corner Highlight */}
+      {/* Fluid Hover Liquid Glass Pill */}
       <div
         className="absolute rounded-full bg-white/30 dark:bg-white/10 backdrop-blur-md border border-white/30 dark:border-white/15 shadow-sm transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] pointer-events-none z-0 overflow-hidden"
         style={
@@ -112,9 +112,9 @@ export function LiquidTabs({
             }
             : {
               left: `${hoverPillStyle.left}px`,
+              top: `${hoverPillStyle.top}px`,
               width: `${hoverPillStyle.width}px`,
-              top: "6px",
-              bottom: "6px",
+              height: `${hoverPillStyle.height}px`,
               opacity: hoveredTab ? hoverPillStyle.opacity : 0,
             }
         }
@@ -122,7 +122,7 @@ export function LiquidTabs({
         <div className="absolute inset-0 rounded-full border border-white/70 dark:border-white/40 pointer-events-none [mask-image:linear-gradient(135deg,white_0%,white_25%,transparent_45%,transparent_55%,white_75%,white_100%)]" />
       </div>
 
-      {/* Active Translucent Liquid Glass Pill with Specular Corner Border */}
+      {/* Active Translucent Liquid Glass Pill */}
       <div
         className="absolute rounded-full bg-white/85 dark:bg-white/18 backdrop-blur-2xl border border-white/70 dark:border-white/25 shadow-md transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] pointer-events-none z-0 overflow-hidden"
         style={
@@ -136,9 +136,9 @@ export function LiquidTabs({
             }
             : {
               left: `${activePillStyle.left}px`,
+              top: `${activePillStyle.top}px`,
               width: `${activePillStyle.width}px`,
-              top: "6px",
-              bottom: "6px",
+              height: `${activePillStyle.height}px`,
               opacity: activePillStyle.opacity,
             }
         }
@@ -159,8 +159,8 @@ export function LiquidTabs({
             onClick={() => onChangeTab(id)}
             onMouseEnter={(e) => handleMouseEnter(id, e.currentTarget)}
             className={cn(
-              "relative z-10 flex items-center justify-center rounded-full font-semibold text-sm transition-all duration-300 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
-              isVertical ? "p-3" : "px-5 py-2",
+              "relative z-10 flex items-center justify-center rounded-full font-semibold text-xs sm:text-sm transition-all duration-300 cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
+              isVertical ? "p-3" : "px-3.5 sm:px-5 py-2",
               isActive
                 ? "text-foreground font-bold text-liquid"
                 : "text-foreground/80 hover:text-foreground"
