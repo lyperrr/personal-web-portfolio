@@ -5,26 +5,64 @@ export function useActiveSection(sectionIds, defaultSection = "home") {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 140; // Offset for sticky navbar
+      const scrollY = window.scrollY;
 
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
+      // 1. If at top of page (Hero section), force activeSection to "home"
+      if (scrollY < 150) {
+        setActiveSection("home");
+        return;
+      }
+
+      // 2. Use getBoundingClientRect() to find which section is currently active on screen
+      // Target viewport line is 160px from top (just below fixed navbar)
+      const targetLine = 160;
+      let activeId = null;
+
+      for (let i = 0; i < sectionIds.length; i++) {
         const sectionId = sectionIds[i];
         const element = document.getElementById(sectionId);
         if (element) {
-          const top = element.offsetTop;
-          if (scrollPosition >= top) {
-            setActiveSection(sectionId);
+          const rect = element.getBoundingClientRect();
+          // A section is active if its top is at or above targetLine AND its bottom is still below targetLine
+          if (rect.top <= targetLine + 100 && rect.bottom > targetLine) {
+            activeId = sectionId;
             break;
           }
         }
       }
+
+      // Fallback: If no section strictly matches targetLine, pick the section with top closest above targetLine
+      if (!activeId) {
+        let bestDistance = -Infinity;
+        for (let i = 0; i < sectionIds.length; i++) {
+          const sectionId = sectionIds[i];
+          const element = document.getElementById(sectionId);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            if (rect.top <= targetLine + 200 && rect.top > bestDistance) {
+              bestDistance = rect.top;
+              activeId = sectionId;
+            }
+          }
+        }
+      }
+
+      if (activeId) {
+        setActiveSection(activeId);
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initial check
+    window.addEventListener("resize", handleScroll, { passive: true });
+
+    // Run check immediately + periodic interval to accommodate lazy-loaded section renders
+    handleScroll();
+    const interval = setInterval(handleScroll, 300);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+      clearInterval(interval);
     };
   }, [sectionIds]);
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Title, Text, Card, CardContent, SectionHeader, LiquidTabs } from "@/components/ui";
+import { Title, Text, Card, CardContent, SectionHeader, LiquidTabs, Button } from "@/components/ui";
 import skillsData from "@/data/skills.json";
 import {
   Code,
@@ -16,6 +16,8 @@ import {
   Zap,
   Figma,
   Box,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
 
 // Lucide Icon mapping for fallback when image logo is not specified
@@ -36,8 +38,11 @@ const ICON_MAP = {
   Box,
 };
 
+const INITIAL_LIMIT = 8;
+
 const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [showAll, setShowAll] = useState(false);
 
   const { sectionNumber, badge, description, categories, skills } = skillsData;
 
@@ -45,6 +50,17 @@ const SkillsSection = () => {
     activeCategory === "All"
       ? skills
       : skills.filter((skill) => skill.category === activeCategory);
+
+  const displayedSkills = showAll
+    ? filteredSkills
+    : filteredSkills.slice(0, INITIAL_LIMIT);
+
+  const hasMoreSkills = filteredSkills.length > INITIAL_LIMIT;
+
+  const handleCategoryChange = (category) => {
+    setActiveCategory(category);
+    setShowAll(false);
+  };
 
   const getLevelBadgeVariant = (level) => {
     switch (level?.toLowerCase()) {
@@ -72,12 +88,12 @@ const SkillsSection = () => {
         <LiquidTabs
           tabs={categories}
           activeTab={activeCategory}
-          onChangeTab={setActiveCategory}
+          onChangeTab={handleCategoryChange}
         />
 
-        {/* Skills Glass Cards Grid */}
+        {/* Skills Glass Cards Grid (Limited to max 8 initially) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredSkills.map((skill) => {
+          {displayedSkills.map((skill) => {
             const IconComponent = ICON_MAP[skill.iconName] || Code;
 
             return (
@@ -150,7 +166,7 @@ const SkillsSection = () => {
                         <div className="absolute inset-x-0 top-0 h-[1px] bg-white/80" />
 
                         {/* Smooth Continuous Flowing Liquid Shimmer */}
-                        <div className="absolute inset-0 animate-liquid-flow pointer-events-none" />
+                        <div className="absolute inset-0 pointer-events-none" />
 
                         {/* Silky Fluid Meniscus Edge Glow */}
                         <div className="absolute right-0 top-0 bottom-0 w-2.5 rounded-full bg-white/90 blur-[0.5px]" />
@@ -162,6 +178,27 @@ const SkillsSection = () => {
             );
           })}
         </div>
+
+        {/* Liquid Glass Show More / Show Less Action Button (Clean English, No Count Calculation) */}
+        {hasMoreSkills && (
+          <div className="flex justify-center pt-6 relative z-10">
+            <Button
+              onClick={() => setShowAll((prev) => !prev)}
+              size="lg"
+              variant="outline"
+              className="group"
+            >
+              <span className="font-bold">
+                {showAll ? "Show Less" : "Show More"}
+              </span>
+              {showAll ? (
+                <ChevronUp className="size-5 duration-300 text-primary" />
+              ) : (
+                <ChevronDown className="size-5 duration-300 text-primary" />
+              )}
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

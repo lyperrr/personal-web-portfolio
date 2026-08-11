@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, Text, Title, Badge, ShapeAnimate, LiquidTabs } from "@/components/ui";
+import React from "react";
+import { Button, Text, Title, Badge } from "@/components/ui";
 import heroData from "@/data/hero.json";
 import { Mail, ArrowRight, Mouse, Github, Instagram } from "lucide-react";
 
@@ -21,7 +21,6 @@ const SOCIAL_ICONS = {
 
 const HeroSection = () => {
   const { greeting, name, role, bio, buttons, socialMedia } = heroData;
-  const [activeSocialTab, setActiveSocialTab] = useState(socialMedia[0]?.id || "whatsapp");
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -31,27 +30,10 @@ const HeroSection = () => {
     }
   };
 
-  const socialTabs = socialMedia.map((item) => ({
-    id: item.id,
-    icon: SOCIAL_ICONS[item.id] || <Github className="size-6" />,
-  }));
-
-  const handleSocialTabChange = (id) => {
-    setActiveSocialTab(id);
-    const social = socialMedia.find((s) => s.id === id);
-    if (social?.url) {
-      window.open(social.url, "_blank", "noopener,noreferrer");
-    }
-  };
-
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative py-24 overflow-hidden">
       <div className="container relative z-10">
         <div className="flex flex-col items-center justify-center min-h-[calc(100vh-12rem)] relative">
-          <ShapeAnimate shape="square" size={16} animation="spin" bgColor="secondary" className="left-10 hidden md:block opacity-30" />
-          <ShapeAnimate shape="square" size={10} animation="spin" bgColor="secondary" className="top-40 right-20 hidden md:block opacity-30" />
-          <ShapeAnimate shape="square" size={10} animation="spin" bgColor="secondary" className="bottom-40 right-35 hidden md:block opacity-30" />
-
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
             {/* Apple Liquid Glass Badge */}
             <Badge variant="ghost" className="text-sm sm:text-base -rotate-3 font-medium glass-panel px-5 py-2 rounded-full shadow-md backdrop-blur-xl backdrop-saturate-150">
@@ -88,7 +70,7 @@ const HeroSection = () => {
               <Button
                 onClick={() => scrollToSection(buttons.secondary.targetSection)}
                 size="xl"
-                variant="outline"
+                variant="ghost"
                 className="group cursor-pointer rounded-full shadow-md transition-all duration-300"
               >
                 {buttons.secondary.label}
@@ -96,14 +78,32 @@ const HeroSection = () => {
               </Button>
             </div>
 
-            {/* FLOATING APPLE GLASS SOCIAL MEDIA BAR (Desktop Only) */}
-            <div className="hidden sm:block sm:fixed right-8 top-1/2 sm:-translate-y-1/2 z-30">
-              <LiquidTabs
-                orientation="vertical"
-                tabs={socialTabs}
-                activeTab={activeSocialTab}
-                onChangeTab={handleSocialTabChange}
-              />
+            {/* FLOATING APPLE LIQUID GLASS SOCIAL MEDIA ACTION BAR (Desktop Only - 100% Rounded Full) */}
+            <div className="hidden sm:block sm:fixed right-8 top-1/2 -translate-y-1/2 z-30">
+              <div className="flex flex-col items-center gap-2 p-2 rounded-full glass-panel glass-specular-corner shadow-xl border border-white/40 dark:border-white/15 select-none backdrop-blur-2xl bg-white/40 dark:bg-white/5">
+                {socialMedia.map((item) => {
+                  const icon = SOCIAL_ICONS[item.id] || <Github className="size-6" />;
+                  return (
+                    <Button
+                      key={item.id}
+                      asChild
+                      variant="ghost"
+                      size="icon-lg"
+                      className="rounded-full cursor-pointer hover:scale-110 active:scale-115"
+                    >
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={item.name || item.id}
+                        aria-label={item.name || item.id}
+                      >
+                        {icon}
+                      </a>
+                    </Button>
+                  );
+                })}
+              </div>
             </div>
 
             {/* Mouse Scroll Indicator */}
