@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Title, Text, Card, CardContent, SectionHeader, LiquidTabs, Button } from "@/components/ui";
 import skillsData from "@/data/skills.json";
+import { useTranslation } from "react-i18next";
 import {
   Code,
   Atom,
@@ -41,10 +42,17 @@ const ICON_MAP = {
 const INITIAL_LIMIT = 8;
 
 const SkillsSection = () => {
+  const { t } = useTranslation(["skills"]);
   const [activeCategory, setActiveCategory] = useState("All");
   const [showAll, setShowAll] = useState(false);
 
-  const { sectionNumber, badge, description, categories, skills } = skillsData;
+  const { sectionNumber, skills } = skillsData;
+
+  const rawCategories = skillsData.categories || ["All", "Frontend", "Backend", "Tools & Workflow", "UI/UX"];
+  const categories = rawCategories.map((cat) => ({
+    id: cat,
+    name: t(`categories.${cat}`, cat),
+  }));
 
   const filteredSkills =
     activeCategory === "All"
@@ -79,9 +87,9 @@ const SkillsSection = () => {
       <div className="container space-y-12 relative">
         {/* Section Header */}
         <SectionHeader
-          number={sectionNumber}
-          title={badge}
-          description={description}
+          number={t("sectionNumber", sectionNumber)}
+          title={t("badge")}
+          description={t("description")}
         />
 
         {/* Liquid Glass Category Filter Tabs with Sliding Active Pill */}
@@ -184,7 +192,7 @@ const SkillsSection = () => {
               className="group"
             >
               <span className="font-bold">
-                {showAll ? "Show Less" : "Show More"}
+                {showAll ? t("showLess", "Show Less") : t("showMore", "Show More")}
               </span>
               {showAll ? (
                 <ChevronUp className="size-5 duration-300 text-primary" />

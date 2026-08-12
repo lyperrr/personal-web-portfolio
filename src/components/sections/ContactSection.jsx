@@ -12,6 +12,7 @@ import {
 } from "@/components/ui";
 import contactData from "@/data/contact.json";
 import { Mail, MapPin, Clock, Sparkles } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const WhatsAppIcon = ({ className = "size-5" }) => (
   <svg
@@ -25,16 +26,21 @@ const WhatsAppIcon = ({ className = "size-5" }) => (
 );
 
 const ContactSection = () => {
+  const { t } = useTranslation(["contact"]);
+  const { info = {} } = contactData;
+
+  const translatedTemplates = t("templates", { returnObjects: true });
+  const whatsappTemplates = Array.isArray(translatedTemplates) && translatedTemplates.length > 0
+    ? translatedTemplates
+    : contactData.whatsappTemplates || [];
+
+  const [selectedTemplateId, setSelectedTemplateId] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
-
-  const [selectedTemplateId, setSelectedTemplateId] = useState(null);
-
-  const { sectionNumber, badge, description, info, whatsappTemplates = [], form } = contactData;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -66,12 +72,12 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="py-20 border-t border-border/30 relative overflow-hidden">
-      <div className="container space-y-12 relative z-10">
+      <div className="container space-y-12 relative">
         {/* Section Header */}
         <SectionHeader
-          number={sectionNumber}
-          title={badge}
-          description={description}
+          number={t("sectionNumber", contactData.sectionNumber || "05")}
+          title={t("badge")}
+          description={t("description")}
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 max-w-5xl mx-auto">
@@ -86,7 +92,7 @@ const ContactSection = () => {
                   </div>
                   <div className="min-w-0 flex-1">
                     <Title level={4} className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1">
-                      Email
+                      {t("info.emailLabel", "Email")}
                     </Title>
                     <a
                       href={`mailto:${info.email}`}
@@ -104,10 +110,10 @@ const ContactSection = () => {
                   </div>
                   <div className="min-w-0 flex-1">
                     <Title level={4} className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1">
-                      Location
+                      {t("info.locationLabel", "Location")}
                     </Title>
                     <p className="text-sm sm:text-base font-semibold text-foreground break-words">
-                      {info.location}
+                      {t("info.location", info.location)}
                     </p>
                   </div>
                 </div>
@@ -119,11 +125,11 @@ const ContactSection = () => {
                   </div>
                   <div className="min-w-0 flex-1">
                     <Title level={4} className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1">
-                      Availability
+                      {t("info.availabilityLabel", "Availability")}
                     </Title>
                     <div className="pt-0.5">
                       <Badge variant="ghost" className="bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 px-3 py-1.5 text-xs font-semibold leading-relaxed text-wrap max-w-full">
-                        {info.availability}
+                        {t("info.availability", info.availability)}
                       </Badge>
                     </div>
                   </div>
@@ -141,7 +147,7 @@ const ContactSection = () => {
                   <div className="p-3 sm:p-4 rounded-2xl bg-white/20 dark:bg-white/5 border border-white/20 dark:border-white/10 space-y-2">
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
-                        <Sparkles className="size-3.5 text-amber-500" /> Template Pesan Cepat:
+                        <Sparkles className="size-3.5 text-amber-500" /> {t("templatesHeader")}
                       </span>
                       {selectedTemplateId && (
                         <button
@@ -150,9 +156,9 @@ const ContactSection = () => {
                             setSelectedTemplateId(null);
                             setFormData((prev) => ({ ...prev, subject: "", message: "" }));
                           }}
-                          className="text-[11px] text-muted-foreground hover:text-foreground underline"
+                          className="text-[11px] text-muted-foreground hover:text-foreground underline cursor-pointer"
                         >
-                          Reset
+                          {t("reset")}
                         </button>
                       )}
                     </div>
@@ -181,7 +187,7 @@ const ContactSection = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-semibold uppercase text-muted-foreground mb-1.5 ml-1">
-                      {form.labels.name}
+                      {t("form.nameLabel")}
                     </label>
                     <Input
                       type="text"
@@ -189,13 +195,13 @@ const ContactSection = () => {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder={form.labels.namePlaceholder}
+                      placeholder={t("form.namePlaceholder")}
                       className="rounded-2xl"
                     />
                   </div>
                   <div>
                     <label className="block text-xs font-semibold uppercase text-muted-foreground mb-1.5 ml-1">
-                      {form.labels.email}
+                      {t("form.emailLabel")}
                     </label>
                     <Input
                       type="email"
@@ -203,7 +209,7 @@ const ContactSection = () => {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder={form.labels.emailPlaceholder}
+                      placeholder={t("form.emailPlaceholder")}
                       className="rounded-2xl"
                     />
                   </div>
@@ -211,21 +217,21 @@ const ContactSection = () => {
 
                 <div>
                   <label className="block text-xs font-semibold uppercase text-muted-foreground mb-1.5 ml-1">
-                    {form.labels.subject}
+                    {t("form.subjectLabel")}
                   </label>
                   <Input
                     type="text"
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    placeholder={form.labels.subjectPlaceholder}
+                    placeholder={t("form.subjectPlaceholder")}
                     className="rounded-2xl"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs font-semibold uppercase text-muted-foreground mb-1.5 ml-1">
-                    {form.labels.message}
+                    {t("form.messageLabel")}
                   </label>
                   <Textarea
                     name="message"
@@ -233,7 +239,7 @@ const ContactSection = () => {
                     rows={4}
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder={form.labels.messagePlaceholder}
+                    placeholder={t("form.messagePlaceholder")}
                     className="rounded-2xl"
                   />
                 </div>
@@ -243,10 +249,10 @@ const ContactSection = () => {
                   <Button
                     type="submit"
                     size="xl"
-                    className="w-full gap-2.5 shadow-lg bg-emerald-600 hover:bg-emerald-500 text-white border-none py-4 text-base font-semibold"
+                    className="w-full gap-2.5 shadow-lg bg-emerald-600 hover:bg-emerald-500 text-white border-none py-4 text-base font-semibold cursor-pointer"
                   >
                     <WhatsAppIcon className="size-5 fill-current" />
-                    Kirim via WhatsApp
+                    {t("form.submitWhatsApp")}
                   </Button>
                 </div>
               </form>

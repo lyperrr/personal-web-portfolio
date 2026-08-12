@@ -2,19 +2,11 @@ import React from "react";
 import Profile from "@/assets/img/photo-profile.png";
 import CvResume from "@/assets/img/CV_Willy_Permana.png";
 import { Title, Text, SectionHeader } from "@/components/ui";
+import { useTranslation } from "react-i18next";
 
 const AboutInfo = () => {
-  const aboutDescription = [
-    {
-      txt: "With over 5 years of experience in web development and design, I specialize in creating digital solutions that are both beautiful and functional.",
-    },
-    {
-      txt: "My journey started with a curiosity about how websites work, and it has evolved into a passion for crafting user experiences that make a difference. I believe that great design is not just about how something looks, but how it works.",
-    },
-    {
-      txt: "When I'm not coding or designing, you can find me exploring new technologies, contributing to open-source projects, or enjoying a good cup of coffee while sketching new ideas.",
-    },
-  ];
+  const { t } = useTranslation(["about"]);
+  const paragraphs = t("paragraphs", { returnObjects: true }) || [];
 
   return (
     <section>
@@ -68,19 +60,19 @@ const AboutInfo = () => {
             <div className="w-full">
               <SectionHeader
                 align="left"
-                number="01"
-                title="About Me"
+                number={t("sectionNumber", "01")}
+                title={t("badge")}
                 className="mb-2"
               />
 
               <Title level={2} className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mb-4">
-                Creating Digital Experiences
+                {t("title")}
               </Title>
 
               <div className="space-y-4 text-justify leading-relaxed">
-                {aboutDescription.map((item, index) => (
+                {Array.isArray(paragraphs) && paragraphs.map((textItem, index) => (
                   <Text key={index} variant="muted" className="text-sm sm:text-base leading-relaxed">
-                    {item.txt}
+                    {textItem}
                   </Text>
                 ))}
               </div>

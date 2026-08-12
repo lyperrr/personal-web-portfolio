@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Text, Title, Badge, Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui";
 import heroData from "@/data/hero.json";
 import { Mail, ArrowRight, Mouse, Github, Instagram } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 // Social icon mapping
 const SOCIAL_ICONS = {
@@ -20,7 +21,13 @@ const SOCIAL_ICONS = {
 };
 
 const HeroSection = () => {
-  const { greeting, name, role, bio, buttons, socialMedia } = heroData;
+  const { t } = useTranslation(["hero"]);
+  const { socialMedia } = heroData;
+
+  const greeting = t("greeting");
+  const name = t("name");
+  const role = t("role");
+  const bio = t("bio");
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -59,21 +66,21 @@ const HeroSection = () => {
             {/* Liquid Glass CTA Pill Buttons */}
             <div className="flex flex-col sm:flex-row w-full sm:w-auto gap-4 z-10">
               <Button
-                onClick={() => scrollToSection(buttons.primary.targetSection)}
+                onClick={() => scrollToSection("contact")}
                 size="xl"
                 className="shadow-lg hover:shadow-primary/25"
               >
                 <Mail className="size-5" />
-                {buttons.primary.label}
+                {t("buttons.primary")}
               </Button>
 
               <Button
-                onClick={() => scrollToSection(buttons.secondary.targetSection)}
+                onClick={() => scrollToSection("portfolio")}
                 size="xl"
                 variant="ghost"
                 className="group shadow-md"
               >
-                {buttons.secondary.label}
+                {t("buttons.secondary")}
                 <ArrowRight className="group-hover:translate-x-1 transition-transform duration-200 size-5" />
               </Button>
             </div>

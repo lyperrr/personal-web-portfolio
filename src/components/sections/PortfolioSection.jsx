@@ -3,11 +3,18 @@ import { Link } from "react-router-dom";
 import { Title, Text, Badge, Button, Card, CardContent, SectionHeader, LiquidTabs } from "@/components/ui";
 import portfolioData from "@/data/portfolio.json";
 import { ExternalLink, Github, Layers, ArrowRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const PortfolioSection = () => {
+  const { t } = useTranslation(["portfolio"]);
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const { sectionNumber, badge, description, categories, projects } = portfolioData;
+  const { sectionNumber, projects } = portfolioData;
+  const rawCategories = portfolioData.categories || ["All", "Fullstack Web", "UI/UX Design", "Mobile App", "Frontend", "Backend"];
+  const categories = rawCategories.map((cat) => ({
+    id: cat,
+    name: cat === "All" ? t("buttons.all", "All") : cat,
+  }));
 
   const filteredProjects =
     activeCategory === "All"
@@ -19,9 +26,9 @@ const PortfolioSection = () => {
       <div className="container space-y-12 relative">
         {/* Section Header */}
         <SectionHeader
-          number={sectionNumber}
-          title={badge}
-          description={description}
+          number={t("sectionNumber", sectionNumber)}
+          title={t("badge")}
+          description={t("description")}
         />
 
         {/* Liquid Glass Category Filter Tabs with Sliding Active Pill */}

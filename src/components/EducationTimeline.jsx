@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import { Title, Text, Badge, Card, CardContent, SectionHeader, Button } from "@/components/ui";
 import educationData from "@/data/education.json";
+import { useTranslation } from "react-i18next";
 
 // Import real school photos from src/assets/img/school
 import sdn7KesimanImg from "@/assets/img/school/sdn_7_kesiman.jpg";
@@ -30,12 +31,25 @@ const LOCAL_SCHOOL_IMAGES = {
   "/src/assets/img/school/poltekbali.jpg": poltekbaliImg,
 };
 
+// Image map by ID for fallback matching
+const SCHOOL_IMAGE_BY_ID = {
+  1: sdn7KesimanImg,
+  2: sdn3BenoaImg,
+  3: smpn5KutaSelatanImg,
+  4: sman2KutaSelatanImg,
+  5: poltekbaliImg,
+};
+
 // Icon mapping per level
 const LEVEL_ICONS = {
   "Sekolah Dasar": <School className="size-5 text-primary" />,
+  "Elementary School": <School className="size-5 text-primary" />,
   "Sekolah Menengah Pertama": <BookOpen className="size-5 text-primary" />,
+  "Junior High School": <BookOpen className="size-5 text-primary" />,
   "Sekolah Menengah Akhir": <Award className="size-5 text-primary" />,
+  "Senior High School": <Award className="size-5 text-primary" />,
   "Perguruan Tinggi": <GraduationCap className="size-6 text-emerald-500" />,
+  "Higher Education": <GraduationCap className="size-6 text-emerald-500" />,
 };
 
 /**
@@ -45,11 +59,26 @@ export function EducationTimeline({
   data = educationData,
   className = "",
 }) {
+  const { t } = useTranslation(["education"]);
   const [isReverse, setIsReverse] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  const { sectionNumber, badge, description, educationList } = data;
+  const sectionNumber = t("sectionNumber", data.sectionNumber || "02");
+  const badge = t("badge", data.badge);
+  const description = t("description", data.description);
+  const translatedItems = t("items", { returnObjects: true });
+  
+  const rawList = Array.isArray(translatedItems) && translatedItems.length > 0
+    ? translatedItems
+    : data.educationList || [];
+
+  const educationList = rawList.map((item, idx) => ({
+    ...item,
+    image: item.image || SCHOOL_IMAGE_BY_ID[item.id] || SCHOOL_IMAGE_BY_ID[idx + 1],
+    isCurrent: item.id === 5 || item.note === "Sedang Berjalan" || item.note === "In Progress",
+  }));
+
   const items = isReverse ? [...educationList].reverse() : educationList;
 
   const resolveImage = (imgPath) => {
@@ -115,7 +144,7 @@ export function EducationTimeline({
             className="gap-2 shadow-sm transition-transform"
           >
             <ArrowUpDown className="size-3.5" />
-            {isReverse ? "Urutan: Terbaru Dulu" : "Urutan: Dari Awal (SD)"}
+            {isReverse ? t("orderNewest", "Urutan: Terbaru Dulu") : t("orderOldest", "Urutan: Dari Awal (SD)")}
           </Button>
         </div>
 
@@ -186,7 +215,7 @@ export function EducationTimeline({
                           {item.isCurrent && (
                             <Badge className="bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 px-3 py-1 gap-1.5">
                               <CheckCircle2 className="size-3.5" />
-                              Sedang Berjalan
+                              {t("inProgress", "Sedang Berjalan")}
                             </Badge>
                           )}
 
