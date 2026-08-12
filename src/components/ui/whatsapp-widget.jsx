@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Card, CardContent, Badge } from "@/components/ui";
 import contactData from "@/data/contact.json";
 import { X, Send, Sparkles } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const WhatsAppIcon = ({ className = "size-6" }) => (
   <svg
@@ -15,11 +16,17 @@ const WhatsAppIcon = ({ className = "size-6" }) => (
 );
 
 export default function WhatsAppWidget() {
+  const { t } = useTranslation(["widget", "contact"]);
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
 
-  const { info, whatsappTemplates = [] } = contactData;
+  const { info } = contactData;
   const whatsappNumber = info?.whatsappNumber || "6281246329192";
+  
+  const translatedTemplates = t("contact:templates", { returnObjects: true });
+  const whatsappTemplates = Array.isArray(translatedTemplates) && translatedTemplates.length > 0
+    ? translatedTemplates
+    : contactData.whatsappTemplates || [];
 
   const handleSend = (templateObj) => {
     let finalMsg = "";
@@ -57,7 +64,7 @@ export default function WhatsAppWidget() {
                 <div className="pt-0.5">
                   <Badge variant="ghost" className="bg-white/20 text-white border-white/30 text-[10px] px-2 py-0.5 font-medium flex items-center gap-1.5 inline-flex">
                     <span className="size-1.5 rounded-full bg-emerald-300 animate-pulse"></span>
-                    Online • Siap Membantu
+                    {t("widget:status")}
                   </Badge>
                 </div>
               </div>
@@ -78,18 +85,18 @@ export default function WhatsAppWidget() {
           <CardContent className="p-4 space-y-4 flex-1 overflow-y-auto pt-4 min-h-0">
             {/* Greeting bubble using UI Card */}
             <div className="glass-card p-3.5 rounded-2xl rounded-tl-xs text-xs space-y-1.5 border border-white/40 dark:border-white/10 shadow-xs">
-              <p className="font-bold text-foreground">Halo! 👋</p>
+              <p className="font-bold text-foreground">{t("widget:greetingTitle")}</p>
               <p className="text-muted-foreground leading-relaxed">
-                Ada yang bisa saya bantu? Silakan pilih template pesan cepat di bawah atau tulis pesan Anda langsung.
+                {t("widget:greetingBody")}
               </p>
-              <span className="text-[10px] text-muted-foreground/70 block text-right">Baru saja</span>
+              <span className="text-[10px] text-muted-foreground/70 block text-right">{t("widget:justNow")}</span>
             </div>
 
             {/* Quick Templates using UI Buttons */}
             {whatsappTemplates.length > 0 && (
               <div className="space-y-1.5">
                 <p className="text-[11px] font-bold text-muted-foreground uppercase tracking-wider flex items-center gap-1">
-                  <Sparkles className="size-3 text-amber-500" /> TEMPLATE CEPAT:
+                  <Sparkles className="size-3 text-amber-500" /> {t("widget:templatesHeader")}
                 </p>
                 <div className="flex flex-col gap-1.5">
                   {whatsappTemplates.map((template) => (
@@ -119,7 +126,7 @@ export default function WhatsAppWidget() {
                 onKeyDown={(e) => {
                   if (e.key === "Enter") handleSend();
                 }}
-                placeholder="Ketik pesan Anda..."
+                placeholder={t("widget:inputPlaceholder")}
                 className="flex-1 bg-transparent text-xs text-foreground placeholder:text-muted-foreground/70 outline-none border-none focus:outline-none focus:ring-0 h-8"
               />
               <Button

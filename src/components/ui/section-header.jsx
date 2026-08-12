@@ -37,7 +37,7 @@ export function SectionHeader({
       {number && (
         <span
           className={cn(
-            "text-6xl sm:text-8xl font-extrabold text-primary/10 tracking-widest leading-none font-mono -mb-5",
+            "text-6xl sm:text-8xl font-extrabold text-primary/10 tracking-widest leading-none font-mono -mb-3 lg:-mb-5",
             isLeft ? "ml-0" : isRight ? "mr-0" : ""
           )}
         >
