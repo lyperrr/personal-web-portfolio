@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import Logo from "/logo.svg";
 import cvPdf from "@/assets/CV_Willy_Permana.pdf";
 import { Button, LiquidTabs } from "@/components/ui";
 import { Menu, X, Download, Sun, MoonStar, Loader2, Check } from "lucide-react";
@@ -174,8 +173,13 @@ function Navbar({ activeSection = "home", scrollToSection }) {
                 className="flex items-center w-fit cursor-pointer"
               >
                 <img
-                  className="h-9 sm:h-10 dark:invert transition-all"
-                  src={Logo}
+                  className="h-9 sm:h-10 dark:hidden transition-all"
+                  src="/dark_logo.svg"
+                  alt="Willy Permana Logo"
+                />
+                <img
+                  className="h-9 sm:h-10 hidden dark:block transition-all"
+                  src="/light_logo.svg"
                   alt="Willy Permana Logo"
                 />
               </a>

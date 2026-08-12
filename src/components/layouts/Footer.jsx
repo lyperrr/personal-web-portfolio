@@ -1,5 +1,4 @@
 import React from "react";
-import Logo from "/logo.svg";
 import { Github, Instagram, Mail, MapPin, Sparkles, Heart } from "lucide-react";
 import { Button, Card, CardContent } from "@/components/ui";
 import BackToTop from "@/components/ui/back-to-top.jsx";
@@ -55,8 +54,13 @@ function Footer({ scrollToSection }) {
                   className="flex items-center gap-3 cursor-pointer group"
                 >
                   <img
-                    className="h-9 dark:invert transition-transform duration-300 group-hover:scale-105"
-                    src={Logo}
+                    className="h-9 dark:hidden transition-transform duration-300 group-hover:scale-105"
+                    src="/dark_logo.svg"
+                    alt="Willy Permana Logo"
+                  />
+                  <img
+                    className="h-9 hidden dark:block transition-transform duration-300 group-hover:scale-105"
+                    src="/light_logo.svg"
                     alt="Willy Permana Logo"
                   />
                   <span className="text-xl font-extrabold tracking-tight text-foreground">
