@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import cvPdf from "@/assets/CV_Willy_Permana.pdf";
-import { Button, LiquidTabs } from "@/components/ui";
+import { Button, LiquidTabs, LanguageToggle } from "@/components/ui";
 import { Menu, X, Download, Sun, MoonStar, Loader2, Check } from "lucide-react";
 import { toggleTheme } from "@/main";
+import { useTranslation } from "react-i18next";
 
 function Navbar({ activeSection = "home", scrollToSection }) {
+  const { t } = useTranslation(["nav"]);
   const [isDark, setIsDark] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDownloadingCV, setIsDownloadingCV] = useState(false);
   const [downloadSuccess, setDownloadSuccess] = useState(false);
 
   const navLinks = [
-    { name: "Home", id: "home" },
-    { name: "About", id: "about" },
-    { name: "Education", id: "education" },
-    { name: "Skills", id: "skills" },
-    { name: "Portfolio", id: "portfolio" },
-    { name: "Contact", id: "contact" },
+    { name: t("home"), id: "home" },
+    { name: t("about"), id: "about" },
+    { name: t("education"), id: "education" },
+    { name: t("skills"), id: "skills" },
+    { name: t("portfolio"), id: "portfolio" },
+    { name: t("contact"), id: "contact" },
   ];
 
   // Toggle theme
@@ -84,8 +86,9 @@ function Navbar({ activeSection = "home", scrollToSection }) {
           : "-translate-y-full opacity-0 pointer-events-none"
       }`}
     >
-      {/* Top Close Button Row (No Logo) */}
-      <div className="flex items-center justify-end pt-2">
+      {/* Top Close Button Row */}
+      <div className="flex items-center justify-between pt-2">
+        <LanguageToggle />
         <Button
           variant="ghost"
           size="icon"
@@ -195,8 +198,11 @@ function Navbar({ activeSection = "home", scrollToSection }) {
               />
             </div>
 
-            {/* Actions: Theme Toggle, Mobile Toggle & Download CV */}
+            {/* Actions: Theme Toggle, Language Toggle, Mobile Toggle & Download CV */}
             <div className="flex items-center justify-end gap-2.5 shrink-0">
+              {/* Language Toggle (Desktop Header Only) */}
+              <LanguageToggle className="hidden lg:flex" />
+
               {/* Theme Toggle */}
               <Button
                 variant="outline"
@@ -235,17 +241,17 @@ function Navbar({ activeSection = "home", scrollToSection }) {
               >
                 {isDownloadingCV ? (
                   <>
-                    <span className="font-semibold">Preparing...</span>
+                    <span className="font-semibold">{t("preparingCv")}</span>
                     <Loader2 className="size-4 animate-spin text-primary" />
                   </>
                 ) : downloadSuccess ? (
                   <>
-                    <span>Downloaded!</span>
+                    <span>{t("downloaded")}</span>
                     <Check className="size-4 text-emerald-500" />
                   </>
                 ) : (
                   <>
-                    <span>Download CV</span>
+                    <span>{t("downloadCv")}</span>
                     <Download className="size-4" />
                   </>
                 )}

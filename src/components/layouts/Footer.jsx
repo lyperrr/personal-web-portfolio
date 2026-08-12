@@ -2,15 +2,18 @@ import React from "react";
 import { Github, Instagram, Mail, MapPin, Sparkles, Heart } from "lucide-react";
 import { Button, Card, CardContent } from "@/components/ui";
 import BackToTop from "@/components/ui/back-to-top.jsx";
+import { useTranslation } from "react-i18next";
 
 function Footer({ scrollToSection }) {
+  const { t } = useTranslation(["footer", "nav"]);
+
   const navLinks = [
-    { label: "Home", id: "home" },
-    { label: "About", id: "about" },
-    { label: "Education", id: "education" },
-    { label: "Skills", id: "skills" },
-    { label: "Portfolio", id: "portfolio" },
-    { label: "Contact", id: "contact" },
+    { label: t("nav:home"), id: "home" },
+    { label: t("nav:about"), id: "about" },
+    { label: t("nav:education"), id: "education" },
+    { label: t("nav:skills"), id: "skills" },
+    { label: t("nav:portfolio"), id: "portfolio" },
+    { label: t("nav:contact"), id: "contact" },
   ];
 
   const socialMedia = [
@@ -68,7 +71,7 @@ function Footer({ scrollToSection }) {
                   </span>
                 </a>
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  Crafting high-performance web applications, interactive user interfaces, and modern digital experiences.
+                  {t("tagline")}
                 </p>
               </div>
 
@@ -79,7 +82,7 @@ function Footer({ scrollToSection }) {
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
                     <span className="relative inline-flex size-2.5 rounded-full bg-emerald-500"></span>
                   </span>
-                  Available for New Opportunities
+                  {t("availabilityPill")}
                 </div>
 
                 {/* Desktop-Only Back to Top Component with Tooltip */}
@@ -92,7 +95,7 @@ function Footer({ scrollToSection }) {
               {/* Column 1: Quick Navigation */}
               <div className="space-y-3">
                 <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
-                  <Sparkles className="size-3.5 text-primary" /> Navigation
+                  <Sparkles className="size-3.5 text-primary" /> {t("navigationTitle")}
                 </h4>
                 <ul className="space-y-1.5">
                   {navLinks.map((link) => (
@@ -112,21 +115,21 @@ function Footer({ scrollToSection }) {
               {/* Column 2: Contact Information */}
               <div className="space-y-3">
                 <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
-                  <Mail className="size-3.5 text-primary" /> Contact Details
+                  <Mail className="size-3.5 text-primary" /> {t("contactTitle")}
                 </h4>
                 <ul className="space-y-2.5 text-xs sm:text-sm text-muted-foreground">
                   <li className="flex items-center gap-2.5 font-medium">
                     <Mail className="size-4 text-foreground/70" />
-                    <a href="mailto:willypermana@example.com" className="hover:text-foreground transition-colors">
-                      willypermana@example.com
+                    <a href="mailto:kadekwilly006@gmail.com" className="hover:text-foreground transition-colors">
+                      kadekwilly006@gmail.com
                     </a>
                   </li>
                   <li className="flex items-center gap-2.5 font-medium">
                     <MapPin className="size-4 text-foreground/70" />
-                    <span>Indonesia</span>
+                    <span>Nusadua, Bali, Indonesia</span>
                   </li>
                   <li className="text-xs text-muted-foreground/80 pt-1">
-                    Open for freelance & full-time opportunities.
+                    {t("openForOpportunities")}
                   </li>
                 </ul>
               </div>
@@ -134,7 +137,7 @@ function Footer({ scrollToSection }) {
               {/* Column 3: Social Connections */}
               <div className="space-y-3">
                 <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center gap-2">
-                  Social Connect
+                  {t("socialTitle")}
                 </h4>
                 <div className="flex flex-wrap gap-2.5">
                   {socialMedia.map((item) => (
@@ -163,19 +166,11 @@ function Footer({ scrollToSection }) {
             {/* Bottom Copyright Row */}
             <div className="pt-8 border-t border-white/20 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground relative z-10">
               <p>
-                Copyright © {new Date().getFullYear()}{" "}
-                <a
-                  href="#home"
-                  onClick={(e) => handleNavClick(e, "home")}
-                  className="hover:underline font-bold text-foreground"
-                >
-                  Willy Permana
-                </a>
-                . All rights reserved.
+                {t("copyright", { year: new Date().getFullYear() })}
               </p>
 
               <p className="flex items-center gap-1.5 font-medium">
-                <span>Crafted with</span>
+                <span>{t("craftedWith")}</span>
                 <Heart className="size-3.5 text-rose-500 fill-rose-500 inline-block" />
                 <span className="font-bold text-foreground">Passion & Precision</span>
               </p>
