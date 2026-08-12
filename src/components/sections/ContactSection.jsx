@@ -11,7 +11,18 @@ import {
   SectionHeader,
 } from "@/components/ui";
 import contactData from "@/data/contact.json";
-import { Mail, MapPin, Send, CheckCircle, Clock } from "lucide-react";
+import { Mail, MapPin, Clock, Sparkles } from "lucide-react";
+
+const WhatsAppIcon = ({ className = "size-5" }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    className={className}
+    fill="currentColor"
+  >
+    <path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01m-7.01 15.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.18l-3.12.82l.83-3.04l-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24c2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23m4.52-6.16c-.25-.12-1.47-.72-1.69-.81c-.23-.08-.39-.12-.56.12c-.17.25-.64.81-.78.97c-.14.17-.29.19-.54.06c-.25-.12-1.05-.39-1.99-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.14-.25-.02-.38.11-.51c.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31c-.22.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74c.59.26 1.05.41 1.41.52c.59.19 1.13.16 1.56.1c.48-.07 1.47-.6 1.67-1.18c.21-.58.21-1.07.14-1.18s-.22-.16-.47-.28" />
+  </svg>
+);
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -21,28 +32,36 @@ const ContactSection = () => {
     message: "",
   });
 
-  const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedTemplateId, setSelectedTemplateId] = useState(null);
 
-  const { sectionNumber, badge, description, info, form } = contactData;
+  const { sectionNumber, badge, description, info, whatsappTemplates = [], form } = contactData;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
+  const handleSelectTemplate = (template) => {
+    setSelectedTemplateId(template.id);
+    setFormData((prev) => ({
+      ...prev,
+      subject: template.subject || prev.subject,
+      message: template.message || prev.message,
+    }));
+  };
 
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-      setFormData({ name: "", email: "", subject: "", message: "" });
+  const handleSendWhatsApp = (e) => {
+    if (e) e.preventDefault();
 
-      setTimeout(() => setSubmitted(false), 5000);
-    }, 800);
+    const name = formData.name ? formData.name.trim() : "-";
+    const email = formData.email ? formData.email.trim() : "-";
+    const subject = formData.subject ? formData.subject.trim() : "-";
+    const message = formData.message ? formData.message.trim() : "-";
+
+    const fullMessage = `*Pesan Baru dari Portofolio*\n\n• *Nama:* ${name}\n• *Email:* ${email}\n• *Subjek:* ${subject}\n\n*Pesan:*\n${message}`;
+
+    const waUrl = `https://wa.me/${info.whatsappNumber || "6281246329192"}?text=${encodeURIComponent(fullMessage)}`;
+    window.open(waUrl, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -116,89 +135,121 @@ const ContactSection = () => {
           {/* Right Column: Contact Form using Apple Liquid Glass */}
           <Card className="lg:col-span-3 glass-panel shadow-xl">
             <CardContent className="p-5 sm:p-8">
-              {submitted ? (
-                <div className="flex flex-col items-center justify-center text-center py-12 space-y-4">
-                  <CheckCircle className="size-16 text-emerald-500 animate-bounce" />
-                  <Title level={3} className="text-2xl font-bold">
-                    {form.successMessage.title}
-                  </Title>
-                  <Text variant="muted" className="max-w-md">
-                    {form.successMessage.text}
-                  </Text>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-semibold uppercase text-muted-foreground mb-1.5 ml-1">
-                        {form.labels.name}
-                      </label>
-                      <Input
-                        type="text"
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder={form.labels.namePlaceholder}
-                        className="rounded-2xl"
-                      />
+              <form onSubmit={handleSendWhatsApp} className="space-y-5">
+                {/* Template Messages Selector */}
+                {whatsappTemplates.length > 0 && (
+                  <div className="p-3 sm:p-4 rounded-2xl bg-white/20 dark:bg-white/5 border border-white/20 dark:border-white/10 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+                        <Sparkles className="size-3.5 text-amber-500" /> Template Pesan Cepat:
+                      </span>
+                      {selectedTemplateId && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setSelectedTemplateId(null);
+                            setFormData((prev) => ({ ...prev, subject: "", message: "" }));
+                          }}
+                          className="text-[11px] text-muted-foreground hover:text-foreground underline"
+                        >
+                          Reset
+                        </button>
+                      )}
                     </div>
-                    <div>
-                      <label className="block text-xs font-semibold uppercase text-muted-foreground mb-1.5 ml-1">
-                        {form.labels.email}
-                      </label>
-                      <Input
-                        type="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder={form.labels.emailPlaceholder}
-                        className="rounded-2xl"
-                      />
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      {whatsappTemplates.map((template) => {
+                        const isSelected = selectedTemplateId === template.id;
+                        return (
+                          <button
+                            key={template.id}
+                            type="button"
+                            onClick={() => handleSelectTemplate(template)}
+                            className={`text-xs font-semibold px-3 py-1.5 rounded-full transition-all duration-200 border cursor-pointer ${
+                              isSelected
+                                ? "bg-primary text-primary-foreground border-primary shadow-sm scale-105"
+                                : "bg-white/40 dark:bg-white/10 hover:bg-white/60 dark:hover:bg-white/20 text-foreground border-white/30 dark:border-white/10"
+                            }`}
+                          >
+                            {template.label}
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
+                )}
 
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-semibold uppercase text-muted-foreground mb-1.5 ml-1">
-                      {form.labels.subject}
+                      {form.labels.name}
                     </label>
                     <Input
                       type="text"
-                      name="subject"
-                      value={formData.subject}
+                      name="name"
+                      required
+                      value={formData.name}
                       onChange={handleChange}
-                      placeholder={form.labels.subjectPlaceholder}
+                      placeholder={form.labels.namePlaceholder}
                       className="rounded-2xl"
                     />
                   </div>
-
                   <div>
                     <label className="block text-xs font-semibold uppercase text-muted-foreground mb-1.5 ml-1">
-                      {form.labels.message}
+                      {form.labels.email}
                     </label>
-                    <Textarea
-                      name="message"
+                    <Input
+                      type="email"
+                      name="email"
                       required
-                      rows={4}
-                      value={formData.message}
+                      value={formData.email}
                       onChange={handleChange}
-                      placeholder={form.labels.messagePlaceholder}
+                      placeholder={form.labels.emailPlaceholder}
                       className="rounded-2xl"
                     />
                   </div>
+                </div>
 
+                <div>
+                  <label className="block text-xs font-semibold uppercase text-muted-foreground mb-1.5 ml-1">
+                    {form.labels.subject}
+                  </label>
+                  <Input
+                    type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    placeholder={form.labels.subjectPlaceholder}
+                    className="rounded-2xl"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold uppercase text-muted-foreground mb-1.5 ml-1">
+                    {form.labels.message}
+                  </label>
+                  <Textarea
+                    name="message"
+                    required
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder={form.labels.messagePlaceholder}
+                    className="rounded-2xl"
+                  />
+                </div>
+
+                {/* Single Submit Button: Send via WhatsApp */}
+                <div className="pt-2">
                   <Button
                     type="submit"
                     size="xl"
-                    disabled={isSubmitting}
-                    className="w-full gap-2 shadow-lg"
+                    className="w-full gap-2.5 shadow-lg bg-emerald-600 hover:bg-emerald-500 text-white border-none py-4 text-base font-semibold"
                   >
-                    <Send className="size-4.5" />
-                    {isSubmitting ? form.labels.submittingButton : form.labels.submitButton}
+                    <WhatsAppIcon className="size-5 fill-current" />
+                    Kirim via WhatsApp
                   </Button>
-                </form>
-              )}
+                </div>
+              </form>
             </CardContent>
           </Card>
         </div>

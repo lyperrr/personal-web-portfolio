@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { WhatsAppWidget } from "@/components/ui";
 
 /**
  * Layout component wrapping single-page navigation and footer.
@@ -22,6 +23,7 @@ const Layout = ({
       )}
       <main>{children}</main>
       {!hiddenFooter && <Footer scrollToSection={scrollToSection} />}
+      <WhatsAppWidget />
     </>
   );
 };

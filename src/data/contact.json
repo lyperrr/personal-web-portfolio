@@ -4,14 +4,36 @@
   "subtitle": "Contact Me",
   "description": "Have a project in mind, an opportunity to discuss, or just want to connect? Feel free to reach out anytime!",
   "info": {
+    "phone": "+62 812-4632-9192",
+    "whatsappNumber": "6281246329192",
     "email": "kadekwilly006@gmail.com",
     "location": "Nusadua, Bali, Indonesia",
     "availability": "Available for Freelance & Full-time Roles"
   },
+  "whatsappTemplates": [
+    {
+      "id": "project",
+      "label": "💼 Projek Baru",
+      "subject": "Diskusi Projek Baru",
+      "message": "Halo Willy, saya tertarik untuk mendiskusikan projek baru dengan Anda. Apakah ada waktu untuk berdiskusi?"
+    },
+    {
+      "id": "freelance",
+      "label": "🚀 Freelance / Full-time",
+      "subject": "Peluang Kerja / Freelance",
+      "message": "Halo Willy, saya bermaksud menanyakan ketersediaan Anda untuk proyek freelance atau peluang kerja."
+    },
+    {
+      "id": "consultation",
+      "label": "💡 Konsultasi Web",
+      "subject": "Konsultasi Web Development",
+      "message": "Halo Willy, saya mau konsultasi mengenai pembuatan/pengembangan website. Bisakah kita berdiskusi lebih lanjut?"
+    }
+  ],
   "form": {
     "labels": {
       "name": "Your Name *",
-      "namePlaceholder": "Willy Permana",
+      "namePlaceholder": "John Doe",
       "email": "Your Email *",
       "emailPlaceholder": "name@example.com",
       "subject": "Subject",

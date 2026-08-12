@@ -18,7 +18,7 @@ function Footer({ scrollToSection }) {
     {
       id: "whatsapp",
       label: "WhatsApp",
-      url: "https://wa.me/",
+      url: "https://wa.me/6281246329192?text=Halo%20Willy%2C%20saya%20tertarik%20untuk%20berdiskusi!",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -30,8 +30,8 @@ function Footer({ scrollToSection }) {
         </svg>
       ),
     },
-    { id: "github", label: "GitHub", url: "https://github.com", icon: <Github className="size-4.5" /> },
-    { id: "instagram", label: "Instagram", url: "https://instagram.com", icon: <Instagram className="size-4.5" /> },
+    { id: "github", label: "GitHub", url: "https://github.com/lyperrr", icon: <Github className="size-4.5" /> },
+    { id: "instagram", label: "Instagram", url: "https://instagram.com/willyprmnaa/", icon: <Instagram className="size-4.5" /> },
   ];
 
   const handleNavClick = (e, sectionId) => {

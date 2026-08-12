@@ -11,3 +11,4 @@ export * from "./section-header";
 export * from "./shape-animate";
 export * from "./liquid-background";
 export * from "./liquid-tabs";
+export { default as WhatsAppWidget } from "./whatsapp-widget";
