@@ -173,12 +173,12 @@ function Navbar({ activeSection = "home", scrollToSection }) {
                 className="flex items-center w-fit cursor-pointer"
               >
                 <img
-                  className="h-9 sm:h-10 dark:hidden transition-all"
+                  className="h-9 sm:h-10 lg:h-16 dark:hidden transition-all"
                   src="/dark_logo.svg"
                   alt="Willy Permana Logo"
                 />
                 <img
-                  className="h-9 sm:h-10 hidden dark:block transition-all"
+                  className="h-9 sm:h-10 lg:h-16 hidden dark:block transition-all"
                   src="/light_logo.svg"
                   alt="Willy Permana Logo"
                 />
