@@ -1,0 +1,15 @@
+{
+  "sectionNumber": "03",
+  "badge": "Keahlian & Teknologi",
+  "subtitle": "Teknologi & Tools",
+  "description": "Teknologi, framework, dan tools yang saya gunakan untuk membangun produk digital berkualitas tinggi dan responsif.",
+  "categories": {
+    "All": "Semua",
+    "Frontend": "Frontend",
+    "Backend": "Backend",
+    "Tools & Workflow": "Tools & Alur Kerja",
+    "UI/UX": "UI/UX"
+  },
+  "showMore": "Tampilkan Lebih Banyak",
+  "showLess": "Tampilkan Lebih Sedikit"
+}

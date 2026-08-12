@@ -1,0 +1,46 @@
+{
+  "sectionNumber": "05",
+  "badge": "Get In Touch",
+  "subtitle": "Contact Me",
+  "description": "Have a project in mind, an opportunity to discuss, or just want to connect? Feel free to reach out anytime!",
+  "info": {
+    "emailLabel": "Email",
+    "locationLabel": "Location",
+    "availabilityLabel": "Availability",
+    "location": "Nusadua, Bali, Indonesia",
+    "availability": "Available for Freelance & Full-time Roles"
+  },
+  "templatesHeader": "Quick Template Message:",
+  "reset": "Reset",
+  "templates": [
+    {
+      "id": "project",
+      "label": "💼 New Project",
+      "subject": "New Project Inquiry",
+      "message": "Hello Willy, I am interested in discussing a new project with you. Are you available to chat?"
+    },
+    {
+      "id": "freelance",
+      "label": "🚀 Freelance / Full-time",
+      "subject": "Job Opportunity / Freelance",
+      "message": "Hello Willy, I would like to inquire about your availability for freelance or full-time opportunities."
+    },
+    {
+      "id": "consultation",
+      "label": "💡 Web Consultation",
+      "subject": "Web Development Consultation",
+      "message": "Hello Willy, I would like to consult regarding website development. Can we discuss further?"
+    }
+  ],
+  "form": {
+    "nameLabel": "Your Name *",
+    "namePlaceholder": "John Doe",
+    "emailLabel": "Your Email *",
+    "emailPlaceholder": "name@example.com",
+    "subjectLabel": "Subject",
+    "subjectPlaceholder": "Project Inquiry",
+    "messageLabel": "Message *",
+    "messagePlaceholder": "Tell me about your project or idea...",
+    "submitWhatsApp": "Send via WhatsApp"
+  }
+}

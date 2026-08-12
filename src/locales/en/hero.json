@@ -1,0 +1,10 @@
+{
+  "greeting": "Hello I'm",
+  "name": "Willy Permana",
+  "role": "Web Developer & Designer",
+  "bio": "Passionate about creating beautiful, functional, and user-centered digital experiences. Bringing ideas to life through code, modern design, and robust architecture.",
+  "buttons": {
+    "primary": "Get In Touch",
+    "secondary": "View Projects"
+  }
+}

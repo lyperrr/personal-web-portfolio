@@ -1,0 +1,51 @@
+{
+  "sectionNumber": "02",
+  "badge": "Riwayat Pendidikan",
+  "description": "Perjalanan pendidikan akademis dan jenjang studi yang telah dan sedang saya tempuh.",
+  "orderNewest": "Urutan: Terbaru Dulu",
+  "orderOldest": "Urutan: Dari Awal (SD)",
+  "inProgress": "Sedang Berjalan",
+  "items": [
+    {
+      "id": 1,
+      "institution": "Sekolah Dasar Negeri 7 Kesiman",
+      "level": "Sekolah Dasar",
+      "degree": "Sekolah Dasar (SD)",
+      "year": "2011 - 2014",
+      "note": ""
+    },
+    {
+      "id": 2,
+      "institution": "Sekolah Dasar Negeri 3 Benoa",
+      "level": "Sekolah Dasar",
+      "degree": "Sekolah Dasar (SD)",
+      "year": "2014 - 2017",
+      "note": "Pindah Sekolah"
+    },
+    {
+      "id": 3,
+      "institution": "Sekolah Menengah Pertama Negeri 5 Kuta Selatan",
+      "level": "Sekolah Menengah Pertama",
+      "degree": "SMP / Sederajat",
+      "year": "2017 - 2020",
+      "note": ""
+    },
+    {
+      "id": 4,
+      "institution": "Sekolah Menengah Akhir Negeri 2 Kuta Selatan",
+      "level": "Sekolah Menengah Akhir",
+      "degree": "SMA / Sederajat",
+      "year": "2020 - 2023",
+      "note": ""
+    },
+    {
+      "id": 5,
+      "institution": "Politeknik Negeri Bali",
+      "level": "Perguruan Tinggi",
+      "degree": "Jurusan Teknologi Informasi — Program Studi Manajemen Informatika",
+      "year": "2023 - Sekarang",
+      "description": "Fokus pada pengembangan perangkat lunak, manajemen basis data, rekayasa web, dan pemrograman aplikasi.",
+      "note": "Sedang Berjalan"
+    }
+  ]
+}

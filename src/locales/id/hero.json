@@ -1,0 +1,10 @@
+{
+  "greeting": "Halo Saya",
+  "name": "Willy Permana",
+  "role": "Web Developer & Designer",
+  "bio": "Berdedikasi untuk menciptakan pengalaman digital yang indah, fungsional, dan berfokus pada pengguna. Menghidupkan ide melalui kode, desain modern, dan arsitektur yang kuat.",
+  "buttons": {
+    "primary": "Hubungi Saya",
+    "secondary": "Lihat Proyek"
+  }
+}

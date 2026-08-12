@@ -1,0 +1,12 @@
+{
+  "sectionNumber": "04",
+  "badge": "Project Portfolio",
+  "subtitle": "Featured Work",
+  "description": "A showcase of selected projects demonstrating expertise in web development, frontend architecture, and UI/UX design.",
+  "buttons": {
+    "all": "All Projects",
+    "liveDemo": "Live Demo",
+    "viewCode": "View Code",
+    "viewDetails": "View Details"
+  }
+}

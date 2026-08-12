@@ -1,0 +1,15 @@
+{
+  "sectionNumber": "03",
+  "badge": "Skills & Tech Stack",
+  "subtitle": "Technologies & Tools",
+  "description": "Technologies, frameworks, and tools I leverage to build scalable, high-performance digital products.",
+  "categories": {
+    "All": "All",
+    "Frontend": "Frontend",
+    "Backend": "Backend",
+    "Tools & Workflow": "Tools & Workflow",
+    "UI/UX": "UI/UX"
+  },
+  "showMore": "Show More",
+  "showLess": "Show Less"
+}

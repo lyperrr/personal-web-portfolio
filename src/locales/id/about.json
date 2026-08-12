@@ -1,0 +1,16 @@
+{
+  "sectionNumber": "01",
+  "badge": "Tentang Saya",
+  "title": "Menciptakan Pengalaman Digital",
+  "paragraphs": [
+    "Dengan pengalaman lebih dari 5 tahun di bidang pengembangan dan desain web, saya mengkhususkan diri dalam membangun solusi digital yang estetis dan fungsional.",
+    "Perjalanan saya dimulai dari rasa ingin tahu tentang cara kerja situs web, yang berkembang menjadi passion untuk merancang pengalaman pengguna yang memberikan dampak nyata. Saya percaya desain luar biasa bukan hanya tentang tampilan, tapi juga tentang fungsionalitas.",
+    "Saat tidak sedang ngoding atau mendesain, Anda bisa menemukan saya mengeksplorasi teknologi baru, berkontribusi pada proyek open-source, atau menikmati secangkir kopi sambil merancang ide baru."
+  ],
+  "stats": {
+    "exp": "Tahun Pengalaman",
+    "projects": "Proyek Selesai",
+    "clients": "Klien Puas",
+    "score": "Skor Performa"
+  }
+}

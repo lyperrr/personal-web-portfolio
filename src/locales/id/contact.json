@@ -1,0 +1,46 @@
+{
+  "sectionNumber": "05",
+  "badge": "Hubungi Saya",
+  "subtitle": "Kontak",
+  "description": "Memiliki ide proyek, peluang kerja sama, atau sekadar ingin berdiskusi? Jangan ragu untuk menghubungi saya kapan saja!",
+  "info": {
+    "emailLabel": "Email",
+    "locationLabel": "Lokasi",
+    "availabilityLabel": "Ketersediaan",
+    "location": "Nusadua, Bali, Indonesia",
+    "availability": "Tersedia untuk Proyek Freelance & Full-time"
+  },
+  "templatesHeader": "Template Pesan Cepat:",
+  "reset": "Reset",
+  "templates": [
+    {
+      "id": "project",
+      "label": "💼 Projek Baru",
+      "subject": "Diskusi Projek Baru",
+      "message": "Halo Willy, saya tertarik untuk mendiskusikan projek baru dengan Anda. Apakah ada waktu untuk berdiskusi?"
+    },
+    {
+      "id": "freelance",
+      "label": "🚀 Freelance / Full-time",
+      "subject": "Peluang Kerja / Freelance",
+      "message": "Halo Willy, saya bermaksud menanyakan ketersediaan Anda untuk proyek freelance atau peluang kerja."
+    },
+    {
+      "id": "consultation",
+      "label": "💡 Konsultasi Web",
+      "subject": "Konsultasi Web Development",
+      "message": "Halo Willy, saya mau konsultasi mengenai pembuatan/pengembangan website. Bisakah kita berdiskusi lebih lanjut?"
+    }
+  ],
+  "form": {
+    "nameLabel": "Nama Anda *",
+    "namePlaceholder": "John Doe",
+    "emailLabel": "Email Anda *",
+    "emailPlaceholder": "name@example.com",
+    "subjectLabel": "Subjek",
+    "subjectPlaceholder": "Pertanyaan Proyek",
+    "messageLabel": "Pesan *",
+    "messagePlaceholder": "Ceritakan tentang proyek atau ide Anda...",
+    "submitWhatsApp": "Kirim via WhatsApp"
+  }
+}

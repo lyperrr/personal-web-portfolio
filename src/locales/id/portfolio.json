@@ -1,0 +1,12 @@
+{
+  "sectionNumber": "04",
+  "badge": "Portofolio Proyek",
+  "subtitle": "Karya Terbaru",
+  "description": "Koleksi proyek terpilih yang memperlihatkan keahlian saya dalam pengembangan web, arsitektur frontend, dan desain UI/UX.",
+  "buttons": {
+    "all": "Semua Proyek",
+    "liveDemo": "Buka Demo",
+    "viewCode": "Lihat Kode",
+    "viewDetails": "Detail Proyek"
+  }
+}

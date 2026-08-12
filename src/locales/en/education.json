@@ -1,0 +1,51 @@
+{
+  "sectionNumber": "02",
+  "badge": "Education History",
+  "description": "My academic journey and educational qualifications pursued over time.",
+  "orderNewest": "Order: Newest First",
+  "orderOldest": "Order: Oldest First",
+  "inProgress": "In Progress",
+  "items": [
+    {
+      "id": 1,
+      "institution": "State Elementary School 7 Kesiman",
+      "level": "Elementary School",
+      "degree": "Elementary School",
+      "year": "2011 - 2014",
+      "note": ""
+    },
+    {
+      "id": 2,
+      "institution": "State Elementary School 3 Benoa",
+      "level": "Elementary School",
+      "degree": "Elementary School",
+      "year": "2014 - 2017",
+      "note": "Transferred"
+    },
+    {
+      "id": 3,
+      "institution": "State Junior High School 5 Kuta Selatan",
+      "level": "Junior High School",
+      "degree": "Junior High School",
+      "year": "2017 - 2020",
+      "note": ""
+    },
+    {
+      "id": 4,
+      "institution": "State Senior High School 2 Kuta Selatan",
+      "level": "Senior High School",
+      "degree": "Senior High School",
+      "year": "2020 - 2023",
+      "note": ""
+    },
+    {
+      "id": 5,
+      "institution": "Bali State Polytechnic",
+      "level": "Higher Education",
+      "degree": "Department of Information Technology — Informatics Management",
+      "year": "2023 - Present",
+      "description": "Focusing on software development, database management, web engineering, and application programming.",
+      "note": "In Progress"
+    }
+  ]
+}
