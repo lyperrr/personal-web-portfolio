@@ -68,16 +68,7 @@ export function LanguageToggle({ className = "" }) {
           </Button>
 
           {/* Inner Liquid Glass Channel / Track */}
-          <div className="relative flex items-center bg-black/5 dark:bg-white/5 backdrop-blur-md p-1 rounded-full border border-white/30 dark:border-white/10 w-26 sm:w-28 h-9 sm:h-10">
-            {/* Translucent Liquid Glass Active Pill */}
-            <div
-              className={cn(
-                "absolute top-1 bottom-1 w-[calc(50%-4px)] rounded-full bg-white/90 dark:bg-white/25 backdrop-blur-2xl border border-white dark:border-white/40 shadow-md shadow-black/10 dark:shadow-white/10 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] overflow-hidden pointer-events-none z-0",
-                currentLang === "en" ? "left-[calc(50%)]" : "left-1"
-              )}
-            >
-              <div className="absolute inset-0 rounded-full border border-white dark:border-white/60 pointer-events-none [mask-image:linear-gradient(135deg,white_0%,white_30%,transparent_60%)]" />
-            </div>
+          <div className="relative flex items-center bg-black/5 gap-1 dark:bg-white/5 backdrop-blur-md p-1 rounded-full border border-white/30 dark:border-white/10 w-26 sm:w-28 h-9 sm:h-10">
 
             {/* ID Button */}
             <Button
