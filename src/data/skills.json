@@ -66,6 +66,16 @@
       "description": "SSR, SSG, App Router & Fullstack React Applications"
     },
     {
+      "id": "nodejs",
+      "name": "Node.js",
+      "category": "Backend",
+      "level": "Advanced",
+      "percentage": 88,
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
+      "iconName": "Server",
+      "description": "Event Loop, Async I/O, REST APIs & Server-Side JavaScript"
+    },
+    {
       "id": "php",
       "name": "PHP",
       "category": "Backend",
@@ -94,6 +104,36 @@
       "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
       "iconName": "HardDrive",
       "description": "NoSQL Document Collections, Aggregations & Mongoose"
+    },
+    {
+      "id": "vscode",
+      "name": "VS Code",
+      "category": "Tools & Workflow",
+      "level": "Advanced",
+      "percentage": 95,
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg",
+      "iconName": "Code",
+      "description": "IDE Customization, Debugging, Extensions & Developer Workflows"
+    },
+    {
+      "id": "postman",
+      "name": "Postman",
+      "category": "Tools & Workflow",
+      "level": "Advanced",
+      "percentage": 90,
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg",
+      "iconName": "Zap",
+      "description": "API Testing, Automated Collections, Environment Variables & Mock Servers"
+    },
+    {
+      "id": "zsh",
+      "name": "Zsh & Shell",
+      "category": "Tools & Workflow",
+      "level": "Intermediate",
+      "percentage": 85,
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/zsh/zsh-original.svg",
+      "iconName": "Terminal",
+      "description": "Unix Command Line, Shell Scripting, Aliases & Terminal Customization"
     },
     {
       "id": "git",
