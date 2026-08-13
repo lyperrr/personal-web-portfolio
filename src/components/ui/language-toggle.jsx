@@ -16,20 +16,20 @@ export function LanguageToggle({ className = "" }) {
   return (
     <div
       className={cn(
-        "group relative inline-flex items-center h-10 gap-1.5 p-1 rounded-full glass-panel glass-specular-corner-subtle border border-white/60 dark:border-white/20 bg-white/40 dark:bg-white/10 backdrop-blur-2xl shadow-lg select-none hover:shadow-xl transition-all duration-300 shrink-0",
+        "group relative inline-flex items-center h-11 sm:h-12 gap-1.5 p-1 rounded-full glass-panel glass-specular-corner-subtle border border-white/60 dark:border-white/20 bg-white/40 dark:bg-white/10 backdrop-blur-2xl shadow-lg select-none hover:shadow-xl transition-all duration-300 shrink-0",
         className
       )}
       aria-label="Language Selector"
     >
       {/* Glossy Icon Sphere with glowing primary accent */}
-      <div className="relative flex items-center justify-center size-8 rounded-full bg-white/60 dark:bg-white/15 backdrop-blur-md border border-white/80 dark:border-white/25 shadow-xs text-primary shrink-0 ml-0.5 group-hover:scale-105 transition-transform duration-300 overflow-hidden">
-        <Languages className="size-4 group-hover:rotate-12 transition-transform duration-300 z-10" />
+      <div className="relative flex items-center justify-center size-9 sm:size-10 rounded-full bg-white/60 dark:bg-white/15 backdrop-blur-md border border-white/80 dark:border-white/25 shadow-xs text-primary shrink-0 ml-0.5 group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+        <Languages className="size-4.5 sm:size-5 group-hover:rotate-12 transition-transform duration-300 z-10" />
         {/* Specular Glint Reflection */}
         <div className="absolute inset-0 rounded-full border border-white/90 dark:border-white/40 pointer-events-none [mask-image:linear-gradient(135deg,white_0%,transparent_55%)]" />
       </div>
 
       {/* Inner Liquid Glass Channel / Track */}
-      <div className="relative flex items-center bg-black/5 dark:bg-white/5 backdrop-blur-md p-1 rounded-full border border-white/30 dark:border-white/10 w-24 h-8">
+      <div className="relative flex items-center bg-black/5 dark:bg-white/5 backdrop-blur-md p-1 rounded-full border border-white/30 dark:border-white/10 w-26 sm:w-28 h-9 sm:h-10">
         {/* Translucent Liquid Glass Active Pill (100% Symmetrical Precision) */}
         <div
           className={cn(
@@ -46,7 +46,7 @@ export function LanguageToggle({ className = "" }) {
           type="button"
           onClick={() => handleSetLang("id")}
           className={cn(
-            "relative z-10 flex-1 h-full flex items-center justify-center text-xs font-black tracking-wider transition-colors duration-200 cursor-pointer rounded-full outline-none",
+            "relative z-10 flex-1 h-full flex items-center justify-center text-xs sm:text-sm font-black tracking-wider transition-colors duration-200 cursor-pointer rounded-full outline-none",
             currentLang === "id"
               ? "text-foreground font-black"
               : "text-muted-foreground/70 hover:text-foreground font-bold"
@@ -61,7 +61,7 @@ export function LanguageToggle({ className = "" }) {
           type="button"
           onClick={() => handleSetLang("en")}
           className={cn(
-            "relative z-10 flex-1 h-full flex items-center justify-center text-xs font-black tracking-wider transition-colors duration-200 cursor-pointer rounded-full outline-none",
+            "relative z-10 flex-1 h-full flex items-center justify-center text-xs sm:text-sm font-black tracking-wider transition-colors duration-200 cursor-pointer rounded-full outline-none",
             currentLang === "en"
               ? "text-foreground font-black"
               : "text-muted-foreground/70 hover:text-foreground font-bold"

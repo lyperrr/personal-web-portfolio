@@ -80,17 +80,16 @@ function Navbar({ activeSection = "home", scrollToSection }) {
 
   const mobileMenuOverlay = (
     <div
-      className={`lg:hidden fixed inset-0 z-[99999] w-full h-full min-h-[100dvh] backdrop-blur-3xl bg-background/90 dark:bg-background/95 flex flex-col justify-between p-6 sm:p-10 pb-[calc(2rem+env(safe-area-inset-bottom))] transition-all duration-300 ease-in-out overflow-y-auto ${
-        isMobileMenuOpen
+      className={`lg:hidden fixed inset-0 z-[99999] border w-full h-full min-h-[100dvh] backdrop-blur-3xl bg-background/90 dark:bg-background/95 flex flex-col justify-between container transition-all duration-300 ease-in-out overflow-y-auto py-4 ${isMobileMenuOpen
           ? "translate-y-0 opacity-100 pointer-events-auto"
           : "-translate-y-full opacity-0 pointer-events-none"
-      }`}
+        }`}
     >
       {/* Top Close Button Row */}
-      <div className="flex items-center justify-between pt-2">
+      <div className="flex items-center justify-between">
         <LanguageToggle />
         <label
-          className="hamburger size-10 rounded-full glass-panel glass-specular-corner-subtle flex items-center justify-center border border-white/50 dark:border-white/20 bg-white/40 dark:bg-white/10 backdrop-blur-2xl shadow-sm hover:shadow-md hover:border-primary/40 transition-all cursor-pointer select-none text-foreground shrink-0"
+          className="hamburger size-11 sm:size-12 rounded-full glass-panel glass-specular-corner-subtle flex items-center justify-center border border-white/50 dark:border-white/20 bg-white/40 dark:bg-white/10 backdrop-blur-2xl shadow-sm hover:shadow-md hover:border-primary/40 transition-all cursor-pointer select-none text-foreground shrink-0"
           aria-label="Close Mobile Menu"
         >
           <input
@@ -98,7 +97,7 @@ function Navbar({ activeSection = "home", scrollToSection }) {
             checked={isMobileMenuOpen}
             onChange={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           />
-          <svg viewBox="0 0 32 32" className="size-5 text-foreground">
+          <svg viewBox="0 0 32 32" className="size-6 sm:size-6.5 text-foreground">
             <path
               className="line line-top-bottom"
               d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
@@ -119,9 +118,8 @@ function Navbar({ activeSection = "home", scrollToSection }) {
                   asChild
                   variant={isActive ? "ghost" : "outline"}
                   size="xl"
-                  className={`w-full text-xl font-bold justify-center py-4 h-auto border border-white/30 dark:border-white/15 backdrop-blur-2xl transition-all duration-300 ${
-                    isActive ? "shadow-xl scale-105" : ""
-                  }`}
+                  className={`w-full text-xl font-bold justify-center py-4 h-auto border border-white/30 dark:border-white/15 backdrop-blur-2xl transition-all duration-300 ${isActive ? "shadow-xl scale-105" : ""
+                    }`}
                 >
                   <a
                     href={`#${link.id}`}
@@ -137,16 +135,14 @@ function Navbar({ activeSection = "home", scrollToSection }) {
       </div>
 
       {/* Bottom Download CV Action Button with Vibrant Loading Spinner */}
-      <div className="w-full max-w-xs sm:max-w-sm mx-auto pt-2 pb-2">
+      <div className="w-full max-w-xs sm:max-w-sm mx-auto">
         <Button
           variant="outline"
           size="xl"
           onClick={handleDownloadCV}
-          className={`w-full text-base shadow-xl gap-2.5 transition-all duration-300 ${
-            isDownloadingCV ? "pointer-events-none cursor-wait" : ""
-          } ${
-            downloadSuccess ? "bg-emerald-500/20 border-emerald-500/50 text-emerald-600 dark:text-emerald-400 font-bold" : ""
-          }`}
+          className={`w-full text-base shadow-xl gap-2.5 transition-all duration-300 ${isDownloadingCV ? "pointer-events-none cursor-wait" : ""
+            } ${downloadSuccess ? "bg-emerald-500/20 border-emerald-500/50 text-emerald-600 dark:text-emerald-400 font-bold" : ""
+            }`}
         >
           {isDownloadingCV ? (
             <>
@@ -174,7 +170,7 @@ function Navbar({ activeSection = "home", scrollToSection }) {
       {/* Solid Full-Width Apple Glass Header Bar */}
       <header className="fixed top-0 left-0 w-full z-40 border-b border-border/30 transition-colors">
         <nav className="container">
-          <div className="flex items-center justify-between py-3 gap-4">
+          <div className="flex items-center justify-between py-3.5 sm:py-4 gap-4">
             {/* Logo */}
             <div className="shrink-0">
               <a
@@ -184,12 +180,12 @@ function Navbar({ activeSection = "home", scrollToSection }) {
                 className="flex items-center w-fit cursor-pointer"
               >
                 <img
-                  className="h-9 sm:h-10 lg:h-16 dark:hidden transition-all"
+                  className="h-11 sm:h-12 lg:h-16 dark:hidden transition-all"
                   src="/dark_logo.svg"
                   alt="Willy Permana Logo"
                 />
                 <img
-                  className="h-9 sm:h-10 lg:h-16 hidden dark:block transition-all"
+                  className="h-11 sm:h-12 lg:h-16 hidden dark:block transition-all"
                   src="/light_logo.svg"
                   alt="Willy Permana Logo"
                 />
@@ -207,7 +203,7 @@ function Navbar({ activeSection = "home", scrollToSection }) {
             </div>
 
             {/* Actions: Theme Toggle, Language Toggle, Mobile Toggle & Download CV */}
-            <div className="flex items-center justify-end gap-2.5 shrink-0">
+            <div className="flex items-center justify-end gap-3 shrink-0">
               {/* Language Toggle (Desktop Header Only) */}
               <LanguageToggle className="hidden lg:flex" />
 
@@ -215,20 +211,20 @@ function Navbar({ activeSection = "home", scrollToSection }) {
               <Button
                 variant="outline"
                 size="icon"
-                className="group"
+                className="group size-11 sm:size-12 rounded-full"
                 onClick={handleToggleTheme}
                 aria-label="Toggle Theme"
               >
                 {isDark ? (
-                  <Sun className="size-5 transition-transform duration-200" />
+                  <Sun className="size-5.5 sm:size-6 transition-transform duration-200" />
                 ) : (
-                  <MoonStar className="size-5 transition-transform duration-200" />
+                  <MoonStar className="size-5.5 sm:size-6 transition-transform duration-200" />
                 )}
               </Button>
 
               {/* Animated Hamburger Mobile Menu Toggle Button */}
               <label
-                className="hamburger lg:hidden size-10 rounded-full glass-panel glass-specular-corner-subtle flex items-center justify-center border border-white/50 dark:border-white/20 bg-white/40 dark:bg-white/10 backdrop-blur-2xl shadow-sm hover:shadow-md hover:border-primary/40 transition-all cursor-pointer select-none text-foreground shrink-0"
+                className="hamburger lg:hidden size-11 sm:size-12 rounded-full glass-panel glass-specular-corner-subtle flex items-center justify-center border border-white/50 dark:border-white/20 bg-white/40 dark:bg-white/10 backdrop-blur-2xl shadow-sm hover:shadow-md hover:border-primary/40 transition-all cursor-pointer select-none text-foreground shrink-0"
                 aria-label="Toggle Mobile Menu"
               >
                 <input
@@ -236,7 +232,7 @@ function Navbar({ activeSection = "home", scrollToSection }) {
                   checked={isMobileMenuOpen}
                   onChange={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 />
-                <svg viewBox="0 0 32 32" className="size-5 text-foreground">
+                <svg viewBox="0 0 32 32" className="size-6 sm:size-6.5 text-foreground">
                   <path
                     className="line line-top-bottom"
                     d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
@@ -249,11 +245,9 @@ function Navbar({ activeSection = "home", scrollToSection }) {
               <Button
                 size="md"
                 onClick={handleDownloadCV}
-                className={`hidden lg:flex gap-2 shadow-md transition-all duration-300 ${
-                  isDownloadingCV ? "pointer-events-none cursor-wait" : ""
-                } ${
-                  downloadSuccess ? "bg-emerald-500/20 border-emerald-500/50 text-emerald-600 dark:text-emerald-400 font-bold" : ""
-                }`}
+                className={`hidden lg:flex gap-2 shadow-md transition-all duration-300 ${isDownloadingCV ? "pointer-events-none cursor-wait" : ""
+                  } ${downloadSuccess ? "bg-emerald-500/20 border-emerald-500/50 text-emerald-600 dark:text-emerald-400 font-bold" : ""
+                  }`}
               >
                 {isDownloadingCV ? (
                   <>
