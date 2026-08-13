@@ -89,15 +89,23 @@ function Navbar({ activeSection = "home", scrollToSection }) {
       {/* Top Close Button Row */}
       <div className="flex items-center justify-between pt-2">
         <LanguageToggle />
-        <Button
-          variant="ghost"
-          size="icon"
-          className="size-12 rounded-full shadow-md"
-          onClick={() => setIsMobileMenuOpen(false)}
+        <label
+          className="hamburger size-10 rounded-full glass-panel flex items-center justify-center border border-white/50 dark:border-white/20 bg-white/40 dark:bg-white/10 backdrop-blur-2xl shadow-sm hover:shadow-md transition-all cursor-pointer select-none text-foreground"
           aria-label="Close Mobile Menu"
         >
-          <X className="size-6" />
-        </Button>
+          <input
+            type="checkbox"
+            checked={isMobileMenuOpen}
+            onChange={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          />
+          <svg viewBox="0 0 32 32" className="size-6 text-foreground">
+            <path
+              className="line line-top-bottom"
+              d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+            ></path>
+            <path className="line" d="M7 16 27 16"></path>
+          </svg>
+        </label>
       </div>
 
       {/* Spacious Centered Nav Links with Apple Liquid Glass Button Styling */}
