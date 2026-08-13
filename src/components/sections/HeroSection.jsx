@@ -50,7 +50,7 @@ const HeroSection = () => {
             {/* Glowing Name Title */}
             <Title
               level={1}
-              className="mb-6 uppercase text-[2.7rem] -rotate-3 sm:text-6xl md:text-7xl xl:text-8xl font-black px-4 tracking-tight text-liquid drop-shadow-[0_4px_20px_rgba(255,255,255,0.25)] dark:drop-shadow-[0_4px_30px_rgba(255,255,255,0.4)]"
+              className="mb-6 uppercase text-[2.5rem] -rotate-3 sm:text-6xl md:text-7xl xl:text-8xl font-black px-4 tracking-tight text-liquid drop-shadow-[0_4px_20px_rgba(255,255,255,0.25)] dark:drop-shadow-[0_4px_30px_rgba(255,255,255,0.4)]"
             >
               {name}
             </Title>

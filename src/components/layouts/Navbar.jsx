@@ -92,7 +92,7 @@ function Navbar({ activeSection = "home", scrollToSection }) {
           variant="outline"
           size="icon"
           asChild
-          className="hamburger size-11 sm:size-12 rounded-full cursor-pointer p-0 shrink-0"
+          className="hamburger size-11 sm:size-12"
         >
           <label aria-label="Close Mobile Menu">
             <input
