@@ -174,9 +174,9 @@ function Navbar({ activeSection = "home", scrollToSection }) {
       {/* Solid Full-Width Apple Glass Header Bar */}
       <header className="fixed top-0 left-0 w-full z-40 transition-colors">
         <nav className="container">
-          <div className="flex items-center justify-between py-3.5 sm:py-4 gap-4">
+          <div className="flex lg:grid lg:grid-cols-[1fr_auto_1fr] items-center justify-between py-3.5 sm:py-4 gap-4">
             {/* Logo */}
-            <div className="shrink-0">
+            <div className="shrink-0 justify-self-start">
               <a
                 href="#home"
                 onClick={(e) => handleNavClick(e, "home")}
@@ -197,7 +197,7 @@ function Navbar({ activeSection = "home", scrollToSection }) {
             </div>
 
             {/* Desktop Navigation with Liquid Sliding Indicator */}
-            <div className="hidden lg:flex flex-1 items-center justify-center">
+            <div className="hidden lg:flex items-center justify-center justify-self-center">
               <LiquidTabs
                 tabs={navLinks}
                 activeTab={activeSection}
@@ -207,7 +207,7 @@ function Navbar({ activeSection = "home", scrollToSection }) {
             </div>
 
             {/* Actions: Theme Toggle, Language Toggle, Mobile Toggle & Download CV */}
-            <div className="flex items-center justify-end gap-3 shrink-0">
+            <div className="flex items-center justify-end justify-self-end gap-3 shrink-0">
               {/* Language Toggle (Desktop Header Only) */}
               <LanguageToggle className="hidden lg:flex" />
 
