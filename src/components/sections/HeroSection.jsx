@@ -85,41 +85,8 @@ const HeroSection = () => {
               </Button>
             </div>
 
-            {/* INLINE SOCIAL MEDIA PILL (For Mobile & Tablet < xl to prevent overlap) */}
-            <div className="xl:hidden flex items-center gap-2 p-1.5 rounded-full glass-panel glass-specular-corner shadow-md border border-white/40 dark:border-white/15 select-none backdrop-blur-2xl bg-white/40 dark:bg-white/5 mt-6 z-10">
-              {socialMedia.map((item) => {
-                const icon = SOCIAL_ICONS[item.id] || <Github className="size-5" />;
-                const label = item.name || item.id.charAt(0).toUpperCase() + item.id.slice(1);
-
-                return (
-                  <Tooltip key={item.id}>
-                    <TooltipTrigger asChild>
-                      <Button
-                        asChild
-                        variant="ghost"
-                        size="icon"
-                        className="size-10 hover:scale-110 active:scale-115"
-                      >
-                        <a
-                          href={item.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={label}
-                        >
-                          {icon}
-                        </a>
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent side="bottom">
-                      {label}
-                    </TooltipContent>
-                  </Tooltip>
-                );
-              })}
-            </div>
-
-            {/* FLOATING APPLE LIQUID GLASS SOCIAL MEDIA ACTION BAR (Desktop XL+ Only - Zero Overlap) */}
-            <div className="hidden xl:block fixed right-6 2xl:right-12 top-1/2 -translate-y-1/2 z-30">
+            {/* FLOATING APPLE LIQUID GLASS SOCIAL MEDIA ACTION BAR (Desktop Only) */}
+            <div className="hidden sm:block sm:fixed right-8 top-1/2 -translate-y-1/2 z-30">
               <div className="flex flex-col items-center gap-2 p-2 rounded-full glass-panel glass-specular-corner shadow-xl border border-white/40 dark:border-white/15 select-none backdrop-blur-2xl bg-white/40 dark:bg-white/5">
                 {socialMedia.map((item) => {
                   const icon = SOCIAL_ICONS[item.id] || <Github className="size-6" />;

@@ -157,7 +157,7 @@ export function EducationTimeline({
           <div className="md:hidden absolute left-6 top-8 bottom-8 w-0.5 bg-gradient-to-b from-primary/70 via-primary/40 to-border/20 rounded-full z-0" />
 
           {/* Timeline Items List */}
-          <ol className="relative z-10 space-y-12 md:space-y-16">
+          <ol className="relative space-y-12 md:space-y-16">
             {items.map((item, index) => {
               const isEven = index % 2 === 0;
               const IconComponent = LEVEL_ICONS[item.level] || <School className="size-5 text-primary" />;
