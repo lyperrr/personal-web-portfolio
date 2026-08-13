@@ -114,12 +114,14 @@ const SkillsSection = () => {
                     {/* Skill Card Header: Logo slot & Level badge */}
                     <div className="flex items-start justify-between gap-4 mb-4">
                       {/* Dedicated Logo / Icon Container */}
-                      <div className="size-14 rounded-2xl bg-white/30 dark:bg-white/10 backdrop-blur-md border border-white/30 dark:border-white/10 flex items-center justify-center p-2.5 group-hover:border-primary/50 transition-all duration-300 shadow-inner">
+                      <div className="size-14 rounded-2xl bg-white/40 dark:bg-white/10 backdrop-blur-md border border-white/40 dark:border-white/15 flex items-center justify-center p-3 group-hover:border-primary/50 group-hover:scale-105 transition-all duration-300 shadow-sm overflow-hidden shrink-0">
                         {skill.logo ? (
                           <img
                             src={skill.logo}
                             alt={`${skill.name} logo`}
-                            className="size-full object-contain"
+                            className={`size-full object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-110 ${
+                              skill.id === "git" || skill.id === "nextjs" ? "dark:invert" : ""
+                            }`}
                           />
                         ) : (
                           <IconComponent className="size-7 text-primary group-hover:rotate-6 transition-transform duration-300" />

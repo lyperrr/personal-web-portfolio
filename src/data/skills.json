@@ -11,7 +11,7 @@
       "category": "Frontend",
       "level": "Advanced",
       "percentage": 92,
-      "logo": "",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
       "iconName": "Atom",
       "description": "SPA Architecture, Hooks, Context API & Performance Optimization"
     },
@@ -21,7 +21,7 @@
       "category": "Frontend",
       "level": "Advanced",
       "percentage": 95,
-      "logo": "",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
       "iconName": "Code",
       "description": "Modern Syntax, Async/Await, ES Modules & DOM Manipulation"
     },
@@ -31,7 +31,7 @@
       "category": "Frontend",
       "level": "Intermediate",
       "percentage": 82,
-      "logo": "",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
       "iconName": "FileCode",
       "description": "Type Safety, Interfaces, Generics & Strong Typing"
     },
@@ -41,7 +41,7 @@
       "category": "Frontend",
       "level": "Advanced",
       "percentage": 94,
-      "logo": "",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
       "iconName": "Palette",
       "description": "Utility-First Styling, Custom Themes & Responsive Layouts"
     },
@@ -51,7 +51,7 @@
       "category": "Frontend",
       "level": "Advanced",
       "percentage": 98,
-      "logo": "",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
       "iconName": "Layout",
       "description": "Semantic Markup, Flexbox, Grid & Web Accessibility (a11y)"
     },
@@ -61,39 +61,29 @@
       "category": "Frontend",
       "level": "Intermediate",
       "percentage": 80,
-      "logo": "",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
       "iconName": "Layers",
       "description": "SSR, SSG, App Router & Fullstack React Applications"
     },
     {
-      "id": "nodejs",
-      "name": "Node.js",
+      "id": "php",
+      "name": "PHP",
       "category": "Backend",
-      "level": "Advanced",
-      "percentage": 88,
-      "logo": "",
+      "level": "Intermediate",
+      "percentage": 82,
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg",
       "iconName": "Server",
-      "description": "Event Loop, NPM Packages, Middleware & Server Logic"
+      "description": "Server-Side Scripting, OOP, MVC Architecture & Web Services"
     },
     {
-      "id": "express",
-      "name": "Express.js",
+      "id": "mysql",
+      "name": "MySQL",
       "category": "Backend",
       "level": "Advanced",
       "percentage": 86,
-      "logo": "",
-      "iconName": "Cpu",
-      "description": "RESTful API Architecture, Authentication & Routing"
-    },
-    {
-      "id": "postgresql",
-      "name": "PostgreSQL",
-      "category": "Backend",
-      "level": "Intermediate",
-      "percentage": 78,
-      "logo": "",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg",
       "iconName": "Database",
-      "description": "Relational Schemas, SQL Queries & Database Indexing"
+      "description": "Relational Database Management, Complex Queries & Indexing"
     },
     {
       "id": "mongodb",
@@ -101,7 +91,7 @@
       "category": "Backend",
       "level": "Intermediate",
       "percentage": 80,
-      "logo": "",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
       "iconName": "HardDrive",
       "description": "NoSQL Document Collections, Aggregations & Mongoose"
     },
@@ -111,7 +101,7 @@
       "category": "Tools & Workflow",
       "level": "Advanced",
       "percentage": 90,
-      "logo": "",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
       "iconName": "GitBranch",
       "description": "Version Control, Branching Strategies & PR Workflows"
     },
@@ -121,7 +111,7 @@
       "category": "Tools & Workflow",
       "level": "Advanced",
       "percentage": 92,
-      "logo": "",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg",
       "iconName": "Zap",
       "description": "Fast HMR, Bundling Optimization & Module Resolution"
     },
@@ -131,19 +121,9 @@
       "category": "UI/UX",
       "level": "Intermediate",
       "percentage": 85,
-      "logo": "",
+      "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg",
       "iconName": "Figma",
       "description": "UI Design, Wireframing, Component Systems & Prototyping"
-    },
-    {
-      "id": "docker",
-      "name": "Docker Basics",
-      "category": "Tools & Workflow",
-      "level": "Basic",
-      "percentage": 65,
-      "logo": "",
-      "iconName": "Box",
-      "description": "Containerization, Dockerfiles & Local Dev Environments"
     }
   ]
 }
