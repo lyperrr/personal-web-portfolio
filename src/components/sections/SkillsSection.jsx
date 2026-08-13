@@ -114,7 +114,7 @@ const SkillsSection = () => {
                     {/* Skill Card Header: Logo slot & Level badge */}
                     <div className="flex items-start justify-between gap-4 mb-4">
                       {/* Dedicated Logo / Icon Container */}
-                      <div className="size-14 rounded-2xl bg-white/40 dark:bg-white/10 backdrop-blur-md border border-white/40 dark:border-white/15 flex items-center justify-center p-3 group-hover:border-primary/50 group-hover:scale-105 transition-all duration-300 shadow-sm overflow-hidden shrink-0">
+                      <div className="size-14 rounded-2xl bg-white/50 dark:bg-white/10 border border-white/40 dark:border-white/15 flex items-center justify-center p-3 group-hover:border-primary/50 group-hover:scale-105 transition-all duration-300 shadow-sm overflow-hidden shrink-0">
                         {skill.logo ? (
                           <img
                             src={skill.logo}
@@ -161,10 +161,10 @@ const SkillsSection = () => {
                     </div>
 
                     {/* Outer Crystal Glass Tube Trough */}
-                    <div className="h-3 w-full rounded-full bg-black/15 dark:bg-white/5 border border-white/40 dark:border-white/15 p-0.5 backdrop-blur-xl shadow-inner relative overflow-hidden">
+                    <div className="h-3 w-full rounded-full bg-black/15 dark:bg-white/5 border border-white/40 dark:border-white/15 p-0.5 shadow-inner relative overflow-hidden">
                       {/* Silky Glowing Liquid Fill Capsule */}
                       <div
-                        className="h-full rounded-full bg-gradient-to-r from-white/40 via-white/70 to-white dark:from-white/20 dark:via-white/50 dark:to-white/90 backdrop-blur-2xl shadow-[0_0_12px_rgba(255,255,255,0.5)] transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] relative overflow-hidden"
+                        className="h-full rounded-full bg-gradient-to-r from-white/40 via-white/70 to-white dark:from-white/20 dark:via-white/50 dark:to-white/90 shadow-[0_0_12px_rgba(255,255,255,0.5)] transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] relative overflow-hidden"
                         style={{ width: `${skill.percentage}%` }}
                       >
                         {/* Top Edge Specular Reflection Line */}
