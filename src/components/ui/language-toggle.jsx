@@ -16,7 +16,7 @@ export function LanguageToggle({ className = "" }) {
   return (
     <div
       className={cn(
-        "group relative inline-flex items-center gap-1.5 p-1 rounded-full glass-panel glass-specular-corner-subtle border border-white/60 dark:border-white/20 bg-white/40 dark:bg-white/10 backdrop-blur-2xl shadow-lg select-none hover:shadow-xl transition-all duration-300",
+        "group relative inline-flex items-center h-10 gap-1.5 p-1 rounded-full glass-panel glass-specular-corner-subtle border border-white/60 dark:border-white/20 bg-white/40 dark:bg-white/10 backdrop-blur-2xl shadow-lg select-none hover:shadow-xl transition-all duration-300 shrink-0",
         className
       )}
       aria-label="Language Selector"
