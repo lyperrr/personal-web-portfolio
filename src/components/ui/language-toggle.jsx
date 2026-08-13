@@ -72,13 +72,13 @@ export function LanguageToggle({ className = "" }) {
 
             {/* ID Button */}
             <Button
-              variant="ghost"
+              variant={currentLang === "id" ? "default" : "ghost"}
               onClick={() => handleSetLang("id")}
               className={cn(
-                "relative z-10 flex-1 h-full p-0 flex items-center justify-center text-xs sm:text-sm font-black tracking-wider transition-colors duration-200 cursor-pointer rounded-full outline-none border-none shadow-none bg-transparent hover:bg-transparent",
+                "relative z-10 flex-1 h-full p-0 flex items-center justify-center text-xs sm:text-sm font-black tracking-wider transition-all duration-200 cursor-pointer rounded-full outline-none border border-transparent shadow-none",
                 currentLang === "id"
-                  ? "text-foreground font-black"
-                  : "text-muted-foreground/70 hover:text-foreground font-bold"
+                  ? "bg-white/90 dark:bg-white/25 text-foreground font-black shadow-xs border-white/40 dark:border-white/20"
+                  : "bg-transparent text-muted-foreground/70 hover:text-foreground hover:bg-white/10 font-bold"
               )}
               aria-label="Bahasa Indonesia"
             >
@@ -87,13 +87,13 @@ export function LanguageToggle({ className = "" }) {
 
             {/* EN Button */}
             <Button
-              variant="ghost"
+              variant={currentLang === "en" ? "default" : "ghost"}
               onClick={() => handleSetLang("en")}
               className={cn(
-                "relative z-10 flex-1 h-full p-0 flex items-center justify-center text-xs sm:text-sm font-black tracking-wider transition-colors duration-200 cursor-pointer rounded-full outline-none border-none shadow-none bg-transparent hover:bg-transparent",
+                "relative z-10 flex-1 h-full p-0 flex items-center justify-center text-xs sm:text-sm font-black tracking-wider transition-all duration-200 cursor-pointer rounded-full outline-none border border-transparent shadow-none",
                 currentLang === "en"
-                  ? "text-foreground font-black"
-                  : "text-muted-foreground/70 hover:text-foreground font-bold"
+                  ? "bg-white/90 dark:bg-white/25 text-foreground font-black shadow-xs border-white/40 dark:border-white/20"
+                  : "bg-transparent text-muted-foreground/70 hover:text-foreground hover:bg-white/10 font-bold"
               )}
               aria-label="English"
             >
