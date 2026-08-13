@@ -88,23 +88,27 @@ function Navbar({ activeSection = "home", scrollToSection }) {
       {/* Top Close Button Row */}
       <div className="flex items-center justify-between">
         <LanguageToggle />
-        <label
-          className="hamburger size-11 sm:size-12 rounded-full glass-panel glass-specular-corner-subtle flex items-center justify-center border border-white/50 dark:border-white/20 bg-white/40 dark:bg-white/10 backdrop-blur-2xl shadow-sm hover:shadow-md hover:border-primary/40 transition-all cursor-pointer select-none text-foreground shrink-0"
-          aria-label="Close Mobile Menu"
+        <Button
+          variant="outline"
+          size="icon"
+          asChild
+          className="hamburger size-11 sm:size-12 rounded-full cursor-pointer p-0 shrink-0"
         >
-          <input
-            type="checkbox"
-            checked={isMobileMenuOpen}
-            onChange={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          />
-          <svg viewBox="0 0 32 32" className="size-6 sm:size-6.5 text-foreground">
-            <path
-              className="line line-top-bottom"
-              d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
-            ></path>
-            <path className="line" d="M7 16 27 16"></path>
-          </svg>
-        </label>
+          <label aria-label="Close Mobile Menu">
+            <input
+              type="checkbox"
+              checked={isMobileMenuOpen}
+              onChange={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            />
+            <svg viewBox="0 0 32 32" className="size-6 sm:size-6.5 text-foreground">
+              <path
+                className="line line-top-bottom"
+                d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+              ></path>
+              <path className="line" d="M7 16 27 16"></path>
+            </svg>
+          </label>
+        </Button>
       </div>
 
       {/* Spacious Centered Nav Links with Apple Liquid Glass Button Styling */}
@@ -168,7 +172,7 @@ function Navbar({ activeSection = "home", scrollToSection }) {
   return (
     <>
       {/* Solid Full-Width Apple Glass Header Bar */}
-      <header className="fixed top-0 left-0 w-full z-40 border-b border-border/30 transition-colors">
+      <header className="fixed top-0 left-0 w-full z-40 transition-colors">
         <nav className="container">
           <div className="flex items-center justify-between py-3.5 sm:py-4 gap-4">
             {/* Logo */}
@@ -223,27 +227,31 @@ function Navbar({ activeSection = "home", scrollToSection }) {
               </Button>
 
               {/* Animated Hamburger Mobile Menu Toggle Button */}
-              <label
-                className="hamburger lg:hidden size-11 sm:size-12 rounded-full glass-panel glass-specular-corner-subtle flex items-center justify-center border border-white/50 dark:border-white/20 bg-white/40 dark:bg-white/10 backdrop-blur-2xl shadow-sm hover:shadow-md hover:border-primary/40 transition-all cursor-pointer select-none text-foreground shrink-0"
-                aria-label="Toggle Mobile Menu"
+              <Button
+                variant="outline"
+                size="icon"
+                asChild
+                className="hamburger lg:hidden size-11 sm:size-12 rounded-full cursor-pointer p-0 shrink-0"
               >
-                <input
-                  type="checkbox"
-                  checked={isMobileMenuOpen}
-                  onChange={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                />
-                <svg viewBox="0 0 32 32" className="size-6 sm:size-6.5 text-foreground">
-                  <path
-                    className="line line-top-bottom"
-                    d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
-                  ></path>
-                  <path className="line" d="M7 16 27 16"></path>
-                </svg>
-              </label>
+                <label aria-label="Toggle Mobile Menu">
+                  <input
+                    type="checkbox"
+                    checked={isMobileMenuOpen}
+                    onChange={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  />
+                  <svg viewBox="0 0 32 32" className="size-6 sm:size-6.5 text-foreground">
+                    <path
+                      className="line line-top-bottom"
+                      d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+                    ></path>
+                    <path className="line" d="M7 16 27 16"></path>
+                  </svg>
+                </label>
+              </Button>
 
               {/* Download CV (Desktop with Vibrant Loading Spinner) */}
               <Button
-                size="md"
+                size="lg"
                 onClick={handleDownloadCV}
                 className={`hidden lg:flex gap-2 shadow-md transition-all duration-300 ${isDownloadingCV ? "pointer-events-none cursor-wait" : ""
                   } ${downloadSuccess ? "bg-emerald-500/20 border-emerald-500/50 text-emerald-600 dark:text-emerald-400 font-bold" : ""
