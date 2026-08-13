@@ -35,13 +35,12 @@ export function LanguageToggle({ className = "" }) {
           <TooltipTrigger asChild>
             <Button
               variant="outline"
-              size="icon"
               onClick={() => setIsOpen(true)}
-              className="group size-10 rounded-full shadow-sm relative cursor-pointer"
+              className="group h-10 px-3 rounded-full shadow-sm flex items-center gap-1.5 cursor-pointer"
               aria-label="Select Language"
             >
-              <Languages className="size-5 transition-transform duration-300 group-hover:rotate-12 text-foreground" />
-              <span className="absolute -bottom-0.5 -right-0.5 px-1 py-0.2 text-[9px] font-black uppercase bg-primary text-primary-foreground rounded-full leading-none shadow-xs border border-background">
+              <Languages className="size-4 text-primary group-hover:rotate-12 transition-transform duration-300" />
+              <span className="text-xs font-black uppercase tracking-wider text-foreground">
                 {currentLang}
               </span>
             </Button>
