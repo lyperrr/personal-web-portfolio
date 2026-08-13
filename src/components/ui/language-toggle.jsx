@@ -55,15 +55,17 @@ export function LanguageToggle({ className = "" }) {
           className="group relative inline-flex items-center h-11 sm:h-12 gap-1.5 p-1 rounded-full glass-panel glass-specular-corner-subtle border border-white/60 dark:border-white/20 bg-white/40 dark:bg-white/10 backdrop-blur-2xl shadow-lg select-none transition-all duration-300 animate-in fade-in zoom-in-95"
           aria-label="Language Selector"
         >
-          {/* Glossy Icon Sphere */}
-          <button
-            type="button"
+          {/* Glossy Icon Sphere Button */}
+          <Button
+            variant="ghost"
+            size="icon"
             onClick={() => setIsOpen(false)}
-            className="relative flex items-center justify-center size-9 sm:size-10 rounded-full bg-white/60 dark:bg-white/15 backdrop-blur-md border border-white/80 dark:border-white/25 shadow-xs text-primary shrink-0 ml-0.5 hover:scale-105 transition-transform duration-300 overflow-hidden cursor-pointer"
+            className="relative size-9 sm:size-10 rounded-full text-primary shrink-0 ml-0.5 hover:scale-105 transition-transform duration-300 p-0 border-none shadow-none"
+            aria-label="Close Language Selector"
           >
             <Languages className="size-4.5 sm:size-5 z-10" />
             <div className="absolute inset-0 rounded-full border border-white/90 dark:border-white/40 pointer-events-none [mask-image:linear-gradient(135deg,white_0%,transparent_55%)]" />
-          </button>
+          </Button>
 
           {/* Inner Liquid Glass Channel / Track */}
           <div className="relative flex items-center bg-black/5 dark:bg-white/5 backdrop-blur-md p-1 rounded-full border border-white/30 dark:border-white/10 w-26 sm:w-28 h-9 sm:h-10">
@@ -78,11 +80,11 @@ export function LanguageToggle({ className = "" }) {
             </div>
 
             {/* ID Button */}
-            <button
-              type="button"
+            <Button
+              variant="ghost"
               onClick={() => handleSetLang("id")}
               className={cn(
-                "relative z-10 flex-1 h-full flex items-center justify-center text-xs sm:text-sm font-black tracking-wider transition-colors duration-200 cursor-pointer rounded-full outline-none",
+                "relative z-10 flex-1 h-full p-0 flex items-center justify-center text-xs sm:text-sm font-black tracking-wider transition-colors duration-200 cursor-pointer rounded-full outline-none border-none shadow-none bg-transparent hover:bg-transparent",
                 currentLang === "id"
                   ? "text-foreground font-black"
                   : "text-muted-foreground/70 hover:text-foreground font-bold"
@@ -90,14 +92,14 @@ export function LanguageToggle({ className = "" }) {
               aria-label="Bahasa Indonesia"
             >
               ID
-            </button>
+            </Button>
 
             {/* EN Button */}
-            <button
-              type="button"
+            <Button
+              variant="ghost"
               onClick={() => handleSetLang("en")}
               className={cn(
-                "relative z-10 flex-1 h-full flex items-center justify-center text-xs sm:text-sm font-black tracking-wider transition-colors duration-200 cursor-pointer rounded-full outline-none",
+                "relative z-10 flex-1 h-full p-0 flex items-center justify-center text-xs sm:text-sm font-black tracking-wider transition-colors duration-200 cursor-pointer rounded-full outline-none border-none shadow-none bg-transparent hover:bg-transparent",
                 currentLang === "en"
                   ? "text-foreground font-black"
                   : "text-muted-foreground/70 hover:text-foreground font-bold"
@@ -105,7 +107,7 @@ export function LanguageToggle({ className = "" }) {
               aria-label="English"
             >
               EN
-            </button>
+            </Button>
           </div>
         </div>
       )}
