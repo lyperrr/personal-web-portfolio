@@ -90,7 +90,7 @@ function Navbar({ activeSection = "home", scrollToSection }) {
       <div className="flex items-center justify-between pt-2">
         <LanguageToggle />
         <label
-          className="hamburger size-10 rounded-full glass-panel flex items-center justify-center border border-white/50 dark:border-white/20 bg-white/40 dark:bg-white/10 backdrop-blur-2xl shadow-sm hover:shadow-md transition-all cursor-pointer select-none text-foreground"
+          className="hamburger size-10 rounded-full glass-panel glass-specular-corner-subtle flex items-center justify-center border border-white/50 dark:border-white/20 bg-white/40 dark:bg-white/10 backdrop-blur-2xl shadow-sm hover:shadow-md hover:border-primary/40 transition-all cursor-pointer select-none text-foreground shrink-0"
           aria-label="Close Mobile Menu"
         >
           <input
@@ -98,7 +98,7 @@ function Navbar({ activeSection = "home", scrollToSection }) {
             checked={isMobileMenuOpen}
             onChange={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           />
-          <svg viewBox="0 0 32 32" className="size-6 text-foreground">
+          <svg viewBox="0 0 32 32" className="size-5 text-foreground">
             <path
               className="line line-top-bottom"
               d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
@@ -228,7 +228,7 @@ function Navbar({ activeSection = "home", scrollToSection }) {
 
               {/* Animated Hamburger Mobile Menu Toggle Button */}
               <label
-                className="hamburger lg:hidden size-10 rounded-full glass-panel flex items-center justify-center border border-white/50 dark:border-white/20 bg-white/40 dark:bg-white/10 backdrop-blur-2xl shadow-sm hover:shadow-md transition-all cursor-pointer select-none text-foreground"
+                className="hamburger lg:hidden size-10 rounded-full glass-panel glass-specular-corner-subtle flex items-center justify-center border border-white/50 dark:border-white/20 bg-white/40 dark:bg-white/10 backdrop-blur-2xl shadow-sm hover:shadow-md hover:border-primary/40 transition-all cursor-pointer select-none text-foreground shrink-0"
                 aria-label="Toggle Mobile Menu"
               >
                 <input
@@ -236,7 +236,7 @@ function Navbar({ activeSection = "home", scrollToSection }) {
                   checked={isMobileMenuOpen}
                   onChange={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 />
-                <svg viewBox="0 0 32 32" className="size-6 text-foreground">
+                <svg viewBox="0 0 32 32" className="size-5 text-foreground">
                   <path
                     className="line line-top-bottom"
                     d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
