@@ -1,5 +1,7 @@
 import React from "react";
-import { Text, Badge, FadeIn } from "@/components/ui";
+import { Text } from "./text";
+import { Badge } from "./badge";
+import { FadeIn } from "./fade-in";
 import { cn } from "@/lib/utils";
 
 /**

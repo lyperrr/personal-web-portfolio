@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { usePreloader } from "@/context/PreloaderContext";
 
 /**
  * FadeIn component for entrance animations when elements enter viewport.
@@ -14,6 +15,8 @@ export function FadeIn({
   amount = 0.2,
   ...props
 }) {
+  const { isPreloaderFinished } = usePreloader();
+
   const getVariants = () => {
     switch (direction) {
       case "up":
@@ -52,7 +55,7 @@ export function FadeIn({
   return (
     <motion.div
       initial="hidden"
-      whileInView="visible"
+      whileInView={isPreloaderFinished ? "visible" : "hidden"}
       viewport={{ once, amount }}
       transition={{
         duration,
@@ -80,6 +83,8 @@ export function StaggerContainer({
   amount = 0.1,
   ...props
 }) {
+  const { isPreloaderFinished } = usePreloader();
+
   const variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -94,7 +99,7 @@ export function StaggerContainer({
   return (
     <motion.div
       initial="hidden"
-      whileInView="visible"
+      whileInView={isPreloaderFinished ? "visible" : "hidden"}
       viewport={{ once, amount }}
       variants={variants}
       className={className}

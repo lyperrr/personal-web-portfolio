@@ -13,4 +13,5 @@ export * from "./liquid-background";
 export * from "./liquid-tabs";
 export * from "./language-toggle";
 export * from "./fade-in";
+export * from "./initial-preloader";
 export { default as WhatsAppWidget } from "./whatsapp-widget";
