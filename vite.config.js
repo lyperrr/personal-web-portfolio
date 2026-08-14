@@ -33,6 +33,9 @@ export default defineConfig({
             if (id.includes("i18next") || id.includes("react-i18next")) {
               return "vendor-i18n";
             }
+            if (id.includes("framer-motion") || id.includes("motion")) {
+              return "vendor-motion";
+            }
             if (id.includes("@radix-ui")) {
               return "vendor-radix";
             }

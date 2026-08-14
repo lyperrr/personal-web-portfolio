@@ -9,6 +9,7 @@ import {
   Card,
   CardContent,
   SectionHeader,
+  FadeIn,
 } from "@/components/ui";
 import contactData from "@/data/contact.json";
 import { Mail, MapPin, Clock, Sparkles } from "lucide-react";
@@ -82,7 +83,7 @@ const ContactSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 max-w-5xl mx-auto">
           {/* Left Column: Info Cards using Apple Liquid Glass */}
-          <div className="lg:col-span-2 space-y-6">
+          <FadeIn direction="left" duration={0.6} className="lg:col-span-2 space-y-6">
             <Card className="glass-panel shadow-xl">
               <CardContent className="p-5 sm:p-8 space-y-5">
                 {/* Email Row */}
@@ -136,128 +137,130 @@ const ContactSection = () => {
                 </div>
               </CardContent>
             </Card>
-          </div>
+          </FadeIn>
 
           {/* Right Column: Contact Form using Apple Liquid Glass */}
-          <Card className="lg:col-span-3 glass-panel shadow-xl">
-            <CardContent className="p-5 sm:p-8">
-              <form onSubmit={handleSendWhatsApp} className="space-y-5">
-                {/* Template Messages Selector */}
-                {whatsappTemplates.length > 0 && (
-                  <div className="p-3 sm:p-4 rounded-2xl bg-white/20 dark:bg-white/5 border border-white/20 dark:border-white/10 space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
-                        <Sparkles className="size-3.5 text-amber-500" /> {t("templatesHeader")}
-                      </span>
-                      {selectedTemplateId && (
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setSelectedTemplateId(null);
-                            setFormData((prev) => ({ ...prev, subject: "", message: "" }));
-                          }}
-                          className="text-[11px] text-muted-foreground hover:text-foreground underline cursor-pointer"
-                        >
-                          {t("reset")}
-                        </button>
-                      )}
-                    </div>
-                    <div className="flex flex-wrap gap-2 pt-1">
-                      {whatsappTemplates.map((template) => {
-                        const isSelected = selectedTemplateId === template.id;
-                        return (
+          <FadeIn direction="right" duration={0.6} className="lg:col-span-3">
+            <Card className="glass-panel shadow-xl">
+              <CardContent className="p-5 sm:p-8">
+                <form onSubmit={handleSendWhatsApp} className="space-y-5">
+                  {/* Template Messages Selector */}
+                  {whatsappTemplates.length > 0 && (
+                    <div className="p-3 sm:p-4 rounded-2xl bg-white/20 dark:bg-white/5 border border-white/20 dark:border-white/10 space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+                          <Sparkles className="size-3.5 text-amber-500" /> {t("templatesHeader")}
+                        </span>
+                        {selectedTemplateId && (
                           <button
-                            key={template.id}
                             type="button"
-                            onClick={() => handleSelectTemplate(template)}
-                            className={`text-xs font-semibold px-3 py-1.5 rounded-full transition-all duration-200 border cursor-pointer ${
-                              isSelected
-                                ? "bg-primary text-primary-foreground border-primary shadow-sm scale-105"
-                                : "bg-white/40 dark:bg-white/10 hover:bg-white/60 dark:hover:bg-white/20 text-foreground border-white/30 dark:border-white/10"
-                            }`}
+                            onClick={() => {
+                              setSelectedTemplateId(null);
+                              setFormData((prev) => ({ ...prev, subject: "", message: "" }));
+                            }}
+                            className="text-[11px] text-muted-foreground hover:text-foreground underline cursor-pointer"
                           >
-                            {template.label}
+                            {t("reset")}
                           </button>
-                        );
-                      })}
+                        )}
+                      </div>
+                      <div className="flex flex-wrap gap-2 pt-1">
+                        {whatsappTemplates.map((template) => {
+                          const isSelected = selectedTemplateId === template.id;
+                          return (
+                            <button
+                              key={template.id}
+                              type="button"
+                              onClick={() => handleSelectTemplate(template)}
+                              className={`text-xs font-semibold px-3 py-1.5 rounded-full transition-all duration-200 border cursor-pointer ${
+                                isSelected
+                                  ? "bg-primary text-primary-foreground border-primary shadow-sm scale-105"
+                                  : "bg-white/40 dark:bg-white/10 hover:bg-white/60 dark:hover:bg-white/20 text-foreground border-white/30 dark:border-white/10"
+                              }`}
+                            >
+                              {template.label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-semibold uppercase text-muted-foreground mb-1.5 ml-1">
+                        {t("form.nameLabel")}
+                      </label>
+                      <Input
+                        type="text"
+                        name="name"
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder={t("form.namePlaceholder")}
+                        className="rounded-2xl"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold uppercase text-muted-foreground mb-1.5 ml-1">
+                        {t("form.emailLabel")}
+                      </label>
+                      <Input
+                        type="email"
+                        name="email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder={t("form.emailPlaceholder")}
+                        className="rounded-2xl"
+                      />
                     </div>
                   </div>
-                )}
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-semibold uppercase text-muted-foreground mb-1.5 ml-1">
-                      {t("form.nameLabel")}
+                      {t("form.subjectLabel")}
                     </label>
                     <Input
                       type="text"
-                      name="name"
-                      required
-                      value={formData.name}
+                      name="subject"
+                      value={formData.subject}
                       onChange={handleChange}
-                      placeholder={t("form.namePlaceholder")}
+                      placeholder={t("form.subjectPlaceholder")}
                       className="rounded-2xl"
                     />
                   </div>
+
                   <div>
                     <label className="block text-xs font-semibold uppercase text-muted-foreground mb-1.5 ml-1">
-                      {t("form.emailLabel")}
+                      {t("form.messageLabel")}
                     </label>
-                    <Input
-                      type="email"
-                      name="email"
+                    <Textarea
+                      name="message"
                       required
-                      value={formData.email}
+                      rows={4}
+                      value={formData.message}
                       onChange={handleChange}
-                      placeholder={t("form.emailPlaceholder")}
+                      placeholder={t("form.messagePlaceholder")}
                       className="rounded-2xl"
                     />
                   </div>
-                </div>
 
-                <div>
-                  <label className="block text-xs font-semibold uppercase text-muted-foreground mb-1.5 ml-1">
-                    {t("form.subjectLabel")}
-                  </label>
-                  <Input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    placeholder={t("form.subjectPlaceholder")}
-                    className="rounded-2xl"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold uppercase text-muted-foreground mb-1.5 ml-1">
-                    {t("form.messageLabel")}
-                  </label>
-                  <Textarea
-                    name="message"
-                    required
-                    rows={4}
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder={t("form.messagePlaceholder")}
-                    className="rounded-2xl"
-                  />
-                </div>
-
-                {/* Single Submit Button: Send via WhatsApp */}
-                <div className="pt-2">
-                  <Button
-                    type="submit"
-                    size="xl"
-                    className="w-full gap-2.5 shadow-lg bg-emerald-600 hover:bg-emerald-500 text-white border-none py-4 text-base font-semibold cursor-pointer"
-                  >
-                    <WhatsAppIcon className="size-5 fill-current" />
-                    {t("form.submitWhatsApp")}
-                  </Button>
-                </div>
-              </form>
-            </CardContent>
-          </Card>
+                  {/* Single Submit Button: Send via WhatsApp */}
+                  <div className="pt-2">
+                    <Button
+                      type="submit"
+                      size="xl"
+                      className="w-full gap-2.5 shadow-lg bg-emerald-600 hover:bg-emerald-500 text-white border-none py-4 text-base font-semibold cursor-pointer"
+                    >
+                      <WhatsAppIcon className="size-5 fill-current" />
+                      {t("form.submitWhatsApp")}
+                    </Button>
+                  </div>
+                </form>
+              </CardContent>
+            </Card>
+          </FadeIn>
         </div>
       </div>
     </section>

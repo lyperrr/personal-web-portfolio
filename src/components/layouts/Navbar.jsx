@@ -5,6 +5,7 @@ import { Button, LiquidTabs, LanguageToggle } from "@/components/ui";
 import { Menu, X, Download, Sun, MoonStar, Loader2, Check } from "lucide-react";
 import { toggleTheme } from "@/main";
 import { useTranslation } from "react-i18next";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Navbar({ activeSection = "home", scrollToSection }) {
   const { t } = useTranslation(["nav"]);
@@ -79,94 +80,124 @@ function Navbar({ activeSection = "home", scrollToSection }) {
   };
 
   const mobileMenuOverlay = (
-    <div
-      className={`lg:hidden fixed inset-0 z-[99999] border w-full h-full min-h-[100dvh] backdrop-blur-3xl bg-background/90 dark:bg-background/95 flex flex-col justify-between container transition-all duration-300 ease-in-out overflow-y-auto py-4 ${isMobileMenuOpen
-        ? "translate-y-0 opacity-100 pointer-events-auto"
-        : "-translate-y-full opacity-0 pointer-events-none"
-        }`}
-    >
-      {/* Top Close Button Row */}
-      <div className="flex items-center justify-between">
-        <LanguageToggle />
-        <Button
-          variant="outline"
-          size="icon"
-          asChild
-          className="hamburger size-11 sm:size-12"
+    <AnimatePresence>
+      {isMobileMenuOpen && (
+        <motion.div
+          key="mobile-nav-overlay"
+          initial={{ opacity: 0, y: "-100%" }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: "-100%" }}
+          transition={{ duration: 0.38, ease: [0.32, 0.72, 0, 1] }}
+          className="lg:hidden fixed inset-0 z-[99999] border w-full h-full min-h-[100dvh] backdrop-blur-3xl bg-background/90 dark:bg-background/95 flex flex-col justify-between container overflow-y-auto py-4"
         >
-          <label aria-label="Close Mobile Menu">
-            <input
-              type="checkbox"
-              checked={isMobileMenuOpen}
-              onChange={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            />
-            <svg viewBox="0 0 32 32" className="size-6 sm:size-6.5 text-foreground">
-              <path
-                className="line line-top-bottom"
-                d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
-              ></path>
-              <path className="line" d="M7 16 27 16"></path>
-            </svg>
-          </label>
-        </Button>
-      </div>
+          {/* Top Close Button Row */}
+          <div className="flex items-center justify-between">
+            <LanguageToggle />
+            <Button
+              variant="outline"
+              size="icon"
+              asChild
+              className="hamburger size-11 sm:size-12"
+            >
+              <label aria-label="Close Mobile Menu">
+                <input
+                  type="checkbox"
+                  checked={isMobileMenuOpen}
+                  onChange={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                />
+                <svg viewBox="0 0 32 32" className="size-6 sm:size-6.5 text-foreground">
+                  <path
+                    className="line line-top-bottom"
+                    d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+                  ></path>
+                  <path className="line" d="M7 16 27 16"></path>
+                </svg>
+              </label>
+            </Button>
+          </div>
 
-      {/* Spacious Centered Nav Links with Apple Liquid Glass Button Styling */}
-      <div className="flex-1 flex flex-col justify-center items-center my-auto py-6">
-        <ul className="flex flex-col items-center gap-3.5 w-full max-w-xs sm:max-w-sm">
-          {navLinks.map((link) => {
-            const isActive = activeSection === link.id;
-            return (
-              <li key={link.id} className="w-full text-center">
-                <Button
-                  asChild
-                  variant={isActive ? "ghost" : "outline"}
-                  size="xl"
-                  className={`w-full text-xl font-bold justify-center py-4 h-auto border border-white/30 dark:border-white/15 backdrop-blur-2xl transition-all duration-300 ${isActive ? "shadow-xl scale-105" : ""
-                    }`}
-                >
-                  <a
-                    href={`#${link.id}`}
-                    onClick={(e) => handleNavClick(e, link.id)}
+          {/* Spacious Centered Nav Links with Staggered Framer Motion Entrance */}
+          <div className="flex-1 flex flex-col justify-center items-center my-auto py-6">
+            <ul className="flex flex-col items-center gap-3.5 w-full max-w-xs sm:max-w-sm">
+              {navLinks.map((link, idx) => {
+                const isActive = activeSection === link.id;
+                return (
+                  <motion.li
+                    key={link.id}
+                    initial={{ opacity: 0, y: 24, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{
+                      delay: 0.1 + idx * 0.05,
+                      duration: 0.3,
+                      ease: "easeOut",
+                    }}
+                    className="w-full text-center"
                   >
-                    {link.name}
-                  </a>
-                </Button>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+                    <Button
+                      asChild
+                      variant={isActive ? "ghost" : "outline"}
+                      size="xl"
+                      className={`w-full text-xl font-bold justify-center py-4 h-auto border border-white/30 dark:border-white/15 backdrop-blur-2xl transition-all duration-300 ${
+                        isActive ? "shadow-xl scale-105" : ""
+                      }`}
+                    >
+                      <a
+                        href={`#${link.id}`}
+                        onClick={(e) => handleNavClick(e, link.id)}
+                      >
+                        {link.name}
+                      </a>
+                    </Button>
+                  </motion.li>
+                );
+              })}
+            </ul>
+          </div>
 
-      {/* Bottom Download CV Action Button with Vibrant Loading Spinner */}
-      <div className="w-full max-w-xs sm:max-w-sm mx-auto">
-        <Button
-          variant="outline"
-          size="xl"
-          onClick={handleDownloadCV}
-          className={`w-full text-base shadow-xl gap-2.5 transition-all duration-300 ${isDownloadingCV ? "pointer-events-none cursor-wait" : ""
-            } ${downloadSuccess ? "bg-emerald-500/20 border-emerald-500/50 text-emerald-600 dark:text-emerald-400 font-bold" : ""
-            }`}
-        >
-          {isDownloadingCV ? (
-            <>
-              <span className="font-semibold text-foreground">Preparing CV...</span>
-              <Loader2 className="size-5 animate-spin text-primary" />
-            </>
-          ) : downloadSuccess ? (
-            <>
-              <span>Downloaded!</span>
-              <Check className="size-5 text-emerald-500" />
-            </>
-          ) : (
-            <>
-              <span>Download CV</span>
-              <Download className="size-5" />
-            </>
-          )}
-        </Button>
-      </div>
-    </div>
+          {/* Bottom Download CV Action Button with Animated Entrance */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.1 + navLinks.length * 0.05,
+              duration: 0.3,
+              ease: "easeOut",
+            }}
+            className="w-full max-w-xs sm:max-w-sm mx-auto"
+          >
+            <Button
+              variant="outline"
+              size="xl"
+              onClick={handleDownloadCV}
+              className={`w-full text-base shadow-xl gap-2.5 transition-all duration-300 ${
+                isDownloadingCV ? "pointer-events-none cursor-wait" : ""
+              } ${
+                downloadSuccess
+                  ? "bg-emerald-500/20 border-emerald-500/50 text-emerald-600 dark:text-emerald-400 font-bold"
+                  : ""
+              }`}
+            >
+              {isDownloadingCV ? (
+                <>
+                  <span className="font-semibold text-foreground">Preparing CV...</span>
+                  <Loader2 className="size-5 animate-spin text-primary" />
+                </>
+              ) : downloadSuccess ? (
+                <>
+                  <span>Downloaded!</span>
+                  <Check className="size-5 text-emerald-500" />
+                </>
+              ) : (
+                <>
+                  <span>Download CV</span>
+                  <Download className="size-5" />
+                </>
+              )}
+            </Button>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 
   return (
@@ -253,9 +284,13 @@ function Navbar({ activeSection = "home", scrollToSection }) {
               <Button
                 size="lg"
                 onClick={handleDownloadCV}
-                className={`hidden lg:flex gap-2 shadow-md transition-all duration-300 ${isDownloadingCV ? "pointer-events-none cursor-wait" : ""
-                  } ${downloadSuccess ? "bg-emerald-500/20 border-emerald-500/50 text-emerald-600 dark:text-emerald-400 font-bold" : ""
-                  }`}
+                className={`hidden lg:flex gap-2 shadow-md transition-all duration-300 ${
+                  isDownloadingCV ? "pointer-events-none cursor-wait" : ""
+                } ${
+                  downloadSuccess
+                    ? "bg-emerald-500/20 border-emerald-500/50 text-emerald-600 dark:text-emerald-400 font-bold"
+                    : ""
+                }`}
               >
                 {isDownloadingCV ? (
                   <>

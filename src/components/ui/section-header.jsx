@@ -1,9 +1,9 @@
 import React from "react";
-import { Text, Badge } from "@/components/ui";
+import { Text, Badge, FadeIn } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 /**
- * Reusable SectionHeader component for page sections.
+ * Reusable SectionHeader component for page sections with built-in entrance animation.
  * @param {string|number} [number] - Watermark background number (e.g. "01", "02").
  * @param {string} [title] - Main badge text/title (e.g. "Skills & Tech Stack").
  * @param {string} [description] - Optional description text displayed under the badge.
@@ -22,7 +22,9 @@ export function SectionHeader({
   const isRight = align === "right";
 
   return (
-    <div
+    <FadeIn
+      direction="down"
+      duration={0.5}
       className={cn(
         "flex flex-col relative space-y-2 select-none",
         isLeft
@@ -63,7 +65,7 @@ export function SectionHeader({
           {description}
         </Text>
       )}
-    </div>
+    </FadeIn>
   );
 }
 

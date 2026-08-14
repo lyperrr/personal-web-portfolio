@@ -13,6 +13,7 @@ import {
   CardContent,
   Title,
   Text,
+  FadeIn,
 } from "@/components/ui";
 import portfolioData from "@/data/portfolio.json";
 import {
@@ -103,124 +104,128 @@ export function PortfolioDetailPage() {
       <div className="container max-w-6xl mx-auto space-y-12 px-4 sm:px-6">
         
         {/* Apple Liquid Glass Breadcrumb Navigation */}
-        <div className="flex items-center justify-between flex-wrap gap-4">
-          <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink onClick={() => navigate("/")}>
-                  <Home className="size-3.5 text-primary" />
-                  <span>Home</span>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
+        <FadeIn direction="down" delay={0.1}>
+          <div className="flex items-center justify-between flex-wrap gap-4">
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink onClick={() => navigate("/")}>
+                    <Home className="size-3.5 text-primary" />
+                    <span>Home</span>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
 
-              <BreadcrumbSeparator />
+                <BreadcrumbSeparator />
 
-              <BreadcrumbItem>
-                <BreadcrumbLink onClick={() => navigate("/#portfolio")}>
-                  <span>Portfolio</span>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
+                <BreadcrumbItem>
+                  <BreadcrumbLink onClick={() => navigate("/#portfolio")}>
+                    <span>Portfolio</span>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
 
-              <BreadcrumbSeparator />
+                <BreadcrumbSeparator />
 
-              <BreadcrumbItem>
-                <BreadcrumbPage>{project.title}</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
+                <BreadcrumbItem>
+                  <BreadcrumbPage>{project.title}</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
 
-          {/* Quick Back Button */}
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => navigate("/#portfolio")}
-            className="gap-2 text-xs font-semibold border border-white/30 dark:border-white/10 glass-panel shadow-xs"
-          >
-            <ArrowLeft className="size-3.5" />
-            Back to All Projects
-          </Button>
-        </div>
+            {/* Quick Back Button */}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => navigate("/#portfolio")}
+              className="gap-2 text-xs font-semibold border border-white/30 dark:border-white/10 glass-panel shadow-xs"
+            >
+              <ArrowLeft className="size-3.5" />
+              Back to All Projects
+            </Button>
+          </div>
+        </FadeIn>
 
         {/* Hero Banner Master Card (Apple Liquid Glass) */}
-        <Card className="rounded-[2.5rem] sm:rounded-[3.5rem] glass-panel p-6 sm:p-12 shadow-2xl">
-          <div className="space-y-8 relative z-10">
-            
-            {/* Top Category Badge & Featured Tag */}
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-center gap-2.5">
-                <Badge variant="ghost" className="text-xs px-4 py-1.5 border border-primary/30 text-primary bg-primary/10">
-                  <Layers className="size-3.5" />
-                  {project.category}
-                </Badge>
-                {project.featured && (
-                  <Badge className="bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 text-xs px-3 py-1 gap-1">
-                    <Sparkles className="size-3.5" />
-                    Featured Case Study
+        <FadeIn direction="up" delay={0.2} duration={0.6}>
+          <Card className="rounded-[2.5rem] sm:rounded-[3.5rem] glass-panel p-6 sm:p-12 shadow-2xl">
+            <div className="space-y-8 relative z-10">
+              
+              {/* Top Category Badge & Featured Tag */}
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div className="flex items-center gap-2.5">
+                  <Badge variant="ghost" className="text-xs px-4 py-1.5 border border-primary/30 text-primary bg-primary/10">
+                    <Layers className="size-3.5" />
+                    {project.category}
                   </Badge>
-                )}
+                  {project.featured && (
+                    <Badge className="bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 text-xs px-3 py-1 gap-1">
+                      <Sparkles className="size-3.5" />
+                      Featured Case Study
+                    </Badge>
+                  )}
+                </div>
+
+                {/* Date / Status Tag */}
+                <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground px-3.5 py-1 rounded-full glass-panel glass-specular-corner-subtle">
+                  <Calendar className="size-3.5 text-primary" />
+                  <span>2025 - Present</span>
+                </div>
               </div>
 
-              {/* Date / Status Tag */}
-              <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground px-3.5 py-1 rounded-full glass-panel glass-specular-corner-subtle">
-                <Calendar className="size-3.5 text-primary" />
-                <span>2025 - Present</span>
+              {/* Project Title & Tagline */}
+              <div className="space-y-4 max-w-3xl">
+                <Title level={1} className="text-3xl sm:text-5xl font-black tracking-tight text-foreground leading-tight">
+                  {project.title}
+                </Title>
+                <Text variant="secondary" className="text-lg sm:text-xl font-medium text-foreground/80 leading-relaxed">
+                  {project.tagline || project.description}
+                </Text>
               </div>
-            </div>
 
-            {/* Project Title & Tagline */}
-            <div className="space-y-4 max-w-3xl">
-              <Title level={1} className="text-3xl sm:text-5xl font-black tracking-tight text-foreground leading-tight">
-                {project.title}
-              </Title>
-              <Text variant="secondary" className="text-lg sm:text-xl font-medium text-foreground/80 leading-relaxed">
-                {project.tagline || project.description}
-              </Text>
-            </div>
-
-            {/* CTA Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <Button
-                asChild
-                size="lg"
-                className="gap-2 shadow-lg hover:shadow-primary/30 px-6"
-              >
-                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="size-4.5" />
-                  Visit Live Demo
-                </a>
-              </Button>
-
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="gap-2 shadow-md border-white/40 dark:border-white/20 px-6"
-              >
-                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                  <Github className="size-4.5" />
-                  View GitHub Source
-                </a>
-              </Button>
-            </div>
-
-            {/* Tech Stack Tags Row */}
-            <div className="pt-4 border-t border-white/15 dark:border-white/10 flex flex-wrap items-center gap-2">
-              <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground mr-2">
-                Core Stack:
-              </span>
-              {project.tags.map((tag, idx) => (
-                <Badge
-                  key={idx}
-                  variant="outline"
-                  className="px-3.5 py-1 text-xs bg-white/30 dark:bg-white/10 backdrop-blur-md text-foreground border-white/20 dark:border-white/10"
+              {/* CTA Action Buttons */}
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <Button
+                  asChild
+                  size="lg"
+                  className="gap-2 shadow-lg hover:shadow-primary/30 px-6"
                 >
-                  {tag}
-                </Badge>
-              ))}
-            </div>
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="size-4.5" />
+                    Visit Live Demo
+                  </a>
+                </Button>
 
-          </div>
-        </Card>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="gap-2 shadow-md border-white/40 dark:border-white/20 px-6"
+                >
+                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                    <Github className="size-4.5" />
+                    View GitHub Source
+                  </a>
+                </Button>
+              </div>
+
+              {/* Tech Stack Tags Row */}
+              <div className="pt-4 border-t border-white/15 dark:border-white/10 flex flex-wrap items-center gap-2">
+                <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground mr-2">
+                  Core Stack:
+                </span>
+                {project.tags.map((tag, idx) => (
+                  <Badge
+                    key={idx}
+                    variant="outline"
+                    className="px-3.5 py-1 text-xs bg-white/30 dark:bg-white/10 backdrop-blur-md text-foreground border-white/20 dark:border-white/10"
+                  >
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+
+            </div>
+          </Card>
+        </FadeIn>
 
         {/* Impact Metrics Grid (4 Key Highlight Stats Cards) */}
         {project.metrics && project.metrics.length > 0 && (

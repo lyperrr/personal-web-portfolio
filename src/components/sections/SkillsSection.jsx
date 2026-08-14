@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Title, Text, Card, CardContent, SectionHeader, LiquidTabs, Button } from "@/components/ui";
+import { Title, Text, Card, CardContent, SectionHeader, LiquidTabs, Button, StaggerContainer, StaggerItem } from "@/components/ui";
 import skillsData from "@/data/skills.json";
 import { useTranslation } from "react-i18next";
 import {
@@ -100,91 +100,90 @@ const SkillsSection = () => {
         />
 
         {/* Skills Glass Cards Grid (Limited to max 8 initially) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <StaggerContainer key={activeCategory} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {displayedSkills.map((skill) => {
             const IconComponent = ICON_MAP[skill.iconName] || Code;
 
             return (
-              <Card
-                key={skill.id}
-                className="hover:border-primary/50"
-              >
-                <CardContent className="p-6 flex flex-col justify-between h-full">
-                  <div>
-                    {/* Skill Card Header: Logo slot & Level badge */}
-                    <div className="flex items-start justify-between gap-4 mb-4">
-                      {/* Dedicated Logo / Icon Container */}
-                      <div className="size-14 rounded-2xl bg-white/50 dark:bg-white/10 border border-white/40 dark:border-white/15 flex items-center justify-center p-3 group-hover:border-primary/50 group-hover:scale-105 transition-all duration-300 shadow-sm overflow-hidden shrink-0">
-                        {skill.logo ? (
-                          <img
-                            src={skill.logo}
-                            alt={`${skill.name} logo`}
-                            loading="lazy"
-                            decoding="async"
-                            className={`size-full object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-110 ${
-                              skill.id === "git" || skill.id === "nextjs" ? "dark:invert" : ""
-                            }`}
-                          />
-                        ) : (
-                          <IconComponent className="size-7 text-primary group-hover:rotate-6 transition-transform duration-300" />
-                        )}
+              <StaggerItem key={skill.id}>
+                <Card className="hover:border-primary/50 h-full">
+                  <CardContent className="p-6 flex flex-col justify-between h-full">
+                    <div>
+                      {/* Skill Card Header: Logo slot & Level badge */}
+                      <div className="flex items-start justify-between gap-4 mb-4">
+                        {/* Dedicated Logo / Icon Container */}
+                        <div className="size-14 rounded-2xl bg-white/50 dark:bg-white/10 border border-white/40 dark:border-white/15 flex items-center justify-center p-3 group-hover:border-primary/50 group-hover:scale-105 transition-all duration-300 shadow-sm overflow-hidden shrink-0">
+                          {skill.logo ? (
+                            <img
+                              src={skill.logo}
+                              alt={`${skill.name} logo`}
+                              loading="lazy"
+                              decoding="async"
+                              className={`size-full object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-110 ${
+                                skill.id === "git" || skill.id === "nextjs" ? "dark:invert" : ""
+                              }`}
+                            />
+                          ) : (
+                            <IconComponent className="size-7 text-primary group-hover:rotate-6 transition-transform duration-300" />
+                          )}
+                        </div>
+
+                        <span
+                          className={`text-xs font-semibold px-3 py-1 rounded-full border ${getLevelBadgeVariant(
+                            skill.level
+                          )}`}
+                        >
+                          {skill.level}
+                        </span>
                       </div>
 
-                      <span
-                        className={`text-xs font-semibold px-3 py-1 rounded-full border ${getLevelBadgeVariant(
-                          skill.level
-                        )}`}
-                      >
-                        {skill.level}
-                      </span>
+                      {/* Skill Name */}
+                      <Title level={3} className="text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
+                        {skill.name}
+                      </Title>
+
+                      {/* Category Tag */}
+                      <Text variant="muted" className="text-xs font-medium mb-3">
+                        {skill.category}
+                      </Text>
+
+                      {/* Short Description */}
+                      <Text variant="muted" className="text-xs leading-relaxed line-clamp-2 mb-4">
+                        {skill.description}
+                      </Text>
                     </div>
 
-                    {/* Skill Name */}
-                    <Title level={3} className="text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
-                      {skill.name}
-                    </Title>
+                    {/* Silky Liquid Glass Skill Meter */}
+                    <div className="pt-3.5 border-t border-white/15 dark:border-white/10">
+                      <div className="flex items-center justify-between text-xs font-semibold text-muted-foreground mb-2">
+                        <span>Proficiency</span>
+                        <span className="text-primary font-bold">{skill.percentage}%</span>
+                      </div>
 
-                    {/* Category Tag */}
-                    <Text variant="muted" className="text-xs font-medium mb-3">
-                      {skill.category}
-                    </Text>
+                      {/* Outer Crystal Glass Tube Trough */}
+                      <div className="h-3 w-full rounded-full bg-black/15 dark:bg-white/5 border border-white/40 dark:border-white/15 p-0.5 shadow-inner relative overflow-hidden">
+                        {/* Silky Glowing Liquid Fill Capsule */}
+                        <div
+                          className="h-full rounded-full bg-gradient-to-r from-white/40 via-white/70 to-white dark:from-white/20 dark:via-white/50 dark:to-white/90 shadow-[0_0_12px_rgba(255,255,255,0.5)] transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] relative overflow-hidden"
+                          style={{ width: `${skill.percentage}%` }}
+                        >
+                          {/* Top Edge Specular Reflection Line */}
+                          <div className="absolute inset-x-0 top-0 h-[1px] bg-white/80" />
 
-                    {/* Short Description */}
-                    <Text variant="muted" className="text-xs leading-relaxed line-clamp-2 mb-4">
-                      {skill.description}
-                    </Text>
-                  </div>
+                          {/* Smooth Continuous Flowing Liquid Shimmer */}
+                          <div className="absolute inset-0 pointer-events-none" />
 
-                  {/* Silky Liquid Glass Skill Meter */}
-                  <div className="pt-3.5 border-t border-white/15 dark:border-white/10">
-                    <div className="flex items-center justify-between text-xs font-semibold text-muted-foreground mb-2">
-                      <span>Proficiency</span>
-                      <span className="text-primary font-bold">{skill.percentage}%</span>
-                    </div>
-
-                    {/* Outer Crystal Glass Tube Trough */}
-                    <div className="h-3 w-full rounded-full bg-black/15 dark:bg-white/5 border border-white/40 dark:border-white/15 p-0.5 shadow-inner relative overflow-hidden">
-                      {/* Silky Glowing Liquid Fill Capsule */}
-                      <div
-                        className="h-full rounded-full bg-gradient-to-r from-white/40 via-white/70 to-white dark:from-white/20 dark:via-white/50 dark:to-white/90 shadow-[0_0_12px_rgba(255,255,255,0.5)] transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] relative overflow-hidden"
-                        style={{ width: `${skill.percentage}%` }}
-                      >
-                        {/* Top Edge Specular Reflection Line */}
-                        <div className="absolute inset-x-0 top-0 h-[1px] bg-white/80" />
-
-                        {/* Smooth Continuous Flowing Liquid Shimmer */}
-                        <div className="absolute inset-0 pointer-events-none" />
-
-                        {/* Silky Fluid Meniscus Edge Glow */}
-                        <div className="absolute right-0 top-0 bottom-0 w-2.5 rounded-full bg-white/90 blur-[0.5px]" />
+                          {/* Silky Fluid Meniscus Edge Glow */}
+                          <div className="absolute right-0 top-0 bottom-0 w-2.5 rounded-full bg-white/90 blur-[0.5px]" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerContainer>
 
         {/* Liquid Glass Show More / Show Less Action Button */}
         {hasMoreSkills && (

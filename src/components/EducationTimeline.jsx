@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
-import { Title, Text, Badge, Card, CardContent, SectionHeader, Button } from "@/components/ui";
+import { Title, Text, Badge, Card, CardContent, SectionHeader, Button, FadeIn } from "@/components/ui";
 import educationData from "@/data/education.json";
 import { useTranslation } from "react-i18next";
 
@@ -199,7 +199,11 @@ export function EducationTimeline({
                   </div>
 
                   {/* Card Column Wrapper (Alternating Left & Right) */}
-                  <div className={`w-full md:w-1/2 pl-16 md:pl-0 ${isEven ? "md:pr-12 md:text-right" : "md:order-2 md:pl-12"}`}>
+                  <FadeIn
+                    direction={isEven ? "left" : "right"}
+                    delay={index * 0.1}
+                    className={`w-full md:w-1/2 pl-16 md:pl-0 ${isEven ? "md:pr-12 md:text-right" : "md:order-2 md:pl-12"}`}
+                  >
                     <Card
                       onMouseEnter={(e) => handleMouseEnter(item, e)}
                       onMouseMove={handleMouseMove}
@@ -253,7 +257,7 @@ export function EducationTimeline({
                         )}
                       </CardContent>
                     </Card>
-                  </div>
+                  </FadeIn>
 
                   {/* Desktop Alternating Column Balance Spacer */}
                   <div className={`hidden md:block w-1/2 ${isEven ? "order-2" : "order-1"}`} />

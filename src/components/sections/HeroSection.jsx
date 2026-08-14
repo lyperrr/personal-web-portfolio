@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Text, Title, Badge, Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui";
+import { Button, Text, Title, Badge, Tooltip, TooltipTrigger, TooltipContent, FadeIn } from "@/components/ui";
 import heroData from "@/data/hero.json";
 import { Mail, ArrowRight, Mouse, Github, Instagram } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -43,50 +43,60 @@ const HeroSection = () => {
         <div className="flex flex-col items-center justify-center min-h-[calc(100vh-12rem)] relative">
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
             {/* Apple Liquid Glass Badge */}
-            <Badge variant="ghost" className="text-sm sm:text-base -rotate-3 font-medium px-5 py-2 shadow-md backdrop-blur-xl backdrop-saturate-150">
-              {greeting}
-            </Badge>
+            <FadeIn direction="down" delay={0.1}>
+              <Badge variant="ghost" className="text-sm sm:text-base -rotate-3 font-medium px-5 py-2 shadow-md backdrop-blur-xl backdrop-saturate-150">
+                {greeting}
+              </Badge>
+            </FadeIn>
 
             {/* Glowing Name Title */}
-            <Title
-              level={1}
-              className="mb-6 uppercase text-[2.5rem] -rotate-3 sm:text-6xl md:text-7xl xl:text-8xl font-black px-4 tracking-tight text-liquid drop-shadow-[0_4px_20px_rgba(255,255,255,0.25)] dark:drop-shadow-[0_4px_30px_rgba(255,255,255,0.4)]"
-            >
-              {name}
-            </Title>
+            <FadeIn direction="up" delay={0.2} duration={0.6}>
+              <Title
+                level={1}
+                className="mb-6 uppercase text-[2.5rem] -rotate-3 sm:text-6xl md:text-7xl xl:text-8xl font-black px-4 tracking-tight text-liquid drop-shadow-[0_4px_20px_rgba(255,255,255,0.25)] dark:drop-shadow-[0_4px_30px_rgba(255,255,255,0.4)]"
+              >
+                {name}
+              </Title>
+            </FadeIn>
 
-            <Text variant="secondary" className="text-xl sm:text-2xl font-bold mb-4 tracking-wide text-foreground/90">
-              {role}
-            </Text>
+            <FadeIn direction="up" delay={0.3}>
+              <Text variant="secondary" className="text-xl sm:text-2xl font-bold mb-4 tracking-wide text-foreground/90">
+                {role}
+              </Text>
+            </FadeIn>
 
-            <Text variant="muted" className="sm:w-4/5 text-base sm:text-lg z-10 leading-relaxed mb-10">
-              {bio}
-            </Text>
+            <FadeIn direction="up" delay={0.4}>
+              <Text variant="muted" className="sm:w-4/5 text-base sm:text-lg z-10 leading-relaxed mb-10 mx-auto">
+                {bio}
+              </Text>
+            </FadeIn>
 
             {/* Liquid Glass CTA Pill Buttons */}
-            <div className="flex flex-col sm:flex-row w-full sm:w-auto gap-4 z-10">
-              <Button
-                onClick={() => scrollToSection("contact")}
-                size="xl"
-                className="shadow-lg hover:shadow-primary/25"
-              >
-                <Mail className="size-5" />
-                {t("buttons.primary")}
-              </Button>
+            <FadeIn direction="up" delay={0.5}>
+              <div className="flex flex-col sm:flex-row w-full sm:w-auto gap-4 z-10 justify-center">
+                <Button
+                  onClick={() => scrollToSection("contact")}
+                  size="xl"
+                  className="shadow-lg hover:shadow-primary/25"
+                >
+                  <Mail className="size-5" />
+                  {t("buttons.primary")}
+                </Button>
 
-              <Button
-                onClick={() => scrollToSection("portfolio")}
-                size="xl"
-                variant="ghost"
-                className="group shadow-md"
-              >
-                {t("buttons.secondary")}
-                <ArrowRight className="group-hover:translate-x-1 transition-transform duration-200 size-5" />
-              </Button>
-            </div>
+                <Button
+                  onClick={() => scrollToSection("portfolio")}
+                  size="xl"
+                  variant="ghost"
+                  className="group shadow-md"
+                >
+                  {t("buttons.secondary")}
+                  <ArrowRight className="group-hover:translate-x-1 transition-transform duration-200 size-5" />
+                </Button>
+              </div>
+            </FadeIn>
 
             {/* FLOATING APPLE LIQUID GLASS SOCIAL MEDIA ACTION BAR (Desktop Only) */}
-            <div className="hidden sm:block sm:fixed right-8 top-1/2 -translate-y-1/2 z-30">
+            <FadeIn direction="right" delay={0.6} className="hidden sm:block sm:fixed right-8 top-1/2 -translate-y-1/2 z-30">
               <div className="flex flex-col items-center gap-2 p-2 rounded-full glass-panel glass-specular-corner shadow-xl border border-white/40 dark:border-white/15 select-none backdrop-blur-2xl bg-white/40 dark:bg-white/5">
                 {socialMedia.map((item) => {
                   const icon = SOCIAL_ICONS[item.id] || <Github className="size-6" />;
@@ -118,16 +128,18 @@ const HeroSection = () => {
                   );
                 })}
               </div>
-            </div>
+            </FadeIn>
 
             {/* Mouse Scroll Indicator */}
-            <button
-              onClick={() => scrollToSection("about")}
-              aria-label="Scroll to About Section"
-              className="cursor-pointer focus:outline-none mt-14 p-3.5 rounded-full transition-all hover:scale-110 shadow-md"
-            >
-              <Mouse className="animate-bounce size-7 text-muted-foreground hover:text-primary transition-colors" />
-            </button>
+            <FadeIn direction="up" delay={0.7}>
+              <button
+                onClick={() => scrollToSection("about")}
+                aria-label="Scroll to About Section"
+                className="cursor-pointer focus:outline-none mt-14 p-3.5 rounded-full transition-all hover:scale-110 shadow-md"
+              >
+                <Mouse className="animate-bounce size-7 text-muted-foreground hover:text-primary transition-colors" />
+              </button>
+            </FadeIn>
           </div>
         </div>
       </div>
