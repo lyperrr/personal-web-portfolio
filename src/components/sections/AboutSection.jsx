@@ -3,7 +3,7 @@ import AboutInfo from "@/components/layouts/AboutInfo";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-20 border-t border-border/30 relative">
+    <section id="about" className="py-20 relative overflow-visible z-10">
       <AboutInfo />
     </section>
   );

@@ -9,15 +9,15 @@ const AboutInfo = () => {
   const paragraphs = t("paragraphs", { returnObjects: true }) || [];
 
   return (
-    <section>
+    <div className="relative overflow-visible">
       <div className="container">
-        <div className="flex flex-col lg:flex-row lg:justify-center items-center gap-12 sm:gap-16">
+        <div className="flex flex-col lg:flex-row lg:justify-center items-center gap-12 sm:gap-16 pt-8 sm:pt-12">
           {/* Photo Profile Frame with Tilted Liquid Glass CV Emergence Hover Effect (LG Desktop Only) */}
           <FadeIn direction="left" duration={0.6} className="flex-shrink-0 mx-auto lg:m-0">
             <div className="relative group cursor-pointer select-none">
               {/* Emerging CV Image Preview (High-Impact Shift Upwards & Left - Desktop LG+ Only) */}
-              <div className="hidden lg:flex absolute top-0 left-0 w-full h-full z-0 items-center justify-center pointer-events-none transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] opacity-0 scale-90 translate-x-0 translate-y-0 rotate-0 lg:group-hover:opacity-100 lg:group-hover:scale-110 lg:group-hover:-translate-x-36 xl:group-hover:-translate-x-44 lg:group-hover:-translate-y-20 xl:group-hover:-translate-y-24 lg:group-hover:-rotate-15">
-                <div className="w-72 xl:w-80 rounded-2xl glass-panel glass-specular-corner p-2 shadow-[0_30px_70px_rgba(0,0,0,0.55)] border border-white/70 dark:border-white/35 backdrop-blur-2xl bg-white/85 dark:bg-white/15 overflow-hidden">
+              <div className="hidden lg:flex absolute top-0 left-0 w-full h-full z-0 items-center justify-center pointer-events-none transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] opacity-0 scale-90 translate-x-0 translate-y-0 rotate-0 lg:group-hover:opacity-100 lg:group-hover:scale-105 lg:group-hover:-translate-x-28 xl:group-hover:-translate-x-32 lg:group-hover:-translate-y-14 xl:group-hover:-translate-y-16 lg:group-hover:-rotate-12">
+                <div className="w-72 xl:w-80 rounded-2xl glass-panel glass-specular-corner p-2 shadow-[0_30px_70px_rgba(0,0,0,0.55)] border border-white/70 dark:border-white/35 backdrop-blur-2xl bg-white/85 dark:bg-white/15">
                   <img
                     src={CvResume}
                     alt="Willy Permana CV Resume Preview"
@@ -86,7 +86,7 @@ const AboutInfo = () => {
           </FadeIn>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
