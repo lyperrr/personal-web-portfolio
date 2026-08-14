@@ -392,3 +392,13 @@
   stroke-dasharray: 20 300;
   stroke-dashoffset: -32.42;
 }
+
+/* Performance & GPU Rendering Optimizations */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 700px;
+}
+
+img {
+  content-visibility: auto;
+}

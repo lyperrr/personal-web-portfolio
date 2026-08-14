@@ -119,6 +119,8 @@ const SkillsSection = () => {
                           <img
                             src={skill.logo}
                             alt={`${skill.name} logo`}
+                            loading="lazy"
+                            decoding="async"
                             className={`size-full object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-110 ${
                               skill.id === "git" || skill.id === "nextjs" ? "dark:invert" : ""
                             }`}

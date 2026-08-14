@@ -1,10 +1,11 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "@/components/layouts";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import HomePage from "@/pages/HomePage";
-import PortfolioDetailPage from "@/pages/PortfolioDetailPage";
 import "@/index.css";
+
+const PortfolioDetailPage = lazy(() => import("@/pages/PortfolioDetailPage"));
 
 function App() {
   const sectionIds = [
@@ -20,13 +21,15 @@ function App() {
   return (
     <div className="App min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground relative">
       <Layout activeSection={activeSection} scrollToSection={scrollToSection}>
-        <Routes>
-          {/* Main Portfolio Landing Page */}
-          <Route path="/" element={<HomePage />} />
+        <Suspense fallback={<div className="min-h-screen" />}>
+          <Routes>
+            {/* Main Portfolio Landing Page */}
+            <Route path="/" element={<HomePage />} />
 
-          {/* Dynamic Portfolio Case Study Detail Page */}
-          <Route path="/portfolio/:slug" element={<PortfolioDetailPage />} />
-        </Routes>
+            {/* Dynamic Portfolio Case Study Detail Page */}
+            <Route path="/portfolio/:slug" element={<PortfolioDetailPage />} />
+          </Routes>
+        </Suspense>
       </Layout>
     </div>
   );

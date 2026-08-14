@@ -115,6 +115,7 @@ export function EducationTimeline({
             src={resolveImage(hoveredItem.image)}
             alt={hoveredItem.institution}
             loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover rounded-2xl transition-transform duration-500"
           />
           <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-white text-sm font-bold text-center truncate">

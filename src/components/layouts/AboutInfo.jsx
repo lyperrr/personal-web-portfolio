@@ -20,6 +20,8 @@ const AboutInfo = () => {
                 <img
                   src={CvResume}
                   alt="Willy Permana CV Resume Preview"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-auto rounded-xl object-cover shadow-xl"
                 />
                 <div className="p-2 text-center">
@@ -36,6 +38,8 @@ const AboutInfo = () => {
               <img
                 src={Profile}
                 alt="Foto Profil Willy Permana"
+                loading="lazy"
+                decoding="async"
                 className="size-80 sm:size-96 object-cover rounded-2xl overflow-hidden transition-transform duration-500"
               />
 
